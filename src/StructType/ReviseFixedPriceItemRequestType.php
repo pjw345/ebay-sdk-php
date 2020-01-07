@@ -1,0 +1,150 @@
+<?php
+
+namespace StructType;
+
+use \WsdlToPhp\PackageBase\AbstractStructBase;
+
+/**
+ * This class stands for ReviseFixedPriceItemRequestType StructType
+ * Meta information extracted from the WSDL
+ * - documentation: Enables a seller to revise a fixed-price listing on a specified eBay site. To revise an active listing, the seller specifies the <b>ItemID</b> value for the listing. The seller makes one or multiple changes to the listing through the
+ * <b>Item</b> container, and the seller can also use one or more <b>DeletedField</b> tags to remove an optional field/setting from the listing.
+ * @subpackage Structs
+ */
+class ReviseFixedPriceItemRequestType extends AbstractRequestType
+{
+    /**
+     * The Item
+     * Meta information extracted from the WSDL
+     * - documentation: The <b>Item</b> container is used to make changes to the active listing. The seller must pass in the <b>ItemID</b> value for the listing that is being revised. For anything else that the seller wishes to change, such as quantity or
+     * price, the seller should include this field in the call request and give it a new value. <br/><br/> If the seller wants to delete one or more optional settings in the listing, the seller should use the <b>DeletedField</b> tag.
+     * - minOccurs: 0
+     * @var \StructType\ItemType
+     */
+    public $Item;
+    /**
+     * The DeletedField
+     * Meta information extracted from the WSDL
+     * - documentation: Specifies the name of a field to delete from a listing. The request can contain zero, one, or many instances of <b>DeletedField</b> (one for each field to be deleted). See the relevant field descriptions to determine when to use
+     * <b>DeletedField</b> (and potential consequences). <br><br> You cannot delete required fields from a listing. <br><br> Some fields are optional when you first list an item (e.g., <b>SecondaryCategory</b>), but once they are set they cannot be deleted
+     * when you revise an item. Some optional fields cannot be deleted if the item has bids and/or ends within 12 hours. Some optional fields cannot be deleted if other fields depend on them. <br><br> Some data (such as <b>Variation</b> nodes within the
+     * <b>Variations</b> container) can't be deleted by using <b>DeletedField</b>. See the relevant field descriptions for how to delete such data. <br><br> Use values that match the case of the schema element names (<b>Item.PictureDetails.GalleryURL</b>)
+     * or make the initial letter of each field name lowercase (<b>item.pictureDetails.galleryURL</b>). However, do not change the case of letters in the middle of a field name. For example, <b>item.picturedetails.galleryUrl</b> is not allowed. <br><br> To
+     * delete a listing enhancement like <b>BoldTitle</b>, specify the value you are deleting in square brackets ("[ ]"); for example, <b>Item.ListingEnhancement[BoldTitle]</b>.
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     * @var string[]
+     */
+    public $DeletedField;
+    /**
+     * Constructor method for ReviseFixedPriceItemRequestType
+     * @uses ReviseFixedPriceItemRequestType::setItem()
+     * @uses ReviseFixedPriceItemRequestType::setDeletedField()
+     * @param \StructType\ItemType $item
+     * @param string[] $deletedField
+     */
+    public function __construct(\StructType\ItemType $item = null, array $deletedField = array())
+    {
+        $this
+            ->setItem($item)
+            ->setDeletedField($deletedField);
+    }
+    /**
+     * Get Item value
+     * @return \StructType\ItemType|null
+     */
+    public function getItem()
+    {
+        return $this->Item;
+    }
+    /**
+     * Set Item value
+     * @param \StructType\ItemType $item
+     * @return \StructType\ReviseFixedPriceItemRequestType
+     */
+    public function setItem(\StructType\ItemType $item = null)
+    {
+        $this->Item = $item;
+        return $this;
+    }
+    /**
+     * Get DeletedField value
+     * @return string[]|null
+     */
+    public function getDeletedField()
+    {
+        return $this->DeletedField;
+    }
+    /**
+     * This method is responsible for validating the values passed to the setDeletedField method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setDeletedField method
+     * @param array $values
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateDeletedFieldForArrayConstraintsFromSetDeletedField(array $values = array())
+    {
+        $message = '';
+        $invalidValues = [];
+        foreach ($values as $reviseFixedPriceItemRequestTypeDeletedFieldItem) {
+            // validation for constraint: itemType
+            if (!is_string($reviseFixedPriceItemRequestTypeDeletedFieldItem)) {
+                $invalidValues[] = is_object($reviseFixedPriceItemRequestTypeDeletedFieldItem) ? get_class($reviseFixedPriceItemRequestTypeDeletedFieldItem) : sprintf('%s(%s)', gettype($reviseFixedPriceItemRequestTypeDeletedFieldItem), var_export($reviseFixedPriceItemRequestTypeDeletedFieldItem, true));
+            }
+        }
+        if (!empty($invalidValues)) {
+            $message = sprintf('The DeletedField property can only contain items of type string, %s given', is_object($invalidValues) ? get_class($invalidValues) : (is_array($invalidValues) ? implode(', ', $invalidValues) : gettype($invalidValues)));
+        }
+        unset($invalidValues);
+        return $message;
+    }
+    /**
+     * Set DeletedField value
+     * @throws \InvalidArgumentException
+     * @param string[] $deletedField
+     * @return \StructType\ReviseFixedPriceItemRequestType
+     */
+    public function setDeletedField(array $deletedField = array())
+    {
+        // validation for constraint: array
+        if ('' !== ($deletedFieldArrayErrorMessage = self::validateDeletedFieldForArrayConstraintsFromSetDeletedField($deletedField))) {
+            throw new \InvalidArgumentException($deletedFieldArrayErrorMessage, __LINE__);
+        }
+        $this->DeletedField = $deletedField;
+        return $this;
+    }
+    /**
+     * Add item to DeletedField value
+     * @throws \InvalidArgumentException
+     * @param string $item
+     * @return \StructType\ReviseFixedPriceItemRequestType
+     */
+    public function addToDeletedField($item)
+    {
+        // validation for constraint: itemType
+        if (!is_string($item)) {
+            throw new \InvalidArgumentException(sprintf('The DeletedField property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
+        }
+        $this->DeletedField[] = $item;
+        return $this;
+    }
+    /**
+     * Method called when an object has been exported with var_export() functions
+     * It allows to return an object instantiated with the values
+     * @see AbstractStructBase::__set_state()
+     * @uses AbstractStructBase::__set_state()
+     * @param array $array the exported values
+     * @return \StructType\ReviseFixedPriceItemRequestType
+     */
+    public static function __set_state(array $array)
+    {
+        return parent::__set_state($array);
+    }
+    /**
+     * Method returning the class name
+     * @return string __CLASS__
+     */
+    public function __toString()
+    {
+        return __CLASS__;
+    }
+}
