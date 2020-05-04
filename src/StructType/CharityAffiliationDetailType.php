@@ -16,7 +16,8 @@ class CharityAffiliationDetailType extends AbstractStructBase
     /**
      * The CharityID
      * Meta information extracted from the WSDL
-     * - documentation: The affiliation ID for nonprofit charity organizations registered with the PayPal Giving Fund.
+     * - documentation: The eBay unique identifier of the nonprofit organization associated with the seller's account. Once a nonprofit organization comes aboard as an eBay for Charity organization, eBay creates and assigns this ID to the nonprofit
+     * organization.
      * - minOccurs: 0
      * @var string
      */
@@ -24,7 +25,8 @@ class CharityAffiliationDetailType extends AbstractStructBase
     /**
      * The AffiliationType
      * Meta information extracted from the WSDL
-     * - documentation: Indicates the affiliation status of the nonprofit charity organization registered with the PayPal Giving Fund.
+     * - documentation: The enumeration value returned here indicates whether the eBay user is just selling on the behalf of the nonprofit organization, or if the eBay user is directly affiliated with/representing the nonprofit organization, or the eBay
+     * user has been added as a Direct Seller by the nonprofit organization.
      * - minOccurs: 0
      * @var string
      */
@@ -32,7 +34,7 @@ class CharityAffiliationDetailType extends AbstractStructBase
     /**
      * The LastUsedTime
      * Meta information extracted from the WSDL
-     * - documentation: Indicates the affiliation last used date of the nonprofit charity organization registered with the PayPal Giving Fund.
+     * - documentation: This timestamp indicates when the eBay user last contributed to the nonprofit organization through the donated proceeds of an eBay sale.
      * - minOccurs: 0
      * @var string
      */

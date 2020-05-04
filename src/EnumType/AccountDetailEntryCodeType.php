@@ -2377,16 +2377,66 @@ class AccountDetailEntryCodeType
      */
     const VALUE_AUSTRALIA_GSTCREDIT = 'AustraliaGSTCredit';
     /**
+     * Constant for value 'UspsLabelFee'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is billing the seller for a USPS shipping label that was purchased through the seller's eBay account. <br><br> This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     * @return string 'UspsLabelFee'
+     */
+    const VALUE_USPS_LABEL_FEE = 'UspsLabelFee';
+    /**
+     * Constant for value 'UspsLabelFeeCredit'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is giving a credit to the seller for a USPS shipping label that was purchased through the seller's eBay account. <br><br> This enumeration value is only applicable for eBay sellers that are
+     * opted in to eBay managed payments.
+     * @return string 'UspsLabelFeeCredit'
+     */
+    const VALUE_USPS_LABEL_FEE_CREDIT = 'UspsLabelFeeCredit';
+    /**
+     * Constant for value 'ShippingInsuranceFee'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is billing the seller for shipping insurance (such as ShipCover through USPS) that was purchased through the seller's eBay account. <br><br> This enumeration value is only applicable for
+     * eBay sellers that are opted in to eBay managed payments.
+     * @return string 'ShippingInsuranceFee'
+     */
+    const VALUE_SHIPPING_INSURANCE_FEE = 'ShippingInsuranceFee';
+    /**
+     * Constant for value 'ShippingInsuranceFeeCredit'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is giving a credit to the seller for shipping insurance (such as ShipCover through USPS) that was purchased through the seller's eBay account. <br><br> This enumeration value is only
+     * applicable for eBay sellers that are opted in to eBay managed payments.
+     * @return string 'ShippingInsuranceFeeCredit'
+     */
+    const VALUE_SHIPPING_INSURANCE_FEE_CREDIT = 'ShippingInsuranceFeeCredit';
+    /**
+     * Constant for value 'UspsShortpaidFee'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is billing the seller for underpayment for a USPS shipping label that was purchased through the seller's eBay account. Underpayment may occur if the seller paid for a shipping label based on
+     * specific package weight and dimensions, but either or both package weight and dimensions were not accurate, hence the seller owes more money to USPS for postage. <br><br> This enumeration value is only applicable for eBay sellers that are opted in to
+     * eBay managed payments.
+     * @return string 'UspsShortpaidFee'
+     */
+    const VALUE_USPS_SHORTPAID_FEE = 'UspsShortpaidFee';
+    /**
+     * Constant for value 'UspsShortpaidFeeCredit'
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates that eBay is giving credit to the seller for underpayment for a USPS shipping label that was purchased through the seller's eBay account. Underpayment may occur if the seller paid for a shipping label
+     * based on specific package weight and dimensions, but either or both package weight and dimensions were not accurate, hence the seller owes more money to USPS for postage. <br><br> This enumeration value is only applicable for eBay sellers that are
+     * opted in to eBay managed payments.
+     * @return string 'UspsShortpaidFeeCredit'
+     */
+    const VALUE_USPS_SHORTPAID_FEE_CREDIT = 'UspsShortpaidFeeCredit';
+    /**
      * Constant for value 'CoFundingCharge'
      * Meta information extracted from the WSDL
-     * - documentation: (out) Co-Funding Charge
+     * - documentation: This enumeration value indicates that eBay is billing the seller for a co-funding charge.
      * @return string 'CoFundingCharge'
      */
     const VALUE_CO_FUNDING_CHARGE = 'CoFundingCharge';
     /**
      * Constant for value 'CoFundingChargeCredit'
      * Meta information extracted from the WSDL
-     * - documentation: (out) Co-Funding Charge Credit
+     * - documentation: This enumeration value indicates that eBay is giving credit to the seller for a co-funding charge.
      * @return string 'CoFundingChargeCredit'
      */
     const VALUE_CO_FUNDING_CHARGE_CREDIT = 'CoFundingChargeCredit';
@@ -2730,6 +2780,12 @@ class AccountDetailEntryCodeType
      * @uses self::VALUE_NEW_ZEALAND_GSTCREDIT
      * @uses self::VALUE_AUSTRALIA_GST
      * @uses self::VALUE_AUSTRALIA_GSTCREDIT
+     * @uses self::VALUE_USPS_LABEL_FEE
+     * @uses self::VALUE_USPS_LABEL_FEE_CREDIT
+     * @uses self::VALUE_SHIPPING_INSURANCE_FEE
+     * @uses self::VALUE_SHIPPING_INSURANCE_FEE_CREDIT
+     * @uses self::VALUE_USPS_SHORTPAID_FEE
+     * @uses self::VALUE_USPS_SHORTPAID_FEE_CREDIT
      * @uses self::VALUE_CO_FUNDING_CHARGE
      * @uses self::VALUE_CO_FUNDING_CHARGE_CREDIT
      * @return string[]
@@ -3065,6 +3121,12 @@ class AccountDetailEntryCodeType
             self::VALUE_NEW_ZEALAND_GSTCREDIT,
             self::VALUE_AUSTRALIA_GST,
             self::VALUE_AUSTRALIA_GSTCREDIT,
+            self::VALUE_USPS_LABEL_FEE,
+            self::VALUE_USPS_LABEL_FEE_CREDIT,
+            self::VALUE_SHIPPING_INSURANCE_FEE,
+            self::VALUE_SHIPPING_INSURANCE_FEE_CREDIT,
+            self::VALUE_USPS_SHORTPAID_FEE,
+            self::VALUE_USPS_SHORTPAID_FEE_CREDIT,
             self::VALUE_CO_FUNDING_CHARGE,
             self::VALUE_CO_FUNDING_CHARGE_CREDIT,
         );

@@ -7,8 +7,11 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPromotionalSaleDetailsRequestType StructType
  * Meta information extracted from the WSDL
- * - documentation: The base request type for the <b>GetPromotionalSaleDetails</b> call. This call retrieves information about promotional sales set up by an eBay store owner. The eBay store owner has the option to retrieve all promotional sales, a
- * specific promotional sale, or promotional sales in a specific state.
+ * - documentation: <span class="tablenote"><b>Note: </b> While the Trading API continues to support item promotions for an eBay store owner, the Trading API will no longer be enhanced with any new item promotion capabilities as they are developed by
+ * eBay. In addition, Promoted Listings are also not supported by the Trading API. For these two reasons, it is recommended that sellers/developers make plans to migrate to the<a
+ * href="https://developer.ebay.com/api-docs/sell/marketing/overview.html">Marketing API</a>, which provides all Promotions Manager and Promoted Listings capabilities, and this API will continue to be improved and enhanced as more marketing features
+ * become available to sellers. </span> The base request type for the <b>GetPromotionalSaleDetails</b> call. This call retrieves information about promotional sales set up by an eBay store owner. The eBay store owner has the option to retrieve all
+ * promotional sales, a specific promotional sale, or promotional sales in a specific state.
  * @subpackage Structs
  */
 class GetPromotionalSaleDetailsRequestType extends AbstractRequestType

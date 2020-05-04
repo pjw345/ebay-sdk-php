@@ -7,7 +7,7 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CharityInfoType StructType
  * Meta information extracted from the WSDL
- * - documentation: Type defining the <b>Charity</b> container, which consists of all details related to a nonprofit charity organization.
+ * - documentation: Type defining the <b>Charity</b> container returned in <b>GetCharities</b>, which consists of all details related to a nonprofit charity organization.
  * @subpackage Structs
  */
 class CharityInfoType extends AbstractStructBase
@@ -15,7 +15,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The Name
      * Meta information extracted from the WSDL
-     * - documentation: The name of a nonprofit charity organization. The <b>Name</b> field is required for a non-registered charity organization, since these companies will not have a PayPal Giving Fund <b>CharityID</b> <br/><br/>
+     * - documentation: The name of a nonprofit charity organization. <br/><br/>
      * - minOccurs: 0
      * @var string
      */
@@ -47,8 +47,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The Mission
      * Meta information extracted from the WSDL
-     * - documentation: The mission statement of a nonprofit charity organization registered with the PayPal Giving Fund. The mission statement is returned in <b>GetCharities</b> and is displayed in listings if the nonprofit charity organization is
-     * registered with the PayPal Giving Fund. <br/><br/>
+     * - documentation: The mission statement of the nonprofit charity organization. This field will be returned if the organization's mission statement is available. <br/><br/>
      * - minOccurs: 0
      * @var string
      */
@@ -56,9 +55,8 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The LogoURL
      * Meta information extracted from the WSDL
-     * - documentation: This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This logo is displayed in listings if the nonprofit charity organization
-     * is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the <b>LogoURL</b> or <b>LogoURLSelling</b> values are not provided, or these values point to bad URLs or to URLs
-     * containing no images or images not meeting eBay logo size and format requirements. This value is returned if set.
+     * - documentation: The URL to the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This logo is displayed in charitable listings in the eBay for Charity section of the View Item page. This field is returned if
+     * available for the nonprofit organization.
      * - minOccurs: 0
      * @var string
      */
@@ -66,7 +64,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The Status
      * Meta information extracted from the WSDL
-     * - documentation: Enumeration value that indicates whether or not the charity is a valid eBay for Charity nonprofit organization.
+     * - documentation: This enumeration value indicates whether or not the nonprofit organization is a valid eBay for Charity organization, and is able to receive proceeds from eBay sales.
      * - minOccurs: 0
      * @var string
      */
@@ -82,7 +80,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The CharityRegion
      * Meta information extracted from the WSDL
-     * - documentation: Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may be associated with only one region.
+     * - documentation: Integer value that indicates the nonprofit charity organization's region. Each nonprofit charity organization may only be associated with one region.
      * - minOccurs: 0
      * @var int
      */
@@ -100,8 +98,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The CharityID
      * Meta information extracted from the WSDL
-     * - documentation: A unique identifier created by eBay and assigned to registered nonprofit charity organizations. This identifier can be used as a filter in the <b>GetCharities</b> request, and it will always be returned if the nonprofit charity
-     * organization is registered with the PayPal Giving Fund.
+     * - documentation: This field is no longer returned. eBay's unique identifier for nonprofit organizations is now returned in the <b>id</b> attribute of the the opening <b>Charity</b> tag instead.
      * - minOccurs: 0
      * @var string
      */
@@ -109,9 +106,9 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The LogoURLSelling
      * Meta information extracted from the WSDL
-     * - documentation: An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file must be JPG or GIF format, and its size cannot exceed 50 KB. This URL will be used if the
-     * <b>LogoURL</b> value points to a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in
-     * item listings if the nonprofit charity organization is registered with the PayPal Giving Fund. A standard eBay for Charity logo is used in place of the charity organization's logo if the Logo URL is not provided. This value is returned if set.
+     * - documentation: An alternative to the <b>LogoURL</b> value. This URL indicates the location of the nonprofit charity organization's logo image. The image file will be in JPG or GIF format. This URL will be used if the <b>LogoURL</b> value points to
+     * a broken link or if that location either contains no image or contains an image that does not meet the eBay requirements - GIF or JPG file; maximum size of 50 KB. A nonprofit charity organization's logo is displayed in the eBay for Charity section of
+     * the View Item page for a charitable listing.
      * - minOccurs: 0
      * @var string
      */
@@ -119,7 +116,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The DisplayLogoSelling
      * Meta information extracted from the WSDL
-     * - documentation: This boolean value indicates if the eBay Charity logo will appear in the listing.
+     * - documentation: This boolean value indicates if the <b>LogoURLSelling</b> image will appear in the eBay for Charity section of the View Item page for a charitable listing.
      * - minOccurs: 0
      * @var bool
      */
@@ -135,8 +132,8 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The Description
      * Meta information extracted from the WSDL
-     * - documentation: This field provides a short description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight
-     * against cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. The description may contain a maximum of 115 characters. This value is returned if set. <br/><br/>
+     * - documentation: This field provides a description about the nonprofit charity organization's primary purpose. "I want to support" will be added to the beginning of the contents of this field. For example, if the description is "the fight against
+     * cancer", then on the checkout page "I want to support the fight against cancer" will be displayed. This field is returned if available for the nonprofit organization. <br/>
      * - minOccurs: 0
      * @var string
      */
@@ -155,7 +152,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The ExternalID
      * Meta information extracted from the WSDL
-     * - documentation: A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund. <br/><br/>
+     * - documentation: A unique identifier created and used by PayPal Giving Fund to identify a registered nonprofit charity organization. This field is only returned for charities that are registered with PayPal Giving Fund.
      * - minOccurs: 0
      * @var string
      */

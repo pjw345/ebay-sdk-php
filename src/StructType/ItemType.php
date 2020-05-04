@@ -107,12 +107,12 @@ class ItemType extends AbstractStructBase
     /**
      * The Charity
      * Meta information extracted from the WSDL
-     * - documentation: This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from the sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a
-     * href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search for a charity registered with the PayPal Giving Fund. The donation percentage can be set in 5 percent increments from 10 percent
-     * to 100 percent. If a benefitting charity is specified, the seller must also accept PayPal as a payment method for the item (see <b>Item.PaymentMethods</b>). <br><br> When it comes to revising an auction or fixed-price listing, you can add a
-     * benefitting charity (as long as there is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing. <br><br> <b>For Revise calls</b>:
-     * The non-profit organization and donation percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing. <br><br> This container will only be returned
-     * in Get calls for listings that will benefit a nonprofit organization if the item sells.
+     * - documentation: This container identifies the nonprofit organization that will benefit with a percentage of the proceeds from each sale of an item through an auction or fixed-price listing. Charity names and IDs can be found by going to <a
+     * href="https://charity.ebay.com/charity-auctions/my-causes" target="_blank">eBay for Charity</a> page and doing a search, or by doing a search with the <b>GetCharities</b> call. The donation percentage can be set in 5 percent increments from 10
+     * percent to 100 percent. For all charitable listings, PayPal must be an accepted payment method(see <b>Item.PaymentMethods</b>). <br><br> When it comes to revising an auction or fixed-price listing, you can add a benefitting charity (as long as there
+     * is at least 12 hours left before end of listing/close of auction), but you cannot remove or change a nonprofit company once one is already established in the original listing. <br><br> <b>For Revise calls</b>: The non-profit organization and donation
+     * percentage can now be modified in a Revise call as long as there are no active bids on an auction listing, or no pending Best Offers/Counter Offers on a listing. <br><br> This container will only be returned in Get calls for charitable listings.
+     * Charitable listings are only supported in the US and UK marketplaces.
      * - minOccurs: 0
      * @var \StructType\CharityType
      */
@@ -150,13 +150,15 @@ class ItemType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: The seller's description of the item. In listing requests, you can submit your description using CDATA if you want to use HTML or XML-reserved characters in the description. However, a seller can not use any active content in their
      * listing description. Active content includes animation or video via JavaScript, Flash, plug-ins, or form actions. All active content will be blocked/removed from a listing. Removing/blocking active content will lead to faster load times of listings,
-     * make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace. For more tips on creating listings that are even more mobile-friendly, see this <a
-     * href="https://pages.ebay.com/sell/itemdescription/mobilefriendlyguidelines.html" target="_blank">Best practices</a> document. <br><br> For more information about eBay phasing out active content, see this <a
-     * href="https://pages.ebay.com/sellerinformation/news/fallupdate16/active-content.html" target="_blank">Seller Update</a> page. For more information about eBay's JavaScript/Active Content policy, see the <a
-     * href="https://pages.ebay.com/help/policies/listing-javascript.html" target="_blank">JavaScript policy</a> page. <br><br> In the listing description, sellers are only allowed to provide links to product videos, freight shipping services, or other
-     * legally required information, and when providing these links in the listing description, the secure 'https' protocol must be used instead of 'http'. In addition, any valid links to sites outside of eBay should use the <em>target="_blank"</em>
-     * attribute in the <b>a href</b> tag so a new browser window will be loaded when the link is clicked instead of buyers being redirected off of eBay. For more information on using links in the listing description, see eBay's <a
-     * href="http://pages.ebay.com/help/policies/listing-links.html" target="_blank">Links policy</a>. For more information about the stronger security standards that eBay is using, see the <a
+     * make listings more mobile-friendly, improve SEO performance, and lead to a more secure eBay Marketplace. <br><br> <span class="tablenote"><b>Note: </b> To ensure that their listing description is optimized when viewed on mobile devices, sellers
+     * should strongly consider using eBay's <a href="https://pages.ebay.com/sell/itemdescription/customizeyoursummary.html" target="_blank">View Item description summary feature</a> when listing their item. Using HTML div and span tag attributes, this
+     * feature allows sellers to customize and fully control the listing description that is displayed for prospective buyers when viewing the item on a mobile device. The listing description on mobile devices is limited to 800 characters, and whenever the
+     * listing description exceeds this limit, eBay uses a special algorithm to derive the best possible description within the 800-character limit. However, due to some description content being removed, it is definitely not ideal for the seller, and could
+     * possibly lead to a bad buyer experience and a Significantly not as described (SNAD) case, since the buyer may not get complete details on the item. See the eBay help page for more details on using the HTML div and span tags, and for more tips on
+     * creating listings that are mobile-friendly, see this <a href="https://pages.ebay.com/sell/itemdescription/mobilefriendlyguidelines.html" target="_blank">Best practices</a> document. </span> <br> In the listing description, sellers are only allowed to
+     * provide links to product videos, freight shipping services, or other legally required information, and when providing these links in the listing description, the secure 'https' protocol must be used instead of 'http'. In addition, any valid links to
+     * sites outside of eBay should use the <em>target="_blank"</em> attribute in the <b>a href</b> tag so a new browser window will be loaded when the link is clicked instead of buyers being redirected off of eBay. For more information on using links in
+     * the listing description, see eBay's <a href="http://pages.ebay.com/help/policies/listing-links.html" target="_blank">Links policy</a>. For more information about the stronger security standards that eBay is using, see the <a
      * href="https://pages.ebay.com/seller-center/seller-updates/2018-fall/marketplace-update.html#use-secure-https" target="_blank">Use secure HTTPS for enhanced browser security</a> topic in the 2018 Fall Seller Update. The <a
      * href="https://developer.ebay.com/api-docs/sell/compliance/resources/listing_violation/methods/getListingViolations" target="_blank">getListingViolations</a> method of the Compliance API can be used to see if any of the seller's active listings are
      * not 'HTTPS' compliant. <br><br> If you embed pictures in the description (by using IMG tags) instead of using <b>PictureURL</b>, but you want a camera icon to appear in search and listing pages, specify the following null-image URL in the
@@ -668,7 +670,7 @@ class ItemType extends AbstractStructBase
      * The HitCount
      * Meta information extracted from the WSDL
      * - documentation: This value indicates the number of page views for the listing. This number is calculated by eBay and is returned in 'Get' calls if the <b>HitCounter</b> value is set to <code>BasicStyle</code>, <code>RetroStyle</code>, or
-     * <code>HiddenStyle</code>. If the <b>HitCounter</b> value is set to <code>HiddenStyle</code> or <code>NoHitCounter</code>, <b>HitCount</b> is only returned if the one making the call is the item's seller.
+     * <code>HiddenStyle</code>.
      * - minOccurs: 0
      * @var int
      */
@@ -801,7 +803,8 @@ class ItemType extends AbstractStructBase
      * The PostalCode
      * Meta information extracted from the WSDL
      * - documentation: Postal code of the place where the item is located. This value is used for proximity searches. To remove this value when revising or relisting an item, use <b>DeletedField</b>. If you do not specify <b>PostalCode</b>, you must
-     * specify <b>Item.Location</b>. If you specify <b>PostalCode</b>, but do not specify <b>Item.Location</b>, then <b>Item.Location</b> is given a default value derived from the postal code.
+     * specify <b>Item.Location</b>. If you specify <b>PostalCode</b>, but do not specify <b>Item.Location</b>, then <b>Item.Location</b> is given a default value derived from the postal code. <br><br> <span class="tablenote"><b>Note:</b> As of late January
+     * 2020, the displayed postal code returned in <b>GetItem</b> is now masked to all users except for the seller of the item. Different countries will mask postal/zip codes in slightly different ways, but an example would be <code>951**</code>. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -821,8 +824,8 @@ class ItemType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: Specifies the maximum number of business days the seller commits to for preparing an item to be shipped after receiving a cleared payment. This time does not include the shipping time (the carrier's transit time). <br><br> <span
      * class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and
-     * cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 3 business days or less to be eligible for this feature. See
-     * the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. </span> <br> <b>For Add/Revise/Relist calls:</b>
+     * the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature.
+     * See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. </span> <br> <b>For Add/Revise/Relist calls:</b>
      * Required for listings in certain categories when certain shipping services (with delivery) are offered. See <b>HandlingTimeEnabled</b> in <b>GetCategoryFeatures</b>.<br> <br> The seller sets this to a positive integer value corresponding to the
      * number of days. For a list of allowed values on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. (Typical values are <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code>,
      * <code>15</code>, or <code>20</code>, but this can vary by site and these may change over time.)<br> <br> Valid for flat and calculated shipping. Does not apply when there is no shipping, when it is local pickup only or it is freight shipping. For

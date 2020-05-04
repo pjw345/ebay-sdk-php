@@ -5,7 +5,10 @@ namespace EnumType;
 /**
  * This class stands for PromotionalSaleStatusCodeType EnumType
  * Meta information extracted from the WSDL
- * - documentation: Values indicate the status of a sale. Used for the Promotional Price Display feature, which enables sellers to apply discounts across many listings.
+ * - documentation: <span class="tablenote"><b>Note: </b> While the Trading API continues to support item promotions for an eBay store owner, the Trading API will no longer be enhanced with any new item promotion capabilities as they are developed by
+ * eBay. In addition, Promoted Listings are also not supported by the Trading API. For these two reasons, it is recommended that sellers/developers make plans to migrate to the <a
+ * href="https://developer.ebay.com/api-docs/sell/marketing/overview.html">Marketing API</a>, which provides all Promotions Manager and Promoted Listings capabilities, and this API will continue to be improved and enhanced as more marketing features
+ * become available to sellers. </span> Values indicate the status of a sale. Used for the Promotional Price Display feature, which enables sellers to apply discounts across many listings.
  * @subpackage Enumerations
  */
 class PromotionalSaleStatusCodeType

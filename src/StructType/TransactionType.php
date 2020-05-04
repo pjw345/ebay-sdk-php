@@ -296,7 +296,7 @@ class TransactionType extends AbstractStructBase
      * - documentation: This container is returned in a <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> response if the <b>IncludeContainingOrder</b> field is included in the call request payload and set to 'true'. This container will be returned
      * whether the order line item is the only line item in the order, or if the order has multiple line items. <br/><br/> <span class="tablenote"><b>Note:</b> The new <b>OrderLineItemCount</b> field is automatically returned if the user is using Version
      * 1113 of the Trading WSDL (or newer, as versions roll out). If the user is using Versions 1107 or 1111 of the Trading WSDL, the <b>OrderLineItemCount</b> field will only be returned if the user includes the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP
-     * header and sets its value to <code>1113<code>. If a user is using a Trading WSDL older than 1107, the <b>OrderLineItemCount</b> field will not be returned. </span>
+     * header and sets its value to <code>1113</code>. If a user is using a Trading WSDL older than 1107, the <b>OrderLineItemCount</b> field will not be returned. </span>
      * - minOccurs: 0
      * @var \StructType\OrderType
      */
@@ -420,8 +420,8 @@ class TransactionType extends AbstractStructBase
     /**
      * The Taxes
      * Meta information extracted from the WSDL
-     * - documentation: A container consisting of detailed tax information (sales tax, Goods and Services tax, or VAT) for a sales transaction. The <b>Taxes</b> container is always returned, even if the sales transaction is not subject to any taxes on the
-     * buyer's purchase. The information in this container supercedes/overrides any sales tax information in the <b>ShippingDetails.SalesTax</b> container.
+     * - documentation: A container consisting of detailed tax information (sales tax, Goods and Services tax, or VAT) for a sales transaction. The <b>Taxes</b> container is returned if the order line item is subject to any taxes on the buyer's purchase.
+     * The information in this container supercedes/overrides any sales tax information in the <b>ShippingDetails.SalesTax</b> container.
      * - minOccurs: 0
      * @var \StructType\TaxesType
      */

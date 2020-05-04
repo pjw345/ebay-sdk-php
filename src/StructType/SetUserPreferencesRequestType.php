@@ -106,10 +106,10 @@ class SetUserPreferencesRequestType extends AbstractRequestType
     /**
      * The DispatchCutoffTimePreference
      * Meta information extracted from the WSDL
-     * - documentation: This container is included if the seller wishes to set the order cut off time for same-day shipping. If the seller specifies a value of <code>0</code> in <strong>Item.DispatchTimeMax</strong> to offer same day handling when listing
-     * an item, the seller's shipping time commitment depends on the order cut off time set for the listing site, as indicated by the <strong>DispatchCutoffTimePreference.CutoffTime</strong> field. <br> <br> <span class="tablenote"><b>Note:</b> This field
-     * is not applicable for sellers who have opted into the Handling Time Option of eBay Guaranteed Delivery, as this field only shows a single order cutoff time, but with the Handling Time Option, a seller can set a different order cutoff time for each
-     * business day. Currently, eBay Guaranteed Delivery is only available in the US.</span>
+     * - documentation: This container is included if the seller wishes to set/modify the order cut off time for same-day shipping. If the seller specifies a value of <code>0</code> in <strong>Item.DispatchTimeMax</strong> to offer same day handling when
+     * listing an item, the seller's shipping time commitment depends on the order cut off time set for the listing site, as indicated by the <strong>DispatchCutoffTimePreference.CutoffTime</strong> field. <br> <br> <span class="tablenote"><b>Note:</b> For
+     * sellers opted in to the feature that supports different order cut off times for each business day, this container cannot be used to change the order cut off for one or more business days. If this container is used, it will have no effect on any of
+     * the order cut off times configured for the seller. In order for the seller to change and/or confirm the actual order cutoff times for same-day handling, that seller should go to Shipping Preferences in My eBay.</span>
      * - minOccurs: 0
      * @var \StructType\DispatchCutoffTimePreferencesType
      */

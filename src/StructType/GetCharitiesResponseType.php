@@ -16,8 +16,8 @@ class GetCharitiesResponseType extends AbstractResponseType
     /**
      * The Charity
      * Meta information extracted from the WSDL
-     * - documentation: Each <b>Charity</b> container consists of information about a specific nonprofit organization. Each nonprofit organization is identified by the <b>id</b> attribute of the container. If no nonprofit organization are found that match
-     * the input criteria, no <b>Charity</b> containers are returned.
+     * - documentation: Each <b>Charity</b> container consists of information about a specific nonprofit organization. The eBay unique identifier of each nonprofit organization is shown in the <b>id</b> attribute of the container. If no nonprofit
+     * organizations are found that match the input criteria, no <b>Charity</b> containers are returned.
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var \StructType\CharityInfoType[]

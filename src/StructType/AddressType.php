@@ -31,7 +31,8 @@ class AddressType extends AbstractStructBase
     /**
      * The Street1
      * Meta information extracted from the WSDL
-     * - documentation: The first line of the user's street address. <br>
+     * - documentation: The first line of the user's street address. <br><br> <span class="tablenote"><b>Note: </b> Note the different maximum lengths noted below for different countries. If a street name exceeds the maximum length for the applicable
+     * country, the full street name may be expressed through both the <b>Street1</b> and <b>Street2</b> fields. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -40,7 +41,8 @@ class AddressType extends AbstractStructBase
      * The Street2
      * Meta information extracted from the WSDL
      * - documentation: The second line of the user's street address (such as an apartment number or suite number). Returned if the user specified a second street value for their address. In case of <b>Item.SellerContactDetails</b>, <b>Street2</b> can be
-     * used to provide City, Address, State, and Zip code (if applicable). <br>
+     * used to provide City, Address, State, and Zip code (if applicable). <br><br> <span class="tablenote"><b>Note: </b> Note the different maximum lengths noted below for different countries. If a street name exceeds the maximum length for the applicable
+     * country, the full street name may be expressed through both the <b>Street1</b> and <b>Street2</b> fields. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -49,7 +51,7 @@ class AddressType extends AbstractStructBase
      * The CityName
      * Meta information extracted from the WSDL
      * - documentation: The city associated with an address on file with eBay. Most addresses include a city name, but not all. For example, Singapore is an island city-state, so <code>SG</code> would appear in the <b>Country</b> field, and 'Singapore' or
-     * 'Republic of Singapore' would appear in the <b>CountryName<b> field, but the <b>CityName<b> field is not applicable. <br>
+     * 'Republic of Singapore' would appear in the <b>CountryName</b> field, but the <b>CityName</b> field is not applicable. <br>
      * - minOccurs: 0
      * @var string
      */

@@ -7,7 +7,7 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CharityIDType StructType
  * Meta information extracted from the WSDL
- * - documentation: Defines the affiliation status for a nonprofit charity organization registered with the eBay Giving Works provider.
+ * - documentation: The type is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
  * @subpackage Structs
  */
 class CharityIDType extends AbstractStructBase
@@ -15,7 +15,7 @@ class CharityIDType extends AbstractStructBase
     /**
      * The type
      * Meta information extracted from the WSDL
-     * - documentation: Indicates the affiliation status of the nonprofit charity organization registered with the eBay Giving Works provider.
+     * - documentation: This attribute value is used to indicate how an eBay seller is affiliated with the nonprofit organization registered with eBay for Charity.
      * - use: required
      * @var string
      */

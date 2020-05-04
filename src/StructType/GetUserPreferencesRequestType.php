@@ -146,9 +146,9 @@ class GetUserPreferencesRequestType extends AbstractRequestType
     /**
      * The ShowDispatchCutoffTimePreferences
      * Meta information extracted from the WSDL
-     * - documentation: If included and set to <code>true</code>, the seller's same-day handling cutoff time is returned in <strong>DispatchCutoffTimePreference.CutoffTime</strong>. <br> <br> <span class="tablenote"><b>Note:</b> This field is not applicable
-     * for sellers who have opted into the Handling Time Option of eBay Guaranteed Delivery, as this field only shows a single order cutoff time, but with the Handling Time Option, a seller can set a different order cutoff time for each business day.
-     * Currently, eBay Guaranteed Delivery is only available in the US.</span> <br>
+     * - documentation: If included and set to <code>true</code>, the seller's same-day handling cutoff time is returned in <strong>DispatchCutoffTimePreference.CutoffTime</strong>. <br> <br> <span class="tablenote"><b>Note:</b> For sellers opted in to the
+     * feature that supports different order cutoff times for each business day, the order cutoff time returned in the response may not be accurate. In order for the seller to confirm the actual order cutoff time for same-day handling, that seller should
+     * view Shipping Preferences in My eBay. </span> <br>
      * - minOccurs: 0
      * @var bool
      */

@@ -20,14 +20,19 @@ class PaymentTransactionStatusCodeType
     /**
      * Constant for value 'Succeeded'
      * Meta information extracted from the WSDL
-     * - documentation: This value indicates that the payment transaction succeeded.
+     * - documentation: This value indicates that the payment transaction succeeded. If the payment transaction is a buyer's payment for an order, once this <code>Succeeded</code> value is returned in an order management call, it is safe for the seller to
+     * ship the order to the buyer. <br><br> <span class="tablenote"><b>Note: </b> Previously, the <code>Succeeded</code> value would automatically get returned for order payment transactions that were occurring off of eBay's platform. As of March 2020, the
+     * <code>Pending</code> value will get returned instead for order payment transactions occurring off of eBay's platform, and the seller can use the <b>CompleteSale</b> call to mark the order as paid. Once the seller does this, the payment status will
+     * change from <code>Pending</code> to <code>Succeeded</code>. </span>
      * @return string 'Succeeded'
      */
     const VALUE_SUCCEEDED = 'Succeeded';
     /**
      * Constant for value 'Pending'
      * Meta information extracted from the WSDL
-     * - documentation: This value indicates that the payment transaction is pending.
+     * - documentation: This value indicates that the payment transaction is pending. <br><br> <span class="tablenote"><b>Note: </b> Previously, the <code>Succeeded</code> value would automatically get returned for order payment transactions that were
+     * occurring off of eBay's platform. As of March 2020, the <code>Pending</code> value will get returned instead for order payment transactions occurring off of eBay's platform, and the seller can use the <b>CompleteSale</b> call to mark the order as
+     * paid. Once the seller does this, the payment status will change from <code>Pending</code> to <code>Succeeded</code>. </span>
      * @return string 'Pending'
      */
     const VALUE_PENDING = 'Pending';

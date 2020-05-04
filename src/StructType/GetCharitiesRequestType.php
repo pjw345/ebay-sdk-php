@@ -16,8 +16,8 @@ class GetCharitiesRequestType extends AbstractRequestType
     /**
      * The CharityID
      * Meta information extracted from the WSDL
-     * - documentation: A unique identification number assigned to a nonprofit organization when that organization registers with the PayPal Giving Fund. If a <b>CharityID</b> value is used in the request, all other search filters set in the call request
-     * will be ignored, as the call will only search for the specified nonprofit organization.
+     * - documentation: The unique identifier that eBay creates and assigns to each nonprofit organization. This is NOT the unique identifier used by the PayPal Giving Fund. This eBay unique identifier is returned in the <b>Charity.CharityID</b> field of a
+     * <b>GetItem</b> call for charitable listings. <br><br> If a <b>CharityID</b> value is used in the request, all other search filters set in the call request will be ignored, as the call will only search for the specified nonprofit organization.
      * - minOccurs: 0
      * @var string
      */
@@ -27,7 +27,7 @@ class GetCharitiesRequestType extends AbstractRequestType
      * Meta information extracted from the WSDL
      * - documentation: This field will accept the full or partial name of a registered nonprofit organization. For example, if you pass in a value of <b>heart</b>, all registered nonprofit organizations with "heart" in their name may be returned in the
      * response. If the <b>MatchType</b> field is used and set to <code>StartsWith</code> (default value), or is not used at all, the phrase "heart" must come at the beginning of the nonprofit organization's name to be returned. However, if the
-     * <b>MatchType</b> field is used and set to <code>Contains</code>, all registered nonprofit organizations with "heart" in their name should be returned in the response. The string passed in this field is not case-sensitive. <br/><br/>
+     * <b>MatchType</b> field is used and set to <code>Contains</code>, all registered nonprofit organizations with "heart" in their name should be returned in the response. The string passed in this field is not case-sensitive. <br/>
      * - minOccurs: 0
      * @var string
      */
@@ -35,10 +35,10 @@ class GetCharitiesRequestType extends AbstractRequestType
     /**
      * The Query
      * Meta information extracted from the WSDL
-     * - documentation: This field accept any string up to 350 characters in length. The functionality of this field is similar to the <b>CharityName</b> field, except that the call will also search for the supplied query string within the charity's mission
-     * statement (which is returned under the <b>Charity.Mission</b> field in the response). If you pass in a value of <b>heart</b>, all registered nonprofit organizations with "heart" in their name or in their mission statement may be returned in the
-     * response. <br/><br/> The string passed in this field is not case-sensitive. The <b>MatchType</b> field will have no effect if the <b>Query</b> field is used, as the <b>MatchType</b> field will only have an effect if a <b>CharityName</b> string field
-     * is included. <br/><br/>
+     * - documentation: This field accepts any string up to 350 characters in length. The functionality of this field is similar to the <b>CharityName</b> field, except that the call will also search for the supplied query string within the charity's
+     * mission statement (which is returned under the <b>Charity.Mission</b> field in the response). If you pass in a value of <b>heart</b>, all registered nonprofit organizations with "heart" in their name or in their mission statement may be returned in
+     * the response. <br/><br/> The string passed in this field is not case-sensitive. The <b>MatchType</b> field will have no effect if the <b>Query</b> field is used, as the <b>MatchType</b> field will only have an effect if a <b>CharityName</b> string
+     * field is included. <br/>
      * - minOccurs: 0
      * @var string
      */
@@ -64,7 +64,7 @@ class GetCharitiesRequestType extends AbstractRequestType
     /**
      * The IncludeDescription
      * Meta information extracted from the WSDL
-     * - documentation: This field should be included and set to <code>true</code> if a user wants the charity's description to appear in the response. Note that not all charitable organizations will have defined descriptions.
+     * - documentation: This field should be included and set to <code>true</code> if a user wants the charity's description to appear in the response. Note that not all charitable organizations will have defined descriptions. <br/>
      * - minOccurs: 0
      * @var bool
      */
@@ -81,7 +81,7 @@ class GetCharitiesRequestType extends AbstractRequestType
     /**
      * The Featured
      * Meta information extracted from the WSDL
-     * - documentation: This boolean field is used and set to <code>true</code> if the user wants to search for nonprofit organizations currently featured on the eBay for Charity site.
+     * - documentation: This boolean field is used and set to <code>true</code> if the user wants to search for nonprofit organizations currently featured on the eBay for Charity site. <br/>
      * - minOccurs: 0
      * @var bool
      */

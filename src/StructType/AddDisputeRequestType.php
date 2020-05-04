@@ -8,8 +8,8 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for AddDisputeRequestType StructType
  * Meta information extracted from the WSDL
  * - documentation: Enables a seller to create an Unpaid Item case against a buyer, or to cancel a single line item order. <br> <br> Although the seller is eligible to open up an Unpaid Item case two days after the buyer purchases the item or wins the
- * item through an auction, it is recommended that the seller contacts the buyer first to try and make it right before opening a case. The <a href="http://pages.ebay.com/help/sell/unpaid-items.html" target="_blank">Unpaid Items</a> help page talks more
- * about how a seller should to handle an unpaid item. <br> <br> To cancel a multiple line item order programmatically, the seller would have to use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation__post.html"
+ * item through an auction, it is recommended that the seller contact the buyer first to try and make it right before opening a case. The <a href="http://pages.ebay.com/help/sell/unpaid-items.html" target="_blank">Unpaid Items</a> help page talks more
+ * about how a seller should handle an unpaid item. <br> <br> To cancel a multiple line item order programmatically, the seller would have to use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation__post.html"
  * target="_blank">POST /post-order/v2/cancellation</a> call of the <b>Post-Order API</b>.
  * @subpackage Structs
  */

@@ -160,8 +160,8 @@ class GetUserPreferencesResponseType extends AbstractResponseType
      * Meta information extracted from the WSDL
      * - documentation: Contains information about a seller's order cutoff time preferences for same-day shipping. If the seller specifies a value of '0' in <b>Item.DispatchTimeMax</b> to offer same-day handling when listing an item, the seller's shipping
      * time commitment depends on the order cutoff time set for the listing site, as indicated by <b>DispatchCutoffTimePreference.CutoffTime</b>. Returned when <b>ShowDispatchCutoffTimePreferences</b> is included and set to <code>true</code>. <br> <br>
-     * <span class="tablenote"><b>Note:</b> The order cutoff is may not be accurate for sellers who have opted into the Handling Time Option of eBay Guaranteed Delivery, as this field only shows a single order cutoff time, but with the Handling Time Option,
-     * a seller can set a different order cutoff time for each business day. Currently, eBay Guaranteed Delivery is only available in the US.</span> <br>
+     * <span class="tablenote"><b>Note:</b> For sellers opted in to the feature that supports different order cutoff times for each business day, the order cutoff time returned in this container may not be accurate. In order for the seller to confirm the
+     * actual order cutoff time for same-day handling, that seller should view Shipping Preferences in My eBay. </span> <br>
      * - minOccurs: 0
      * @var \StructType\DispatchCutoffTimePreferencesType
      */

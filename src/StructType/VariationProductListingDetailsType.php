@@ -7,10 +7,9 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for VariationProductListingDetailsType StructType
  * Meta information extracted from the WSDL
- * - documentation: This type defines the <b>VariationProductListingDetails</b> container that is used to specify an EAN, an ISBN, a UPC value, or an ePID to identify a specific product variation in a multiple-variation listing. For multiple-variation
- * listings, the same GTIN type(s) must be used for all product variations within the listing. For instance, if one product variation uses ISBNs, all product variations must use ISBN values. <br/><br/> <span class="tablenote"><b>Note: </b> The
- * <b>ProductReferenceID</b> field can only be used when listing in categories that are enabled with the Product-Based Shopping Experience. If this field is provided when listing in a category that doesn't support PBSE, the listing will be blocked.
- * </span>
+ * - documentation: This type defines the <b>VariationProductListingDetails</b> container that is used to specify a Global Trade Item Number (GTIN), such as an EAN, an ISBN, or a UPC value, to identify a specific product variation in a
+ * multiple-variation listing. For a multiple-variation listing, the same GTIN type(s) must be used for all product variations within the same listing. For instance, if specify an ISBN value for one product variation within the listing, an ISBN value
+ * (and not an EAN or UPC value) must be specified for all product variations within the listing.
  * @subpackage Structs
  */
 class VariationProductListingDetailsType extends AbstractStructBase
@@ -18,12 +17,11 @@ class VariationProductListingDetailsType extends AbstractStructBase
     /**
      * The ISBN
      * Meta information extracted from the WSDL
-     * - documentation: This field is used if the seller wants to, or is required to identify each product variation within a multi-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10 and
-     * 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ISBN is supported/required for
-     * a category. <br/><br/> This field is only applicable for multiple-variation listings. For a single-variation listing, if the category/product requires an ISBN value, this value should be passed into the <b>Item.ProductListingDetails.ISBN</b> field
-     * instead. Unlike single-variation listings, an eBay catalog product cannot be used to prefill product details for a multiple-variation listing. <br/><br/> <span class="tablenote"><b>Note: </b> If the listing is being posted to a category that expects
-     * ISBN values, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b>
-     * container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request. </span>
+     * - documentation: This field is used if the seller wants to, or is required to identify each product variation within a multiplge-variation listing by an ISBN (International Standard Book Number) value. An ISBN is a unique identifer for books. Both 10
+     * and 13-character ISBNs are supported. When specifying a 13-character ISBN, the value must begin with either '978' or '979'. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ISBN is supported/required
+     * for a category. <br/><br/> <span class="tablenote"><b>Note: </b> If the listing is being posted to a category that expects ISBN values, but one doesn't exist for the product, the seller must pass in the text that can be found in the
+     * <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a
+     * <b>DetailName</b> value in the call request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -32,11 +30,9 @@ class VariationProductListingDetailsType extends AbstractStructBase
      * The UPC
      * Meta information extracted from the WSDL
      * - documentation: This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by a UPC (Universal Product Code) value. A UPC is a commonly-used identifier for many different
-     * products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a UPC is supported/required for a category. <br/><br/> This field is only applicable for multiple-variation listings. For a single-variation
-     * listing, if the category/product requires a UPC value, this value should be passed into the <b>Item.ProductListingDetails.UPC</b> field instead. Unlike single-variation listings, an eBay catalog product cannot be used to prefill product details for a
-     * multiple-variation listing. <br/><br/> <span class="tablenote"><b>Note: </b> If the listing is being posted to a category that expects UPC values, but one doesn't exist for the product, the seller must pass in the text that can be found in the
-     * <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a
-     * <b>DetailName</b> value in the call request. </span>
+     * products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if a UPC is supported/required for a category. <br/><br/> <span class="tablenote"><b>Note: </b> If the listing is being posted to a category that
+     * expects UPC values, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b>
+     * container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -45,11 +41,9 @@ class VariationProductListingDetailsType extends AbstractStructBase
      * The EAN
      * Meta information extracted from the WSDL
      * - documentation: This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an EAN (European Article Number) value. An EAN is a unique 8 or 13-digit identifier that many
-     * industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an EAN is supported/required for a category. <br/><br/> This field is only applicable for
-     * multiple-variation listings. For a single-variation listing, if the category/product requires an EAN value, this value should be passed into the <b>Item.ProductListingDetails.EAN</b> field instead. Unlike single-variation listings, an eBay catalog
-     * product cannot be used to prefill product details for a multiple-variation listing. <br/><br/> <span class="tablenote"><b>Note: </b> If the listing is being posted to a category that expects EAN values, but one doesn't exist for the product, the
-     * seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response,
-     * <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request. </span>
+     * industries (such as book publishers) use to identify products. The seller can use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an EAN is supported/required for a category. <br/><br/> <span class="tablenote"><b>Note:
+     * </b> If the listing is being posted to a category that expects EAN values, but one doesn't exist for the product, the seller must pass in the text that can be found in the <b>ProductDetails.ProductIdentifierUnavailableText</b> field of the
+     * <b>GeteBayDetails</b> response. To get the <b>ProductDetails</b> container to return in the <b>GeteBayDetails</b> response, <code>ProductDetails</code> should be included as a <b>DetailName</b> value in the call request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -57,11 +51,10 @@ class VariationProductListingDetailsType extends AbstractStructBase
     /**
      * The ProductReferenceID
      * Meta information extracted from the WSDL
-     * - documentation: This field is used if the seller wants to, or is required to identify each product variation within a multiple-variation listing by an eBay Product ID (ePID). An ePID is a unique identifier of an eBay Catalog product. The seller can
-     * use the <b>GetCategoryFeatures</b> or <b>GetCategorySpecifics</b> calls to see if an ePID is supported/required for a category. Each variation within the listing must use a unique ePID or an error will occur. <br/><br/> <span
-     * class="tablenote"><b>Note: </b> The <b>ProductReferenceID</b> field can only be used to specify an ePID for an eBay Catalog product that is part of the Product-Based Shopping Experience mandate. If an ePID is supplied for another eBay Catalog product
-     * that is not a part of the Product-Based Shopping Experience mandate, the listing may be blocked. For more information about PBSE, see the <a href="https://developer.ebay.com/pbse/" target="_blank">Product-Based Shopping Experience</a> page. </span>
-     * This field is also returned in <b>GetItem</b> if the product variations within the listing are associated with eBay Catalog products. <br>
+     * - documentation: <span class="tablenote"><b>Note: </b> DO NOT USE.<br/><br/>Currently, sellers cannot associate an eBay catalog product with single variations within a multiple-variation listing for any eBay category. If the seller attempts to supply
+     * an eBay Product Identifier (ePID) at the variation level, a warning will get returned in the response stating that, '<i>Specifying a product identifier on a variant is not allowed in this category.</i>'.<br/><br/>The <b>ProductReferenceID</b> field
+     * was originally added as part of the Product-Based Shopping Experience (PBSE) mandate, and eBay was going to allow and even require ePIDs to be specified for some leaf categories. However, with the rollback of the PBSE mandate, this field is not
+     * currently applicable or supported. </span>
      * - minOccurs: 0
      * @var string
      */

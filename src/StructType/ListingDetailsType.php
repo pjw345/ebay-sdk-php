@@ -155,7 +155,7 @@ class ListingDetailsType extends AbstractStructBase
      * The MinimumBestOfferPrice
      * Meta information extracted from the WSDL
      * - documentation: Specifies the minimum acceptable Best Offer price. If a buyer submits a Best Offer that is below this value, the offer is automatically declined. This applies only to items listed in categories that support the Best Offer
-     * auto-decline feature. <br/><br/> In order for this setting to hava an effect, Best Offer must be enabled for the listing, and this value will only be exposed to the seller who listed the item. <br/><br/> <b>For Revise and Relist calls:</b> If a
+     * auto-decline feature. <br/><br/> In order for this setting to have an effect, Best Offer must be enabled for the listing, and this value will only be exposed to the seller who listed the item. <br/><br/> <b>For Revise and Relist calls:</b> If a
      * seller wanted to disable the Best Offer auto-accept and/or Best Offer auto-reject feature when revising or relisting an item, the full path to one or both of these two corresponding fields would be provided in a <b>DeletedField</b> tag, like the
      * following: <br/> <pre><code> <DeletedField>Item.ListingDetails.MinimumBestOfferPrice</DeletedField> </code></pre> <br> <span class="tablenote"><b>Note:</b> The Best Offer feature is now available for auction listings on the following sites: US,
      * Canada, UK, Germany, Australia, France, Italy, and Spain. However, sellers must choose between offering Best Offer or Buy It Now on an auction listing, as both features cannot be enabled on the same auction listing. As of January 2019, the value set
