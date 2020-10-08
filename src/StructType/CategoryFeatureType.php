@@ -1277,7 +1277,11 @@ class CategoryFeatureType extends AbstractStructBase
      * - documentation: The values returned in this field indicate whether or not the seller accepts domestic returns for items listed in the associated marketplace and category. <br><br>While most categories return the <b>ReturnsAccepted</b> flag
      * (indicating the category supports returns), some categories will also return the <b>ReturnsNotAccepted</b> flag to indicate the seller can choose to not accept returns for an item listed in that category. <br><br>The values returned in this field are
      * pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. Here, it's worth noting that not accepting
-     * returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * returns is a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span
+     * class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings
+     * in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * - minOccurs: 0
      * @var \StructType\DomesticReturnsAcceptedCodeType
      */
@@ -1287,7 +1291,9 @@ class CategoryFeatureType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: The values returned in this field indicate whether or not the seller can offer international returns. <br><br>The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to
      * <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and its related family of calls, and in the return policies you
-     * configure for use with the Account and Business Policies Management APIs.
+     * configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international
+     * customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. </span>
      * - minOccurs: 0
      * @var \StructType\InternationalReturnsAcceptedCodeType
      */
@@ -1295,9 +1301,12 @@ class CategoryFeatureType extends AbstractStructBase
     /**
      * The DomesticReturnsDurationValues
      * Meta information extracted from the WSDL
-     * - documentation: The values returned in this field indicate the return-duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only
+     * - documentation: The values returned in this field indicate the return duration options that are available for domestic returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent only
      * if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem and
-     * its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international
+     * return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic
+     * and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the
+     * international equivalent of this field, see the <b>InternationalReturnsDurationValues</b> field.</span>
      * - minOccurs: 0
      * @var \StructType\DomesticReturnsDurationCodeType
      */
@@ -1305,9 +1314,11 @@ class CategoryFeatureType extends AbstractStructBase
     /**
      * The InternationalReturnsDurationValues
      * Meta information extracted from the WSDL
-     * - documentation: The values returned in this field indicate the return-duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent
+     * - documentation: The values returned in this field indicate the return duration options that are available for international returns for items listed in the associated marketplace and category. <br><br>The values returned in this field are pertinent
      * only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid in AddItem
-     * and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate
+     * international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting
+     * separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic.
      * - minOccurs: 0
      * @var \StructType\InternationalReturnsDurationCodeType
      */
@@ -1317,7 +1328,10 @@ class CategoryFeatureType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: The values returned in this field indicate the available options for who pays the return shipping for domestic returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field are
      * pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are valid
-     * in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a
+     * separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on
+     * setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help
+     * topic. For the international equivalent of this field, see the <b>InternationalReturnsShipmentPayeeValues</b> field.</span>
      * - minOccurs: 0
      * @var \StructType\DomesticReturnsShipmentPayeeCodeType
      */
@@ -1327,7 +1341,10 @@ class CategoryFeatureType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: The values returned in this field indicate the available options for who pays the return shipping for international returns. Possible values are <code>BUYER</code> and <code>SELLER</code>. <br><br>The values returned in this field
      * are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values returned in this field are
-     * valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a
+     * separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on
+     * setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help
+     * topic.
      * - minOccurs: 0
      * @var \StructType\InternationalReturnsShipmentPayeeCodeType
      */
@@ -1337,7 +1354,10 @@ class CategoryFeatureType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: On the EBAY_US marketplace only, sellers can offer item replacement in addition to offering money back returns. This flag defines the availability of such options for the given US marketplace category. Sellers can offer item
      * replacements only if returns are enabled (<b>returnPolicyEnabled</b> is set to <code>true</code>) for the item. You can specify item replacement in the AddItem family of calls and in the return policy settings of the Account and Business Policies
-     * Management APIs.
+     * Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate
+     * international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalRefundMethodValues</b> field.</span>
      * - minOccurs: 0
      * @var \StructType\DomesticRefundMethodCodeType
      */
@@ -1347,7 +1367,10 @@ class CategoryFeatureType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: In US, sellers can offer an item replacement for returns, in addition to offering money back returns. The values returned in this field indicate the availability of such options for the given marketplace and category. <br><br>The
      * values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated category, which indicates that items listed in the category must include a return policy. The values
-     * returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs.
+     * returned in this field are valid in AddItem and its related family of calls, and in the return policies you configure for use with the Account and Business Policies Management APIs. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay
+     * added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used
+     * instead. For more information on setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy"
+     * target="_blank">International returns policy</a> help topic. </span>
      * - minOccurs: 0
      * @var \StructType\InternationalRefundMethodCodeType
      */

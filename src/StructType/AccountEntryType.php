@@ -145,16 +145,35 @@ class AccountEntryType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: This field is returned if the account fee or credit is associated with an entire (single or multiple line item) order, and not necessarily for a single line item within the order. <br/><br/> <span class="tablenote"><b>Note: </b> In
      * June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading
-     * WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in April 2020, only the new order ID format will be
-     * returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order.
-     * Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string,
-     * globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and
+     * WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned
+     * in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to
+     * this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally
+     * unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and
      * used/referenced by the buyer and eBay customer support. <br><br> Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or
      * <b>GetOrderTransactions</b> call, or in the <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment. </span>
      * - minOccurs: 0
      * @var string
      */
     public $OrderId;
+    /**
+     * The DiscountDetail
+     * Meta information extracted from the WSDL
+     * - documentation: This container is an array of one or more discounts applied to the corresponding accounty entry. This container will not be returned if there are no discounts applied to the corresponding accounty entry.
+     * @var \StructType\DiscountDetailType
+     */
+    public $DiscountDetail;
+    /**
+     * The Netted
+     * Meta information extracted from the WSDL
+     * - documentation: This boolean field is returned with each account entry if the <b>IncludeNettedEntries</b> field is included in the request and set to <code>true</code>. The value indicates whether or not the corresponding account entry value (charge
+     * or credit) is a part of the 'Total Netted Charge Amount' or 'Total Netted Credit Amount' values returned in the <b>AccountSummary.NettedTransactionSummary</b> container. <br> <br> If this value is <code>true</code>, it indicates that the
+     * corresponding fee was deducted from a seller payout. If the value is <code>false</code>, it indicates that the fee or credit was invoiced to the seller instead. <br> <br> <span class="tablenote"><b>Note: </b> For seller accounts not yet enabled for
+     * eBay managed payments, the returned value will always be <code>false</code>. There may also be some seller accounts enabled for managed payments, but the fee netting mechanism may not yet be available for an account. A seller can check their status
+     * for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field. </span>
+     * - minOccurs: 0
+     * @var bool
+     */
+    public $Netted;
     /**
      * The any
      * @var \DOMDocument
@@ -178,6 +197,8 @@ class AccountEntryType extends AbstractStructBase
      * @uses AccountEntryType::setTransactionID()
      * @uses AccountEntryType::setReceivedTopRatedDiscount()
      * @uses AccountEntryType::setOrderId()
+     * @uses AccountEntryType::setDiscountDetail()
+     * @uses AccountEntryType::setNetted()
      * @uses AccountEntryType::setAny()
      * @param string $accountDetailsEntryType
      * @param string $description
@@ -195,9 +216,11 @@ class AccountEntryType extends AbstractStructBase
      * @param string $transactionID
      * @param bool $receivedTopRatedDiscount
      * @param string $orderId
+     * @param \StructType\DiscountDetailType $discountDetail
+     * @param bool $netted
      * @param \DOMDocument $any
      */
-    public function __construct($accountDetailsEntryType = null, $description = null, \StructType\AmountType $balance = null, $date = null, \StructType\AmountType $grossDetailAmount = null, $itemID = null, $memo = null, \StructType\AmountType $conversionRate = null, \StructType\AmountType $netDetailAmount = null, $refNumber = null, $vATPercent = null, $title = null, $orderLineItemID = null, $transactionID = null, $receivedTopRatedDiscount = null, $orderId = null, \DOMDocument $any = null)
+    public function __construct($accountDetailsEntryType = null, $description = null, \StructType\AmountType $balance = null, $date = null, \StructType\AmountType $grossDetailAmount = null, $itemID = null, $memo = null, \StructType\AmountType $conversionRate = null, \StructType\AmountType $netDetailAmount = null, $refNumber = null, $vATPercent = null, $title = null, $orderLineItemID = null, $transactionID = null, $receivedTopRatedDiscount = null, $orderId = null, \StructType\DiscountDetailType $discountDetail = null, $netted = null, \DOMDocument $any = null)
     {
         $this
             ->setAccountDetailsEntryType($accountDetailsEntryType)
@@ -216,6 +239,8 @@ class AccountEntryType extends AbstractStructBase
             ->setTransactionID($transactionID)
             ->setReceivedTopRatedDiscount($receivedTopRatedDiscount)
             ->setOrderId($orderId)
+            ->setDiscountDetail($discountDetail)
+            ->setNetted($netted)
             ->setAny($any);
     }
     /**
@@ -555,6 +580,46 @@ class AccountEntryType extends AbstractStructBase
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($orderId, true), gettype($orderId)), __LINE__);
         }
         $this->OrderId = $orderId;
+        return $this;
+    }
+    /**
+     * Get DiscountDetail value
+     * @return \StructType\DiscountDetailType|null
+     */
+    public function getDiscountDetail()
+    {
+        return $this->DiscountDetail;
+    }
+    /**
+     * Set DiscountDetail value
+     * @param \StructType\DiscountDetailType $discountDetail
+     * @return \StructType\AccountEntryType
+     */
+    public function setDiscountDetail(\StructType\DiscountDetailType $discountDetail = null)
+    {
+        $this->DiscountDetail = $discountDetail;
+        return $this;
+    }
+    /**
+     * Get Netted value
+     * @return bool|null
+     */
+    public function getNetted()
+    {
+        return $this->Netted;
+    }
+    /**
+     * Set Netted value
+     * @param bool $netted
+     * @return \StructType\AccountEntryType
+     */
+    public function setNetted($netted = null)
+    {
+        // validation for constraint: boolean
+        if (!is_null($netted) && !is_bool($netted)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($netted, true), gettype($netted)), __LINE__);
+        }
+        $this->Netted = $netted;
         return $this;
     }
     /**

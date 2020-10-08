@@ -44,7 +44,7 @@ class BuyerRequirementDetailsType extends AbstractStructBase
     /**
      * The MaximumUnpaidItemStrikesInfo
      * Meta information extracted from the WSDL
-     * - documentation: The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item Strikes on their account during a specified time period. A buyer receives an Unpaid Item Strike is a seller files an Unpaid
+     * - documentation: The seller uses this container as a mechanism to block prospective buyers who have one or more Unpaid Item strikes on their account during a specified time period. A buyer receives an Unpaid Item strike if a seller files an Unpaid
      * Item case against the buyer, and eBay rules in favor of the seller.
      * - minOccurs: 0
      * @var \StructType\MaximumUnpaidItemStrikesInfoType

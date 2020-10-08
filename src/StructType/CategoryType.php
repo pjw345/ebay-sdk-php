@@ -24,8 +24,8 @@ class CategoryType extends AbstractStructBase
     /**
      * The AutoPayEnabled
      * Meta information extracted from the WSDL
-     * - documentation: If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. Unless the seller is opted in to eBay Managed Payments, PayPal must be an accepted payment method for a listing for
-     * the seller to require immediate payment from the buyer. This field is only returned when <code>true</code>.
+     * - documentation: If this field is returned as <code>true</code>, the corresponding category supports immediate payment for listings. Unless the seller is opted in to eBay managed payments, PayPal must be the only accepted payment method for a listing
+     * for the seller to require immediate payment from the buyer. For managed payments sellers, no payment methods are required, as eBay controls which payment methods are available to the buyer. This field is only returned when <code>true</code>.
      * - minOccurs: 0
      * @var bool
      */
@@ -53,9 +53,10 @@ class CategoryType extends AbstractStructBase
      * - documentation: This string value is the unique identifier of an eBay category. In <b>GetItem</b> and related calls, see the <b>CategoryName</b> field for the text name of the category. The parent category of this eBay category is only shown in
      * <b>GetCategories</b>. <br> <br> In an Add call, the <b>PrimaryCategory.CategoryID</b> is conditionally required unless the seller successfully uses the <b>ProductListingDetails</b> container to find an eBay catalog product match. When the seller
      * successfully uses an eBay catalog product to create a listing, the listing title, listing description, item specifics, listing category, and stock photo defined in the catalog product is used to create the listing. <br> <br> In an Add/Revise/Relist
-     * call, the <b>SecondaryCategory.CategoryID</b> is conditionally required if a Secondary listing Category is used. <br><br> <b>For ReviseItem only:</b> Previously, removing the listing from a secondary category was only possible within 12 hours of the
-     * listing's scheduled end time when an auction listing had no active bids or a multiple-quantity, fixed-price listing had no items sold, but this restriction no longer exists. Now, the secondary category can be dropped for any active listing at any
-     * time, regardless of whether an auction listing has bids or a fixed-price listing has sales. To drop a secondary category, the seller passes in a value of <code>0</code> in the <b>SecondaryCategory.CategoryID</b> field. <br>
+     * call, the <b>SecondaryCategory.CategoryID</b> is conditionally required if a Secondary Category is used. Using a Secondary Category can incur a listing fee. <br><br> <b>For ReviseItem only:</b> Previously, removing the listing from a secondary
+     * category was only possible within 12 hours of the listing's scheduled end time when an auction listing had no active bids or a multiple-quantity, fixed-price listing had no items sold, but this restriction no longer exists. Now, the secondary
+     * category can be dropped for any active listing at any time, regardless of whether an auction listing has bids or a fixed-price listing has sales. To drop a secondary category, the seller passes in a value of <code>0</code> in the
+     * <b>SecondaryCategory.CategoryID</b> field. <br>
      * - minOccurs: 0
      * @var string
      */

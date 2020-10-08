@@ -7,7 +7,8 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for AddItemsRequestType StructType
  * Meta information extracted from the WSDL
- * - documentation: Defines from one to five items and lists them on a specified eBay site.
+ * - documentation: Base request type for the <b>AddItems</b> call, which is used to create one to five fixed-price, auction, or classified ad listings. The <b>AddItems</b> call does not support multiple-variation listings, so multiple-variation
+ * listings cannot be created with this call.
  * @subpackage Structs
  */
 class AddItemsRequestType extends AbstractRequestType
@@ -15,7 +16,7 @@ class AddItemsRequestType extends AbstractRequestType
     /**
      * The AddItemRequestContainer
      * Meta information extracted from the WSDL
-     * - documentation: Defines a single item to be listed on eBay. This container is similar to an <b>AddItem</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
+     * - documentation: An <b>AddItemRequestContainer</b> container is required for each listing that will be created with the <b>AddItems</b> request. Up to five of these containers can be included in one <b>AddItems</b> request.
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var \StructType\AddItemRequestContainerType[]

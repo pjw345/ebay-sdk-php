@@ -7,8 +7,8 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for RecommendationValidationRulesType StructType
  * Meta information extracted from the WSDL
- * - documentation: This type is used by the <b>ValidationRules</b> containers returned in the <b>GetCategorySpecifics</b> response, which contains some rules and limits for the recommended Item Specific name (specified in the
- * <b>NameRecommendation.Name</b> field) and corresponding value(s) (specified in the <b>ValueRecommendation.Value</b> field). These rules and limits will apply when the recommended Item Specific is subsequently used in an Add/Revise/Relist call.
+ * - documentation: This type is used by the <b>ValidationRules</b> containers that are returned for each Item Specific in the <b>GetCategorySpecifics</b> response. The <b>ValidationRules</b> container consists of some rules and limits for the
+ * recommended Item Specific name and the corresponding values for that Item Specific. These rules and limits will apply when the Item Specific is subsequently used in an Add/Revise/Relist call.
  * @subpackage Structs
  */
 class RecommendationValidationRulesType extends AbstractStructBase
@@ -44,7 +44,7 @@ class RecommendationValidationRulesType extends AbstractStructBase
     /**
      * The SelectionMode
      * Meta information extracted from the WSDL
-     * - documentation: Controls whether you can specify your own name and value in listing requests, or if you need to use a name and/or value that eBay has defined.
+     * - documentation: The enumeration value returned in this field indicates whether a seller can specify their own custom values for an Item Specific, or if they need to use a value (or values) that eBay has defined.
      * - minOccurs: 0
      * @var string
      */

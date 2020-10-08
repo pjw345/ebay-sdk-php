@@ -63,7 +63,7 @@ class ShippingServiceOptionsType extends AbstractStructBase
      * - documentation: Controls the order (relative to other shipping services) in which the corresponding <b>ShippingService</b> will appear in the View Item and Checkout page. <br/><br/> Sellers can specify up to four domestic shipping services (with
      * four <b>ShippingServiceOptions</b> containers), so valid values are 1, 2, 3, and 4. A shipping service with a <b>ShippingServicePriority</b> value of 1 appears at the top. Conversely, a shipping service with a <b>ShippingServicePriority</b> value of
      * 4 appears at the bottom of a list of four shipping service options. <br><br> If this field is omitted from domestic shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order
-     * that these shipping services are presented in the request payload of an Add/Revise/Relist call.
+     * that these shipping service options are presented in the request payload of an Add/Revise/Relist call.
      * - minOccurs: 0
      * @var int
      */

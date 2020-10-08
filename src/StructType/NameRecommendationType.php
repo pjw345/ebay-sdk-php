@@ -23,6 +23,16 @@ class NameRecommendationType extends AbstractStructBase
      */
     public $Name;
     /**
+     * The RelevanceIndicator
+     * Meta information extracted from the WSDL
+     * - documentation: This container is returned for an item specific if eBay has data on how many searches have been performed for listings in the category using that item specific. <br> <br> <span class="tablenote"><b>Note:</b> This container is
+     * restricted to applications that have been granted permission to access this feature. You must submit an <a href="https://developer.ebay.com/my/support/tickets?tab=app-check" target="_blank">App Check ticket</a> to request this access. In the App
+     * Check form, add a note to the <b>Application Title/Summary</b> and/or <b>Application Details</b> fields that you want access to 'Buyer Demand Data' in <b>GetCategorySpecifics</b>. </span>
+     * - minOccurs: 0
+     * @var \StructType\RelevanceIndicatorType
+     */
+    public $RelevanceIndicator;
+    /**
      * The ValidationRules
      * Meta information extracted from the WSDL
      * - documentation: This container provides details, instructions, and constraint information for each Item Specific name-value pairs. The fields that are returned under the <b>ValidationRules</b> container will vary per Item Specific. <br/><br/> Three
@@ -81,6 +91,7 @@ class NameRecommendationType extends AbstractStructBase
     /**
      * Constructor method for NameRecommendationType
      * @uses NameRecommendationType::setName()
+     * @uses NameRecommendationType::setRelevanceIndicator()
      * @uses NameRecommendationType::setValidationRules()
      * @uses NameRecommendationType::setValueRecommendation()
      * @uses NameRecommendationType::setHelpURL()
@@ -88,6 +99,7 @@ class NameRecommendationType extends AbstractStructBase
      * @uses NameRecommendationType::setHelpText()
      * @uses NameRecommendationType::setAny()
      * @param string $name
+     * @param \StructType\RelevanceIndicatorType $relevanceIndicator
      * @param \StructType\RecommendationValidationRulesType $validationRules
      * @param \StructType\ValueRecommendationType[] $valueRecommendation
      * @param string $helpURL
@@ -95,10 +107,11 @@ class NameRecommendationType extends AbstractStructBase
      * @param string $helpText
      * @param \DOMDocument $any
      */
-    public function __construct($name = null, \StructType\RecommendationValidationRulesType $validationRules = null, array $valueRecommendation = array(), $helpURL = null, $source = null, $helpText = null, \DOMDocument $any = null)
+    public function __construct($name = null, \StructType\RelevanceIndicatorType $relevanceIndicator = null, \StructType\RecommendationValidationRulesType $validationRules = null, array $valueRecommendation = array(), $helpURL = null, $source = null, $helpText = null, \DOMDocument $any = null)
     {
         $this
             ->setName($name)
+            ->setRelevanceIndicator($relevanceIndicator)
             ->setValidationRules($validationRules)
             ->setValueRecommendation($valueRecommendation)
             ->setHelpURL($helpURL)
@@ -126,6 +139,24 @@ class NameRecommendationType extends AbstractStructBase
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($name, true), gettype($name)), __LINE__);
         }
         $this->Name = $name;
+        return $this;
+    }
+    /**
+     * Get RelevanceIndicator value
+     * @return \StructType\RelevanceIndicatorType|null
+     */
+    public function getRelevanceIndicator()
+    {
+        return $this->RelevanceIndicator;
+    }
+    /**
+     * Set RelevanceIndicator value
+     * @param \StructType\RelevanceIndicatorType $relevanceIndicator
+     * @return \StructType\NameRecommendationType
+     */
+    public function setRelevanceIndicator(\StructType\RelevanceIndicatorType $relevanceIndicator = null)
+    {
+        $this->RelevanceIndicator = $relevanceIndicator;
         return $this;
     }
     /**

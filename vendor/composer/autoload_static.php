@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
+class ComposerStaticInit4cc8ee29b2076eec0263db91402e921e
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -180,6 +180,7 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'EnumType\\FeedbackResponseCodeType' => __DIR__ . '/../..' . '/src/EnumType/FeedbackResponseCodeType.php',
         'EnumType\\FeedbackSummaryPeriodCodeType' => __DIR__ . '/../..' . '/src/EnumType/FeedbackSummaryPeriodCodeType.php',
         'EnumType\\FeedbackTypeCodeType' => __DIR__ . '/../..' . '/src/EnumType/FeedbackTypeCodeType.php',
+        'EnumType\\FeenettingStatusCodeType' => __DIR__ . '/../..' . '/src/EnumType/FeenettingStatusCodeType.php',
         'EnumType\\FlatRateInsuranceRangeCodeType' => __DIR__ . '/../..' . '/src/EnumType/FlatRateInsuranceRangeCodeType.php',
         'EnumType\\FlatShippingRateOptionCodeType' => __DIR__ . '/../..' . '/src/EnumType/FlatShippingRateOptionCodeType.php',
         'EnumType\\GallerySortFilterCodeType' => __DIR__ . '/../..' . '/src/EnumType/GallerySortFilterCodeType.php',
@@ -494,6 +495,7 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'StructType\\AttributeRecommendationsType' => __DIR__ . '/../..' . '/src/StructType/AttributeRecommendationsType.php',
         'StructType\\AttributeSetType' => __DIR__ . '/../..' . '/src/StructType/AttributeSetType.php',
         'StructType\\AttributeType' => __DIR__ . '/../..' . '/src/StructType/AttributeType.php',
+        'StructType\\AuthenticityVerificationType' => __DIR__ . '/../..' . '/src/StructType/AuthenticityVerificationType.php',
         'StructType\\AverageRatingDetailsType' => __DIR__ . '/../..' . '/src/StructType/AverageRatingDetailsType.php',
         'StructType\\AverageRatingSummaryType' => __DIR__ . '/../..' . '/src/StructType/AverageRatingSummaryType.php',
         'StructType\\Base64BinaryType' => __DIR__ . '/../..' . '/src/StructType/Base64BinaryType.php',
@@ -616,8 +618,10 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'StructType\\DigitalGoodInfoType' => __DIR__ . '/../..' . '/src/StructType/DigitalGoodInfoType.php',
         'StructType\\DisableUnpaidItemAssistanceRequestType' => __DIR__ . '/../..' . '/src/StructType/DisableUnpaidItemAssistanceRequestType.php',
         'StructType\\DisableUnpaidItemAssistanceResponseType' => __DIR__ . '/../..' . '/src/StructType/DisableUnpaidItemAssistanceResponseType.php',
+        'StructType\\DiscountDetailType' => __DIR__ . '/../..' . '/src/StructType/DiscountDetailType.php',
         'StructType\\DiscountPriceInfoType' => __DIR__ . '/../..' . '/src/StructType/DiscountPriceInfoType.php',
         'StructType\\DiscountProfileType' => __DIR__ . '/../..' . '/src/StructType/DiscountProfileType.php',
+        'StructType\\DiscountType' => __DIR__ . '/../..' . '/src/StructType/DiscountType.php',
         'StructType\\DispatchCutoffTimePreferencesType' => __DIR__ . '/../..' . '/src/StructType/DispatchCutoffTimePreferencesType.php',
         'StructType\\DispatchTimeMaxDetailsType' => __DIR__ . '/../..' . '/src/StructType/DispatchTimeMaxDetailsType.php',
         'StructType\\DisputeFilterCountType' => __DIR__ . '/../..' . '/src/StructType/DisputeFilterCountType.php',
@@ -954,6 +958,7 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'StructType\\NameRecommendationType' => __DIR__ . '/../..' . '/src/StructType/NameRecommendationType.php',
         'StructType\\NameValueListType' => __DIR__ . '/../..' . '/src/StructType/NameValueListType.php',
         'StructType\\NameValueRelationshipType' => __DIR__ . '/../..' . '/src/StructType/NameValueRelationshipType.php',
+        'StructType\\NettedTransactionSummaryType' => __DIR__ . '/../..' . '/src/StructType/NettedTransactionSummaryType.php',
         'StructType\\NonProfitAddressType' => __DIR__ . '/../..' . '/src/StructType/NonProfitAddressType.php',
         'StructType\\NonProfitSocialAddressType' => __DIR__ . '/../..' . '/src/StructType/NonProfitSocialAddressType.php',
         'StructType\\NonSubscriptionDefinitionType' => __DIR__ . '/../..' . '/src/StructType/NonSubscriptionDefinitionType.php',
@@ -1061,6 +1066,7 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'StructType\\RegionDetailsType' => __DIR__ . '/../..' . '/src/StructType/RegionDetailsType.php',
         'StructType\\RegionOfOriginDetailsType' => __DIR__ . '/../..' . '/src/StructType/RegionOfOriginDetailsType.php',
         'StructType\\RegularSubscriptionDefinitionType' => __DIR__ . '/../..' . '/src/StructType/RegularSubscriptionDefinitionType.php',
+        'StructType\\RelevanceIndicatorType' => __DIR__ . '/../..' . '/src/StructType/RelevanceIndicatorType.php',
         'StructType\\RelistFixedPriceItemRequestType' => __DIR__ . '/../..' . '/src/StructType/RelistFixedPriceItemRequestType.php',
         'StructType\\RelistFixedPriceItemResponseType' => __DIR__ . '/../..' . '/src/StructType/RelistFixedPriceItemResponseType.php',
         'StructType\\RelistItemRequestType' => __DIR__ . '/../..' . '/src/StructType/RelistItemRequestType.php',
@@ -1261,6 +1267,7 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'StructType\\TimeZoneDetailsType' => __DIR__ . '/../..' . '/src/StructType/TimeZoneDetailsType.php',
         'StructType\\TokenStatusType' => __DIR__ . '/../..' . '/src/StructType/TokenStatusType.php',
         'StructType\\TopRatedSellerDetailsType' => __DIR__ . '/../..' . '/src/StructType/TopRatedSellerDetailsType.php',
+        'StructType\\TransactionProgramType' => __DIR__ . '/../..' . '/src/StructType/TransactionProgramType.php',
         'StructType\\TransactionReferenceType' => __DIR__ . '/../..' . '/src/StructType/TransactionReferenceType.php',
         'StructType\\TransactionStatusType' => __DIR__ . '/../..' . '/src/StructType/TransactionStatusType.php',
         'StructType\\TransactionType' => __DIR__ . '/../..' . '/src/StructType/TransactionType.php',
@@ -1327,8 +1334,10 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
         'WsdlToPhp\\PackageBase\\AbstractSoapClientBase' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/AbstractSoapClientBase.php',
         'WsdlToPhp\\PackageBase\\AbstractStructArrayBase' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/AbstractStructArrayBase.php',
         'WsdlToPhp\\PackageBase\\AbstractStructBase' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/AbstractStructBase.php',
+        'WsdlToPhp\\PackageBase\\AbstractStructEnumBase' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/AbstractStructEnumBase.php',
         'WsdlToPhp\\PackageBase\\SoapClientInterface' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/SoapClientInterface.php',
         'WsdlToPhp\\PackageBase\\StructArrayInterface' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/StructArrayInterface.php',
+        'WsdlToPhp\\PackageBase\\StructEnumInterface' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/StructEnumInterface.php',
         'WsdlToPhp\\PackageBase\\StructInterface' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/StructInterface.php',
         'WsdlToPhp\\PackageBase\\Utils' => __DIR__ . '/..' . '/wsdltophp/packagebase/src/Utils.php',
     );
@@ -1336,10 +1345,10 @@ class ComposerStaticInit516643edc93a312ecae69fcbca6333c7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit516643edc93a312ecae69fcbca6333c7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit516643edc93a312ecae69fcbca6333c7::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit516643edc93a312ecae69fcbca6333c7::$fallbackDirsPsr4;
-            $loader->classMap = ComposerStaticInit516643edc93a312ecae69fcbca6333c7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4cc8ee29b2076eec0263db91402e921e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4cc8ee29b2076eec0263db91402e921e::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit4cc8ee29b2076eec0263db91402e921e::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInit4cc8ee29b2076eec0263db91402e921e::$classMap;
 
         }, null, ClassLoader::class);
     }

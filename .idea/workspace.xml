@@ -1,55 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c67af7f5-ddfe-4a3b-88ea-a9534cef7004" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/magento2plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ebay-sdk-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ebay-sdk-php.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayType/OrderIDArrayType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayType/OrderIDArrayType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayType/PromotionalSaleArrayType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayType/PromotionalSaleArrayType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/AccountDetailEntryCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/AccountDetailEntryCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/AccountHistorySelectionCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/AccountHistorySelectionCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/CharityAffiliationTypeCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/CharityAffiliationTypeCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/PaymentTransactionStatusCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/PaymentTransactionStatusCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/PromotionalSaleStatusCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/PromotionalSaleStatusCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnumType/PromotionalSaleTypeCodeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnumType/PromotionalSaleTypeCodeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/AccountEntryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/AccountEntryType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/AddDisputeRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/AddDisputeRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/AddOrderResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/AddOrderResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/AddressType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/AddressType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/CharityAffiliationDetailType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/CharityAffiliationDetailType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/CharityIDType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/CharityIDType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/CharityInfoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/CharityInfoType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/CharityType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/CharityType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/CompleteSaleRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/CompleteSaleRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/DispatchCutoffTimePreferencesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/DispatchCutoffTimePreferencesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/FeedbackDetailType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/FeedbackDetailType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetAccountRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetAccountRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetCharitiesRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetCharitiesRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetCharitiesResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetCharitiesResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetPromotionalSaleDetailsRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetPromotionalSaleDetailsRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetPromotionalSaleDetailsResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetPromotionalSaleDetailsResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetSellingManagerEmailLogRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetSellingManagerEmailLogRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetUserPreferencesRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetUserPreferencesRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/GetUserPreferencesResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/GetUserPreferencesResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/ItemType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/ItemType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/ListingDetailsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/ListingDetailsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/OrderType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/OrderType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/PromotionalSaleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/PromotionalSaleType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/ReviseCheckoutStatusRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/ReviseCheckoutStatusRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/ReviseSellingManagerSaleRecordRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/ReviseSellingManagerSaleRecordRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SendInvoiceRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SendInvoiceRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleListingsRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleListingsRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleListingsResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleListingsResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleResponseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SetPromotionalSaleResponseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/SetUserPreferencesRequestType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/SetUserPreferencesRequestType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/TaxJurisdictionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/TaxJurisdictionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/TaxTableType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/TaxTableType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/TransactionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/TransactionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StructType/VariationProductListingDetailsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/StructType/VariationProductListingDetailsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +55,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -102,7 +80,10 @@
       <workItem from="1578407224738" duration="942000" />
       <workItem from="1578412320453" duration="1071000" />
       <workItem from="1578474009194" duration="604000" />
-      <workItem from="1588586113860" duration="1008000" />
+      <workItem from="1588586113860" duration="1157000" />
+      <workItem from="1590579320449" duration="73000" />
+      <workItem from="1602150675965" duration="1347000" />
+      <workItem from="1602155061967" duration="2138000" />
     </task>
     <task id="LOCAL-00001" summary="Initial build">
       <created>1578412751931</created>
@@ -111,11 +92,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578412751931</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="wsdl2php update">
+      <created>1588593800440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588593800440</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -127,24 +115,18 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial build" />
+    <MESSAGE value="wsdl2php update" />
+    <option name="LAST_COMMIT_MESSAGE" value="wsdl2php update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="182" key="#Composer" timestamp="1578412339268">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1602162209485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="182" key="#Composer/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578412339268" />
-    <state x="547" y="119" key="CommitChangelistDialog2" timestamp="1578412750110">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="547" y="119" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578412750110" />
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1578412757075">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578412757075" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602162209485" />
   </component>
 </project>

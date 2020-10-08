@@ -8,7 +8,7 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IntegratedMerchantCreditCardInfoType StructType
  * Meta information extracted from the WSDL
  * - documentation: <span class="tablenote"><b>Note: </b> As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal
- * as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller). </span> <br/> This type is used by the <b>IntegratedMerchantCreditCardInfo</b> container that is returned in the <b>GetUser</b>
+ * as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller). </span> <br/> This type is used by the <b>IntegratedMerchantCreditCardInfo</b> container that is returned in the <b>GetUser</b>
  * response if the seller has a payment gateway account on one or more eBay marketplaces.
  * @subpackage Structs
  */
@@ -18,7 +18,7 @@ class IntegratedMerchantCreditCardInfoType extends AbstractStructBase
      * The SupportedSite
      * Meta information extracted from the WSDL
      * - documentation: <span class="tablenote"><b>Note: </b> As of May 1, 2019, eBay no longer support electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify PayPal
-     * as an accepted payment method, or opt in to eBay Managed Payments program (if the program is available to that seller). </span> <br/> This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account
+     * as an accepted payment method, or opt in to eBay managed payments program (if the program is available to that seller). </span> <br/> This enumeration value indicates the eBay marketplace on which the seller has a payment gateway account, an account
      * that allows the seller to accept credit card payments from buyers.
      * - maxOccurs: unbounded
      * - minOccurs: 0

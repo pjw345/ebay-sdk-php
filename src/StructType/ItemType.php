@@ -17,7 +17,7 @@ class ItemType extends AbstractStructBase
      * The ApplicationData
      * Meta information extracted from the WSDL
      * - documentation: Return custom, application-specific data associated with the item. The data you specify is stored by eBay with the item for your own reference, but it is not used by eBay in any way. Use <b>ApplicationData</b> to store special
-     * information for yourself, such as a part number. For a SKU in an eBay.com listing, use the <b>SKU</b> element instead. To remove this value when revising or relisting an item, use <b>DeletedField</b>.
+     * information for yourself, such as a part number. For a SKU in an eBay.com listing, use the <b>SKU</b> element instead. To remove this value when revising or relisting an item, use <b>DeletedField</b>. <br/>
      * - minOccurs: 0
      * @var string
      */
@@ -49,10 +49,13 @@ class ItemType extends AbstractStructBase
     /**
      * The AutoPay
      * Meta information extracted from the WSDL
-     * - documentation: If <code>true</code>, the seller requests immediate payment for the item. If <code>false</code> or not specified, immediate payment is not requested. (In responses, does not indicate whether the item is actually still a candidate for
-     * purchase via immediate payment.)<br> <br> Only applicable to items listed on PayPal-enabled sites in categories that support immediate payment (see <b>AutoPayEnabled</b> in <b>GetCategories</b>), or if the seller is opted into the new eBay Managed
-     * Payments program. <br> <br> To create an Immediate Payment listing, <b>AutoPay</b> must be <code>true</code>, <b>PayPalEmailAddress</b> must be a valid PayPal email address for the seller, and the only included <b>PaymentMethods</b> value must be
-     * <code>PayPal</code>. <br/><br/> For a non-Immediate Payment listing, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>.
+     * - documentation: If <code>true</code>, the seller requests immediate payment for a fixed-price item or an auction item that is purchased with the 'Buy it Now' feature. If <code>false</code> or not specified, immediate payment is not requested. (In
+     * responses, does not indicate whether the item is actually still a candidate for purchase via immediate payment.) <br> <br> <b>For sellers not opted in to eBay managed payments</b>: immediate payment is only available if the eBay marketplace supports
+     * PayPal as a payment method, and the listing category supports immediate payment (the <b>AutoPayEnabled</b> should be returned as <code>true</code> in the <b>GetCategories</b> response). To enable the listing with the immediated payment requirement,
+     * <b>AutoPay</b> must be <code>true</code>, the <b>PayPalEmailAddress</b> field must be included and must have a valid PayPal email address for the seller, and the only specified <b>PaymentMethods</b> value must be <code>PayPal</code>. <br> <br> <b>For
+     * sellers opted in to eBay managed payments</b>: the only requirement is that the listing category supports immediate payments. With managed payments, eBay handles the payment methods available to the buyer, so the seller will not have to specify any
+     * payment methods, and will not have include the <b>PayPalEmailAddress</b> field. The seller only has to include the <b>AutoPay</b> field and set it to <code>true</code> to create an Immediate Payment listing. <br/><br/> If a seller does not wish to
+     * require immediate payment, the <b>AutoPay</b> flag is not required since it defaults to <code>false</code>. <br/>
      * - minOccurs: 0
      * @var bool
      */
@@ -217,14 +220,6 @@ class ItemType extends AbstractStructBase
      */
     public $ListingDetails;
     /**
-     * The ListingDesigner
-     * Meta information extracted from the WSDL
-     * - documentation: Contains the detail data for the Listing Designer theme and template (if either are used), which can optionally be used to enhance the appearance of the description area of an item's description.
-     * - minOccurs: 0
-     * @var \StructType\ListingDesignerType
-     */
-    public $ListingDesigner;
-    /**
      * The ListingDuration
      * Meta information extracted from the WSDL
      * - documentation: Describes the number of days the seller wants the listing to be active (available for bidding/buying). The duration specifies the seller's initial intent at listing time. <br/><br/> The end time for a listing is calculated by adding
@@ -312,25 +307,25 @@ class ItemType extends AbstractStructBase
     /**
      * The PaymentMethods
      * Meta information extracted from the WSDL
-     * - documentation: Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the item. For Add/Revise/Relist calls, at least one payment method must be specified unless the seller is opted in to the new eBay
-     * Managed Payments program. <br> <br> <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a
+     * - documentation: Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the item. For Add/Revise/Relist calls, at least one payment method must be specified unless the seller is onboarded for eBay managed
+     * payments. <br> <br> <span class="tablenote"><b>Note: </b> If you set up a payment policy via the <a href="https://developer.ebay.com/api-docs/sell/account/resources/payment_policy/methods/createPaymentPolicy">Account API</a> or the <a
      * href="https://developer.ebay.com/Devzone/business-policies/CallRef/addSellerProfile.html">Business Polices Managment API</a>, then you should not populate this field. Instead, indicate your payment policy using the
-     * <b>SellerProfiles.SellerPaymentProfile</b> container. </span> <br> <span class="tablenote"><b>Note:</b> The new eBay Managed Payments program is currently only available to a limited number of sellers on the US site. For sellers in the eBay Managed
-     * Payments program, a payment method does not need to be specified at listing time. Any payment method that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a
-     * warning message in the response. Immediate payment is supported for sellers in the eBay Managed Payments program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>. </span> <br> <span
-     * class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify
-     * <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the
-     * only specified payment method). </span><br> Use <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most
-     * categories only allow electronic payments. Also use <b>GetCategoryFeatures</b> to determine the default payment methods for a site. <br><br> Do not use <b>GeteBayDetails</b> to determine the payment methods for a site. <br><br> If you specify
-     * multiple <b>PaymentMethods</b> fields, the repeating fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of repeating <b>PaymentMethods</b> fields, but not between them:<br> <br> <code>
-     * &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br> &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br> &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt; </code> <br><br> In general, if you separate repeating
-     * instances of a field, the results will be unpredictable. This rule applies to all repeating fields (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a
-     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview of the API Schema</a> in the eBay Features Guide. <br> <br> <span class="tablenote"><b>Note:</b> Required or
-     * allowed payment methods vary by site and category. Refer to <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html"> Determining the Payment Methods Allowed for a Category</a> in the eBay
-     * Features Guide to help you determine which payment methods you are required or allowed to specify. </span><br> Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform. <br>
-     * <br> <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b> A listing must have at least one valid payment method. When you revise or relist an item and you specify a payment method that is invalid for the target site, eBay ignores the invalid
-     * payment method, applies the other valid changes, and returns a warning to indicate that the invalid payment method was ignored. <br/><br/> If multiple payment methods were invalid, the warning indicates that they were all ignored. If you modify the
-     * listing so that it includes no valid payment methods, an error is returned. This situation could occur when the seller removes all valid payment methods or when all the payment methods specified for the item are no longer valid on the target site.
+     * <b>SellerProfiles.SellerPaymentProfile</b> container. </span> <br> <span class="tablenote"><b>Note:</b> eBay managed payments is currently available to a select set of sellers in the following countries: US, Germany, Canada, UK, and Australia. We
+     * expect a majority of sellers around the world to have transitioned into managed payments by the end of 2021. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing time. Any payment method that is
+     * specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. Immediate payment is supported for sellers in the eBay managed payments
+     * program, so they can include the <b>AutoPay</b> field in the request and set its value to <code>true</code>. </span> <br> <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's
+     * Integrated Merchant Credit Card account. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method). </span><br> Use
+     * <b>GetCategoryFeatures</b> to determine the payment methods that are allowed for a category on a site. For example, the response data of <b>GetCategoryFeatures</b> will show that on the US site, most categories only allow electronic payments. Also
+     * use <b>GetCategoryFeatures</b> to determine the default payment methods for a site. <br><br> Do not use <b>GeteBayDetails</b> to determine the payment methods for a site. <br><br> If you specify multiple <b>PaymentMethods</b> fields, the repeating
+     * fields must be contiguous. For example, you can specify <b>PayPalEmailAddress</b> after a list of repeating <b>PaymentMethods</b> fields, but not between them:<br> <br> <code> &lt;PaymentMethods&gt;VisaMC&lt;/PaymentMethods&gt;<br>
+     * &lt;PaymentMethods&gt;PayPal&lt;/PaymentMethods&gt;<br> &lt;PayPalEmailAddress&gt;mypaypalemail@ebay.com&lt;/PayPalEmailAddress&gt; </code> <br><br> In general, if you separate repeating instances of a field, the results will be unpredictable. This
+     * rule applies to all repeating fields (<code>maxOccurs="unbounded"</code> or greater than 1) in the schema. See <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#basics/Call-APISchema.html#OverviewoftheAPISchema">Overview
+     * of the API Schema</a> in the eBay Features Guide. <br> <br> <span class="tablenote"><b>Note:</b> Required or allowed payment methods vary by site and category. Refer to <a
+     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-PaymentMethod.html"> Determining the Payment Methods Allowed for a Category</a> in the eBay Features Guide to help you determine which payment methods you
+     * are required or allowed to specify. </span><br> Payment methods are not applicable to any classified ad listings, as any agreement and payment is handled off of the eBay platform. <br> <br> <b>For <b>ReviseItem</b> and <b>RelistItem</b> only:</b> A
+     * listing must have at least one valid payment method. When you revise or relist an item and you specify a payment method that is invalid for the target site, eBay ignores the invalid payment method, applies the other valid changes, and returns a
+     * warning to indicate that the invalid payment method was ignored. <br/><br/> If multiple payment methods were invalid, the warning indicates that they were all ignored. If you modify the listing so that it includes no valid payment methods, an error
+     * is returned. This situation could occur when the seller removes all valid payment methods or when all the payment methods specified for the item are no longer valid on the target site.
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var string[]
@@ -376,18 +371,18 @@ class ItemType extends AbstractStructBase
     /**
      * The ProductListingDetails
      * Meta information extracted from the WSDL
-     * - documentation: This container is used to provide one or more product identifiers for a product, and if desired by the seller, or required by eBay, the product can be matched to an eBay Catalog product. If a seller's product is matched to an eBay
-     * Catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects, and stock image(s) of the
-     * product. <br> <br> In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay Catalog products defined, or the category does not allow listings to be created using a
-     * catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types. <br> <br> <span class="tablenote"><b>Note:</b> If a product identifier type is
-     * required, the corresponding field must be used, even if the seller is not interested in finding an eBay catalog product match. A large percentage of eBay US categories require one or more product identifier types when listing an item. See the <a
-     * href="http://pages.ebay.com/sell/item_specifics/product_identifiers.html" target="_blank">Structured Data - Product Identifiers</a> help page for more information on which eBay US categories require which product identifier types. If known, an ePID
-     * (specified through the <b>ProductReferenceID</b> field) is always the best bet to find an eBay catalog product match, although an <b>EAN</b>, <b>ISBN</b>, <b>UPC</b>, or Brand/MPN pair can also be used in an attempt to find a catalog product match.
-     * If a Brand/MPN pair is required for the product, these values must be input through the <b>BrandMPN</b> container. </span> <br> When you use <b>ProductListingDetails</b>, in an Add/Revise/Relist call, you must specify at least one GTIN, a
-     * <b>ProductReferenceID</b> (also known as an ePID), a Brand/MPN pair, or <b>TicketListingDetails</b>. If you specify more than one GTIN value, eBay uses the first one that matches a product in eBay's catalog. <br> <br> <b>For ReviseItem and RelistItem
-     * only:</b> When you revise a listing, if it has bids or it ends within 12 hours, you cannot change the product identifier and you cannot remove existing product listing details data. However, you can change or add preferences such as
-     * <b>IncludeStockPhotoURL</b>, <b>UseStockPhotoURLAsGallery</b>, and <b>IncludePrefilledItemInformation</b>. To delete all catalog data when you revise or relist an item, specify Item.ProductListingDetails in <b>DeletedField</b> and don't pass
-     * <b>ProductListingDetails</b> in the request.
+     * - documentation: This container is used to provide one or more product identifiers for a product, and if desired by the seller, eBay will use the identifier(s) of the product to try to match it to a defined product in the eBay catalog. If a seller's
+     * product is matched to an eBay catalog product, the product details associated with that catalog product will be prefilled for the listing. Product details defined for a catalog product include the product title, product description, product aspects,
+     * and stock image(s) of the product (if available). <br> <br> In some eBay categories, one or more product identifier types (e.g. UPC or ISBN) may be required, but the category may not have any eBay catalog products defined, or the category does not
+     * allow listings to be created using a catalog product. Note that the <b>GetCategorySpecifics</b> call or the <b>GetCategoryFeatures</b> call can be used to retrieve supported/required product identifier types. <br> <br> <span
+     * class="tablenote"><b>Note:</b> If a product identifier type is required, the corresponding field must be used, even if the seller is not interested in finding an eBay catalog product match. A large percentage of eBay US categories require one or more
+     * product identifier types when listing an item. See the <a href="http://pages.ebay.com/sell/item_specifics/product_identifiers.html" target="_blank">Structured Data - Product Identifiers</a> help page for more information on which eBay US categories
+     * require which product identifier types. If known, an ePID (specified through the <b>ProductReferenceID</b> field) is always the best bet to find an eBay catalog product match, although an <b>EAN</b>, <b>ISBN</b>, <b>UPC</b>, or Brand/MPN pair can
+     * also be used in an attempt to find a catalog product match. If a Brand/MPN pair is required for the product, these values must be input through the <b>BrandMPN</b> container. </span> <br> When you use <b>ProductListingDetails</b>, in an
+     * Add/Revise/Relist call, you must specify at least one GTIN, a <b>ProductReferenceID</b> (also known as an ePID), a Brand/MPN pair, or <b>TicketListingDetails</b>. If you specify more than one GTIN value, eBay uses the first one that matches a product
+     * in eBay's catalog. <br> <br> <b>For ReviseItem and RelistItem only:</b> When you revise a listing, if it has bids or it ends within 12 hours, you cannot change the product identifier and you cannot remove existing product listing details data.
+     * However, you can change or add preferences such as <b>IncludeStockPhotoURL</b>, <b>UseStockPhotoURLAsGallery</b>, and <b>IncludePrefilledItemInformation</b>. To delete all catalog data when you revise or relist an item, specify
+     * Item.ProductListingDetails in <b>DeletedField</b> and don't pass <b>ProductListingDetails</b> in the request.
      * - minOccurs: 0
      * @var \StructType\ProductListingDetailsType
      */
@@ -396,20 +391,20 @@ class ItemType extends AbstractStructBase
      * The Quantity
      * Meta information extracted from the WSDL
      * - documentation: <b>For <b>AddItem</b> family of calls:</b> The <b>Quantity</b> value for auction listings must always be <code>1</code>. For a fixed-price listing, the <b>Quantity</b> value indicates the number of identical items the seller has
-     * available for sale in the listing. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b> is not required since the quantity of variations is specified in <b>Variation.Quantity</b>
-     * instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information on variations. <br><br> <b>For ReviseItem and ReviseFixedPriceItem:</b> This value can only
-     * be changed for a fixed-price listing with no variations. The quantity of variations is controlled in the <b>Variation.Quantity</b> field and the <b>Item.Quantity</b> value for an auction listing should always be <code>1</code>. <br><br> <b>For
-     * RelistItem and RelistFixedPriceItem:</b> Like most fields, when you use <b>RelistItem</b> or <b>RelistFixedPriceItem</b>, <b>Quantity</b> retains its original value unless you specifically change it. This means that the item is relisted with the
-     * value that was already in <b>Quantity</b>, not with the remaining quantity available. For example, if the original <b>Quantity</b> value was <code>10</code>, and three items have been sold, eBay sets the relisted item's <b>Quantity</b> to
-     * <code>10</code> by default, and not <code>7</code>. So, we strongly recommend that you always set <b>Quantity</b> to the correct value (your actual quantity available) in your relist requests.<br> <br> When eBay auto-renews a GTC listing
-     * (<b>ListingDuration</b> = <b>GTC</b>) on your behalf, eBay relists with correct quantity available. <br> <br> <b>For GetSellerEvents:</b> <b>Quantity</b> is only returned for listings where item quantity is greater than 1. <br><br> <b>For GetItem and
-     * related calls:</b> This is the total of the number of items available for sale plus the quantity already sold. To determine the number of items available, subtract <b>SellingStatus.QuantitySold</b> from this value. <br><br> <b>For order line item
-     * calls with variations:</b> In <b>GetItemTransactions</b>, <b>Item.Quantity</b> is the same as <b>GetItem</b> (the total quantity across all variations). In <b>GetSellerTransactions</b>, <b>Transaction.Item.Quantity</b> is the total quantity of the
-     * applicable variation (quantity available plus quantity sold). <br> <br> <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to <a
-     * href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these listings.
-     * While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in the
-     * <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item call
-     * will fail. These fields will only be returned if the seller is subject to seller limits. </span>
+     * available for sale in the listing. If this field is not included when creating a new fixed-price listing, quantity defaults to '1'. If variations are specified in <b>AddFixedPriceItem</b> or <b> VerifyAddFixedPriceItem</b>, the <b>Item.Quantity</b>
+     * is not required since the quantity of variations is specified in <b>Variation.Quantity</b> instead. See the <a href="https://pages.ebay.com/help/sell/listing-variations.html">Creating a listing with variations</a> eBay Help page for more information
+     * on variations. <br><br> <b>For ReviseItem and ReviseFixedPriceItem:</b> This value can only be changed for a fixed-price listing with no variations. The quantity of variations is controlled in the <b>Variation.Quantity</b> field and the
+     * <b>Item.Quantity</b> value for an auction listing should always be <code>1</code>. <br><br> <b>For RelistItem and RelistFixedPriceItem:</b> Like most fields, when you use <b>RelistItem</b> or <b>RelistFixedPriceItem</b>, <b>Quantity</b> retains its
+     * original value unless you specifically change it. This means that the item is relisted with the value that was already in <b>Quantity</b>, not with the remaining quantity available. For example, if the original <b>Quantity</b> value was
+     * <code>10</code>, and three items have been sold, eBay sets the relisted item's <b>Quantity</b> to <code>10</code> by default, and not <code>7</code>. So, we strongly recommend that you always set <b>Quantity</b> to the correct value (your actual
+     * quantity available) in your relist requests.<br> <br> When eBay auto-renews a GTC listing (<b>ListingDuration</b> = <b>GTC</b>) on your behalf, eBay relists with correct quantity available. <br> <br> <b>For GetSellerEvents:</b> <b>Quantity</b> is
+     * only returned for listings where item quantity is greater than 1. <br><br> <b>For GetItem and related calls:</b> This is the total of the number of items available for sale plus the quantity already sold. To determine the number of items available,
+     * subtract <b>SellingStatus.QuantitySold</b> from this value. <br><br> <b>For order line item calls with variations:</b> In <b>GetItemTransactions</b>, <b>Item.Quantity</b> is the same as <b>GetItem</b> (the total quantity across all variations). In
+     * <b>GetSellerTransactions</b>, <b>Transaction.Item.Quantity</b> is the total quantity of the applicable variation (quantity available plus quantity sold). <br> <br> <span class="tablenote"><b>Note: </b> For the US site, new eBay sellers are subject to
+     * <a href="https://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-Policies.html#SellerLimits">Seller Limits</a>, which limit the quantity of items that may be listed and/or the total cumulative value of these
+     * listings. While subject to these selling limits, an eBay seller can use the <b>GetMyeBaySelling</b> call to retrieve both the remaining number of listings they can create and the remaining cumulative value of these listings. These values are shown in
+     * the <b>Summary.QuantityLimitRemaining</b> and <b>Summary.AmountLimitRemaining</b> fields in the <b>GetMyeBaySelling</b> response. If a call to add an item or revise an item would result in the exceeding of these limits, the add item or revise item
+     * call will fail. These fields will only be returned if the seller is subject to seller limits. </span>
      * - minOccurs: 0
      * @var int
      */
@@ -481,15 +476,16 @@ class ItemType extends AbstractStructBase
      * Parts & Accessories in two categories. The Final Value Fee is based on the primary category in which the item is listed. Furthermore, you can list the same item in an eBay Motors Parts & Accessories category and in an eligible eBay category, as long
      * as the primary category is associated with the site on which you are listing. That is, the two categories can be a mix of Motors Parts & Accessories and eBay site categories. (Real Estate, Mature Audience (adult), and Business & Industrial categories
      * are not eligible for listing in two categories in this manner.) For example, if you list on Motors, the primary category could be 6750 (eBay Motors > Parts & Accessories > Apparel & Merchandise > Motorcycle > Jackets & Leathers), and the secondary
-     * category could be 57988 (eBay > Clothing, Shoes > Accessories > Men's Clothing > Outerwear). If you list on the main eBay site, the primary category could be 57988 and the secondary category could be 6750. <br> <br> If eBay has designated a category
-     * as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), items in that category cannot be listed in two categories. For example, if your <b>AddItem</b> request includes a primary or secondary category that is a value category, then eBay
-     * drops <b>SecondaryCategory</b> and lists the item with only the <b>PrimaryCategory</b> you selected. Also, if the listing request includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with <b>SecondaryCategory</b>, eBay drops those
-     * values when we drop <b>SecondaryCategory</b>. (The same logic is used if you revise an existing listing to add a secondary category or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the
-     * secondary category from your request.)<br> <br> To remove this value when relisting an item, use <b>DeletedField</b>. <br><br> <b>For ReviseItem only:</b> When revising a listing within 12 hours of the listing's scheduled end time, you can only add
-     * or change the secondary category when an auction listing has no active bids or a multiple-quantity, fixed-price listing has no items sold. If you change the secondary category, any corresponding Item Specifics that were previously specified may be
-     * dropped from the listing if they aren't valid for the category. <br> <br> <b>For ReviseItem only:</b> Previously, removing the listing from a secondary category was only possible within 12 hours of the listing's scheduled end time when an auction
-     * listing had no active bids or a multiple-quantity, fixed-price listing had no items sold, but this restriction no longer exists. Now, the secondary category can be dropped for any active listing at any time, regardless of whether an auction listing
-     * has bids or a fixed-price listing has sales. To drop a secondary category, the seller passes in a value of <code>0</code> in the <b>SecondaryCategory.CategoryID</b> field.
+     * category could be 57988 (eBay > Clothing, Shoes > Accessories > Men's Clothing > Outerwear). If you list on the main eBay site, the primary category could be 57988 and the secondary category could be 6750. <br> <br> If eBay has designated a listing
+     * category as a value category (see ValueCategory in <b>GetCategoryFeatures</b>), and that listing category will be the seller's primary category, the seller will not be able to list their item in a secondary category. If a seller's request payload
+     * includes a primary or a secondary category that is designated as a value category, then eBay drops the <b>SecondaryCategory</b> ID and only lists the item in the category specified with the <b>PrimaryCategory</b> ID. Also, if the listing request
+     * includes Item Specifics (in <b>ItemSpecifics</b>) that are associated with the <b>SecondaryCategory</b>, eBay drops those values as well when the <b>SecondaryCategory</b> is dropped. The same logic is used if you revise an existing listing to add a
+     * secondary category, or to change one of the categories: If either the primary or secondary category is a value category, eBay drops the secondary category from your request.) <br> <br> To remove this value when relisting an item, use
+     * <b>DeletedField</b>. <br><br> <b>For ReviseItem only:</b> When revising a listing within 12 hours of the listing's scheduled end time, you can only add or change the secondary category when an auction listing has no active bids or a
+     * multiple-quantity, fixed-price listing has no items sold. If you change the secondary category, any corresponding Item Specifics that were previously specified may be dropped from the listing if they aren't valid for the category. <br> <br> <b>For
+     * ReviseItem only:</b> Previously, removing the listing from a secondary category was only possible within 12 hours of the listing's scheduled end time when an auction listing had no active bids or a multiple-quantity, fixed-price listing had no items
+     * sold, but this restriction no longer exists. Now, the secondary category can be dropped for any active listing at any time, regardless of whether an auction listing has bids or a fixed-price listing has sales. To drop a secondary category, the seller
+     * passes in a value of <code>0</code> in the <b>SecondaryCategory.CategoryID</b> field.
      * - minOccurs: 0
      * @var \StructType\CategoryType
      */
@@ -557,11 +553,11 @@ class ItemType extends AbstractStructBase
     /**
      * The Site
      * Meta information extracted from the WSDL
-     * - documentation: The name of the site on which the item is listed. The listing site affects the business logic and validation rules that are applied to the request, which in turn affect the values that are returned in the response, as well as values
-     * that appear on the eBay site. For example, the listing site can affect the validation of <b>Category</b> in listing requests, international business seller requirements, the values of converted (localized) prices in responses, the item-related time
-     * stamps that are displayed on the eBay site, the visibility of the item in some types of searches (e.g., <b>GetCategoryListings</b>), and other information. In some cases, the rules are determined by a combination of the site, the user's registration
-     * address, and other information. You cannot change the site when you revise a listing.<br> <br> When you specify <b>Item.Site</b> in <b>AddItem</b> or <b>AddFixedPriceItem</b>, it must be consistent with the numeric site ID that you specify in the
-     * request URL (for the SOAP API) or the <b>X-EBAY- API-SITEID</b> header (for the XML API).
+     * - documentation: The name of the eBay listing site. The listing site affects the business logic and validation rules that are applied to the request, which in turn affect the values that are returned in the response, as well as values that appear on
+     * the eBay site. For example, the listing site can affect the validation of <b>Category</b> in listing requests, international business seller requirements, the values of converted (localized) prices in responses, the item-related time stamps that are
+     * displayed on the eBay site, the visibility of the item in some types of searches (e.g., <b>GetCategoryListings</b>), and other information. In some cases, the rules are determined by a combination of the site, the user's registration address, and
+     * other information. You cannot change the site when you revise a listing.<br> <br> When you specify <b>Item.Site</b> in <b>AddItem</b> or <b>AddFixedPriceItem</b>, it must be consistent with the numeric site ID that you specify in the request URL (for
+     * the SOAP API) or the <b>X-EBAY-API-SITEID</b> header (for the XML API).
      * - minOccurs: 0
      * @var string
      */
@@ -708,7 +704,10 @@ class ItemType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: Indicates whether the seller's tax table is to be used when applying and calculating sales tax for an order line item. A sales tax table can be created programmatically using the <b>SetTaxTable</b> call, or it can be created manually
      * in My eBay's Payment Preferences. If <b>UseTaxTable</b> is set to <code>true</code>, the values contained in the seller's sales tax table will supersede the values contained in the <b>Item.ShippingDetails.SalesTax</b> container (if included in the
-     * request).
+     * request). <br><br> <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the
+     * buyer's behalf. The Sales Tax Table page for eBay US is being updated as each US state starts requiring collection of sales tax. This means that the seller no longer has control over, nor can specify a sales tax rate for these states. For a list of
+     * the US states that are currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax
+     * collection</a> help topic. </span>
      * - minOccurs: 0
      * @var bool
      */
@@ -825,14 +824,14 @@ class ItemType extends AbstractStructBase
      * - documentation: Specifies the maximum number of business days the seller commits to for preparing an item to be shipped after receiving a cleared payment. This time does not include the shipping time (the carrier's transit time). <br><br> <span
      * class="tablenote"><b>Note:</b> If the seller opts into the eBay Guaranteed Delivery feature and wants to make a listing eligible for eBay Guaranteed Delivery, the <b>DispatchTimeMax</b> value must be set to <code>0</code> or <code>1</code> (days) and
      * the cumulative value of <b>DispatchTimeMax</b> plus the transit time of the shipping service (returned in <b>ShippingServiceDetails.ShippingTimeMax</b> field of <b>GeteBayDetails</b>) must be 4 business days or less to be eligible for this feature.
-     * See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. </span> <br> <b>For Add/Revise/Relist calls:</b>
-     * Required for listings in certain categories when certain shipping services (with delivery) are offered. See <b>HandlingTimeEnabled</b> in <b>GetCategoryFeatures</b>.<br> <br> The seller sets this to a positive integer value corresponding to the
-     * number of days. For a list of allowed values on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>. (Typical values are <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code>,
-     * <code>15</code>, or <code>20</code>, but this can vary by site and these may change over time.)<br> <br> Valid for flat and calculated shipping. Does not apply when there is no shipping, when it is local pickup only or it is freight shipping. For
-     * example, when <b>ShippingService</b> = <code>Pickup</code> or <b>ShipToLocations</b> = <code>None</code>, then <b>DispatchTimeMax</b> is not required (or it can be <code>0</code>).<br> <br> <b>For ReviseItem only:</b> If the listing has bids or sales
-     * and it ends within 12 hours, you can't change this value. If the listing is a GTC listing that has sales or ends within 12 hours (one or the other, but not both), you can add or change this value. If the listing has no bids or sales and more than 12
-     * hours remain before the listing ends, you can add or change the dispatch (handling) time.<br> <br> <b>For GetItem:</b> <b>GetItem</b> returns <b>DispatchTimeMax</b> only when shipping service options are specified for the item and the seller
-     * specified a dispatch time.
+     * See the <a href="https://pages.ebay.com/seller-center/shipping/ebay-guaranteed-delivery.html" target="_blank">eBay Guaranteed Delivery</a> page in Seller Center for more information on this program. The eBay Guaranteed Delivery feature is only
+     * available on the US and Australia marketplaces. </span> <br> <b>For Add/Revise/Relist calls:</b> Required for listings in certain categories when certain shipping services (with delivery) are offered. See <b>HandlingTimeEnabled</b> in
+     * <b>GetCategoryFeatures</b>.<br> <br> The seller sets this to a positive integer value corresponding to the number of 'handling' days. For a list of allowed values on each eBay site, use <b>DispatchTimeMaxDetails</b> in <b>GeteBayDetails</b>.
+     * Supported handling times for most sites in most categories range from 0 (same-day handling) to 3 business days, but this can vary by site. Some categories on some sites support longer handling times, and this generally comes into play with extremely
+     * large items where freight shipping may be required. <br> <br> This field is required whenever flat-rate or calculated shipping is used, but does not apply when there is no shipping involved, which is the case for digital gift card listings, or any
+     * orders where local pickup is available and this option is selected by the buyer.<br> <br> <b>For ReviseItem only:</b> If the listing has bids or sales and it ends within 12 hours, you can't change this value. If the listing is a GTC listing that has
+     * sales or ends within 12 hours (one or the other, but not both), you can add or change this value. If the listing has no bids or sales and more than 12 hours remain before the listing ends, you can add or change the dispatch (handling) time.<br> <br>
+     * <b>For GetItem:</b> <b>GetItem</b> returns <b>DispatchTimeMax</b> only when shipping service options are specified for the item and the seller specified a dispatch time.
      * - minOccurs: 0
      * @var int
      */
@@ -1034,8 +1033,8 @@ class ItemType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: When this container is present in an <b>AddItem</b> or <b>AddFixedPriceItem</b> call, all buyer requirements for the resulting listing are set by this container. Furthermore, individual buyer requirements cannot be modified or added
      * when including this container in a <b>ReviseItem</b> call. The <b>ReviseItem</b> call needs to provide the entire set of buyer requirements to modify or add any of the requirements. <br/><br/> Unless otherwise specified, most buyer requirements are
-     * only returned if the caller is the seller. All global My eBay Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in this
-     * container.
+     * only returned if the caller is the seller. Any and all My eBay account-level Buyer Requirements are overridden by the contents of this container. This means that buyer requirements set in My eBay cannot be combined with buyer requirements included in
+     * this container.
      * - minOccurs: 0
      * @var \StructType\BuyerRequirementDetailsType
      */
@@ -1054,7 +1053,10 @@ class ItemType extends AbstractStructBase
      * before the listing ends, you can add or change the return policy. When you revise your return policy, you only need to specify the fields you want to add or change. You don't need to specify all the other <b>ReturnPolicy</b> fields again. The other
      * fields will retain their existing settings.<br> <br> <b>For the GetItem family of calls:</b> Only returned if the site you sent the request to supports the seller's return policy. Typically, the return policy details are only returned when the
      * request is sent to the listing site. <br><br> <span class="tablenote"><b>Note:</b> The <b>GeteBayDetails</b> call can be used to retrieve site-wide return policy metadata, but it is recommended that sellers use the <b>GetCategoryFeatures</b> call
-     * instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span>
+     * instead, as this call was recently updated to retrieve category-level metadata for both domestic and international return policies.</span> <br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate
+     * international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead for international returns. For more
+     * information on setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns
+     * policy</a> help topic. For the international equivalent of this field, see the <b>InternationalRefundMethodValues</b> field.</span>
      * - minOccurs: 0
      * @var \StructType\ReturnPolicyType
      */
@@ -1073,7 +1075,7 @@ class ItemType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: Indicates whether you prefer to track your eBay listings by eBay Item ID or by your own SKU. <br> <br> If a seller will be converting an existing eBay listing into the new Inventory model using the <b>bulkMigrateListings</b> call of
      * the <b>Inventory API</b>, the <b>InventoryTrackingMethod</b> value must be set to <code>ItemID</code> (default value), but the item must also have a SKU value (Item.<b>SKU</b> or Variation.<b>SKU</b>) associated with it. <b>For GetItem and related
-     * calls</b>: Only returned when the value is <code>SKU</code>; not returned when the value is <code>ItemID</code>.
+     * calls</b>: Only returned when the value is <code>SKU</code>; not returned when the value is <code>ItemID</code>. <br>
      * - minOccurs: 0
      * @var string
      */
@@ -1084,7 +1086,7 @@ class ItemType extends AbstractStructBase
      * - documentation: Indicates whether the item can be paid for through a payment gateway (Payflow) account. If <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, then integrated merchant credit card (IMCC) is enabled for credit cards
      * because the seller has a payment gateway account. Therefore, if <b>IntegratedMerchantCreditCardEnabled</b> is <code>true</code>, an AmEx, Discover, or VisaMC is returned for an item, then on checkout, an online credit-card payment is processed
      * through a payment gateway account. A payment gateway account is used by sellers to accept online credit cards (Visa, MasterCard, American Express, and Discover). <br><br> <span class="tablenote"><b>Note: </b> As of May 1, 2019, eBay no longer
-     * supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program (if the program
+     * supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program (if the program
      * is available to that seller). </span>
      * - minOccurs: 0
      * @var bool
@@ -1136,14 +1138,17 @@ class ItemType extends AbstractStructBase
      * The ConditionID
      * Meta information extracted from the WSDL
      * - documentation: This is a numeric identifier for an item's condition. All numeric Condition ID values map to an item condition string value. For example, numeric identifer <code>1000</code> maps to <code>New</code> condition. <br><br> Most eBay
-     * categories require an item condition, but a few eBay categories do not. To verify if the listing category requires an item condition, and if so, what are the supported item condition and <b>ConditionID</b> values, you can call
-     * <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>, and the other field set to
-     * <code>ConditionValues</code>. <br><br> In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the Category.<b>ConditionValues</b> container in the
-     * response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the response is the actual condition value that will appear
-     * in the actual eBay listing. <br> <br> If you pass in a <b>ConditionID</b> value that is not valid for the category, or if you don't pass in a <b>ConditionID</b> value at all for a category that requires it, the listing request fails. <br><br> If you
-     * are listing in two categories (using a secondary category), it is the primary listing category that determines which <b>ConditionID</b> values are supported. <br><br> <b>For Revise/Relist calls:</b> In most cases, you can change the
-     * <b>ConditionID</b> value (if applicable/warranted), with the exception being an auction listing that has one or more bids, or any listing that is scheduled to end in 12 hours or less. <br> <br> <b>For GetItem:</b> The <b>ConditionID</b> value is
-     * always returned if set for the listing. <b>GetItem</b> also returns the item condition string value in the <b>ConditionDisplayName</b> field.
+     * listing categories require an item condition, but a few eBay categories do not (such as Digital Gift Cards or Antiques categories). To verify if the listing category requires an item condition, and if so, what are the supported item condition and
+     * <b>ConditionID</b> values, you can call <b>GetCategoryFeatures</b>. In this <b>GetCategoryFeatures</b> call, you'd pass in the listing <b>CategoryID</b> value and two <b>FeatureID</b> fields - one of these fields set to <code>ConditionEnabled</code>,
+     * and the other field set to <code>ConditionValues</code>. <br><br> In the <b>GetCategoryFeatures</b> response, look at the Category.<b>ConditionEnabled</b> to see if item condition is required for the category. Then look at the
+     * Category.<b>ConditionValues</b> container in the response for the full list of Condition IDs that you can pass in through the <b>ConditionID</b> field of an Add/Revise/Relist/Verify call. Note that the Condition.<b>DisplayName</b> value in the
+     * response is the actual condition value that will appear in the actual eBay listing. <br> <br> If you pass in a <b>ConditionID</b> value that is not valid for the category, or if you don't pass in a <b>ConditionID</b> value at all for a category that
+     * requires it, the listing request fails. <br><br> If you are listing in two categories (using a secondary category), it is the primary listing category that determines which <b>ConditionID</b> values are supported. <br><br> <b>For Revise/Relist
+     * calls:</b> In most cases, you can change the <b>ConditionID</b> value (if applicable/warranted), with the exception being an auction listing that has one or more bids, or any listing that is scheduled to end in 12 hours or less. <br> <br> <b>For
+     * GetItem:</b> The <b>ConditionID</b> value is always returned if set for the listing. <b>GetItem</b> also returns the item condition string value in the <b>ConditionDisplayName</b> field. <br> <br> <span class="tablenote"><strong>Note:</strong>
+     * Starting in mid-September 2020, the 'Manufacturer Refurbished' item condition (Condition ID 2000) will no longer be supported on the US and Australian marketplaces. Active listings on these two marketplaces will automatically be updated by eBay to
+     * the 'Seller Refurbished' item condition (Condition ID 2500). Once this change happens, if a seller attempts to create a new listing or revise an existing listing with the Inventory or Trading APIs using the 'Manufacturer Refurbished' item condition,
+     * the listing or revision will be blocked. </span>
      * - minOccurs: 0
      * @var int
      */
@@ -1271,11 +1276,11 @@ class ItemType extends AbstractStructBase
     /**
      * The SellerProfiles
      * Meta information extracted from the WSDL
-     * - documentation: This container is used if the seller would like to use/reference Business Policies to create, revise, relist, or verify their listing. The seller's account must be opted in to Business Policies to use this container. If this
-     * container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy is applied to the listing. If the seller's account is not opted in to Business Policies, that seller may not use this container.
-     * Sellers must opt-in to Business Policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>. <br><br> If Business Policies are applied to a listing, all payment, shipping, and return policy settings in these
-     * policies will override any other payment, shipping, or return policy legacy fields that are included in the call request. <br><br> This container is only returned in 'Get' calls if Business Policies are set for the listing, and the person making the
-     * API call is the seller of the listing.
+     * - documentation: This container is used if the seller would like to use/reference business policies to create, revise, relist, or verify their listing. The seller's account must be opted in to business policies to use this container. If this
+     * container is used, exactly one Payment Business Policy, one Shipping Business Policy, and one Return Business Policy must be specified and applied to the listing. If the seller's account is not opted in to business policies, that seller may not use
+     * this container. Sellers must opt-in to business policies through My eBay or by using the <b>optInToProgram</b> call of the <b>eBay Account API</b>. <br><br> If business policies are applied to a listing, all payment, shipping, and return policy
+     * settings in these policies will override any other payment, shipping, or return policy legacy fields that are included in the call request. <br><br> This container is only returned in 'Get' calls if business policies are set for the listing, and the
+     * person making the API call is the seller of the listing.
      * - minOccurs: 0
      * @var \StructType\SellerProfilesType
      */
@@ -1283,11 +1288,11 @@ class ItemType extends AbstractStructBase
     /**
      * The ShippingServiceCostOverrideList
      * Meta information extracted from the WSDL
-     * - documentation: This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the Business Policies shipping profile referenced in the
+     * - documentation: This container is used when the seller wants to override the flat shipping costs for all domestic and/or all international shipping services defined in the shipping business policy referenced in the
      * <b>SellerProfiles.SellerShippingProfile.ShippingProfileID</b> field. Shipping costs include the cost to ship one item, the cost to ship each additional identical item, and any shipping surcharges applicable to domestic shipping services. <br><br> A
      * <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container is required for each domestic and/or international shipping service that is defined in the <b>domesticShippingPolicyInfoService</b> and <b>intlShippingPolicyInfoService</b>
-     * containers of the Business Policies shipping profile. <br><br> Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container
-     * will not change the shipping costs defined for the same shipping services in the Business Policies shipping profile. <br><br> <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify
+     * containers of the shipping business policy. <br><br> Shipping service cost overrides are a listing-level concept, and the shipping costs specified through each <b>ShippingServiceCostOverrideList.ShippingServiceCostOverride</b> container will not
+     * change the shipping costs defined for the same shipping services in the shipping business policy. <br><br> <b>For Revise and Relist calls</b>: To delete all shipping service cost overrides when you revise or relist, specify
      * <b>Item.ShippingServiceCostOverrideList</b> in <b>DeletedField</b>, and don't pass <b>ShippingServiceCostOverrideList</b> in the request.
      * - minOccurs: 0
      * @var \StructType\ShippingServiceCostOverrideListType
@@ -1489,9 +1494,12 @@ class ItemType extends AbstractStructBase
     /**
      * The eBayPlus
      * Meta information extracted from the WSDL
-     * - documentation: If <code>true</code>, this item is being offered under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated
-     * eBay sellers must opt in to eBay Plus to be able to offer the program on qualifying listings. Sellers must commit to next-day delivery of those items. <br/><br/> <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in
-     * Germany, Austria, and Australia marketplaces. </span>
+     * - documentation: eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping, and free returns on selected items. To offer this feature to buyers, sellers must opt in to eBay Plus, and their
+     * selling status must be 'Above Standard' or above. <br/><br/> In an add/revise/relist call, the seller must include this field and set its value to <code>true</code>. If the seller is not eligible for/opted in to eBay Plus and/or the listing category
+     * or item does not qualify for eBay Plus, a warning message will be returned to the seller in the response indicating this. In addition to the seller, listing category, and item being eligible for eBay Plus, the seller must also set/commit to the
+     * following for the listing: <ul> <li>Listing format must be fixed-price.</li> <li>Same-day or one-day handling (<b>DispatchTimeMax</b> set to <code>0</code> or <code>1</code>). </li> <li>A free, next-day shipping option offered.</li> <li>A return
+     * policy that offers a 30-day (or longer) return period.</li> </ul> <br/> If this field is returned as <code>true</code> in a 'Get' call, it indicates that the item is eligible for eBay Plus treatment, but eBay Plus will only come into play if the
+     * buyer is subscribed to eBay Plus. <br/><br/> <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces. </span>
      * - minOccurs: 0
      * @var bool
      */
@@ -1499,9 +1507,9 @@ class ItemType extends AbstractStructBase
     /**
      * The eBayPlusEligible
      * Meta information extracted from the WSDL
-     * - documentation: If <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items.
-     * Top-Rated eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Sellers must commit to next-day delivery of those items. <br/><br/> <span class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to
-     * buyers in Germany, Austria, and Australia marketplaces. </span>
+     * - documentation: If this field is returned as <code>true</code>, this item is eligible to be listed under the eBay Plus program. eBay Plus is a premium account option for buyers, which provides benefits such as fast and free domestic shipping and
+     * free returns on selected items. eBay sellers must opt in to eBay Plus to be able offer the program on qualifying listings. Among other requirements, sellers must commit to next-day delivery of those items. <br/><br/> <span
+     * class="tablenote"><b>Note:</b> Currently, eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces. </span>
      * - minOccurs: 0
      * @var bool
      */
@@ -1553,7 +1561,6 @@ class ItemType extends AbstractStructBase
      * @uses ItemType::setHitCounter()
      * @uses ItemType::setItemID()
      * @uses ItemType::setListingDetails()
-     * @uses ItemType::setListingDesigner()
      * @uses ItemType::setListingDuration()
      * @uses ItemType::setListingEnhancement()
      * @uses ItemType::setListingType()
@@ -1695,7 +1702,6 @@ class ItemType extends AbstractStructBase
      * @param string $hitCounter
      * @param string $itemID
      * @param \StructType\ListingDetailsType $listingDetails
-     * @param \StructType\ListingDesignerType $listingDesigner
      * @param string $listingDuration
      * @param string[] $listingEnhancement
      * @param string $listingType
@@ -1819,7 +1825,7 @@ class ItemType extends AbstractStructBase
      * @param bool $isSecureDescription
      * @param \DOMDocument $any
      */
-    public function __construct($applicationData = null, \ArrayType\AttributeSetArrayType $attributeSetArray = null, \ArrayType\AttributeArrayType $attributeArray = null, \ArrayType\LookupAttributeArrayType $lookupAttributeArray = null, $autoPay = null, \StructType\BiddingDetailsType $biddingDetails = null, $buyerProtection = null, \StructType\AmountType $buyItNowPrice = null, $categoryMappingAllowed = false, \StructType\CharityType $charity = null, $country = null, \StructType\CrossPromotionsType $crossPromotion = null, $currency = null, $description = null, $descriptionReviseMode = null, \StructType\DistanceType $distance = null, $hitCounter = null, $itemID = null, \StructType\ListingDetailsType $listingDetails = null, \StructType\ListingDesignerType $listingDesigner = null, $listingDuration = null, array $listingEnhancement = array(), $listingType = null, $location = null, $lotSize = null, $partnerCode = null, $partnerName = null, \StructType\PaymentDetailsType $paymentDetails = null, array $paymentMethods = array(), $payPalEmailAddress = null, \StructType\CategoryType $primaryCategory = null, $privateListing = null, \StructType\ProductListingDetailsType $productListingDetails = null, $quantity = null, $privateNotes = null, $regionID = null, $relistLink = null, \StructType\AmountType $reservePrice = null, \StructType\ReviseStatusType $reviseStatus = null, $scheduleTime = null, \StructType\CategoryType $secondaryCategory = null, \StructType\CategoryType $freeAddedCategory = null, \StructType\UserType $seller = null, \StructType\SellingStatusType $sellingStatus = null, \StructType\ShippingDetailsType $shippingDetails = null, array $shipToLocations = array(), $site = null, \StructType\AmountType $startPrice = null, \StructType\StorefrontType $storefront = null, $subTitle = null, $timeLeft = null, $title = null, $uUID = null, \StructType\VATDetailsType $vATDetails = null, $sellerVacationNote = null, $watchCount = null, $hitCount = null, $disableBuyerRequirements = null, \StructType\BestOfferDetailsType $bestOfferDetails = null, $locationDefaulted = null, $useTaxTable = null, $getItFast = null, $buyerResponsibleForShipping = null, $limitedWarrantyEligible = null, $eBayNotes = null, $questionCount = null, $relisted = null, $quantityAvailable = null, $sKU = null, \StructType\SearchDetailsType $searchDetails = null, $postalCode = null, \StructType\PictureDetailsType $pictureDetails = null, $dispatchTimeMax = null, $bestOfferEnabled = null, $localListing = null, \StructType\AddressType $sellerContactDetails = null, $totalQuestionCount = null, $proxyItem = null, \StructType\ExtendedContactDetailsType $extendedSellerContactDetails = null, $leadCount = null, $newLeadCount = null, \ArrayType\NameValueListArrayType $itemSpecifics = null, $groupCategoryID = null, \StructType\AmountType $classifiedAdPayPerLeadFee = null, $bidGroupItem = null, \StructType\BuyerProtectionDetailsType $applyBuyerProtection = null, $listingSubtype2 = null, $mechanicalCheckAccepted = null, $updateSellerInfo = null, $updateReturnPolicy = null, \StructType\ItemPolicyViolationType $itemPolicyViolation = null, array $crossBorderTrade = array(), \StructType\BusinessSellerDetailsType $businessSellerDetails = null, \StructType\AmountType $buyerGuaranteePrice = null, \StructType\BuyerRequirementDetailsType $buyerRequirementDetails = null, \StructType\ReturnPolicyType $returnPolicy = null, array $paymentAllowedSite = array(), $inventoryTrackingMethod = null, $integratedMerchantCreditCardEnabled = null, \StructType\VariationsType $variations = null, \StructType\ItemCompatibilityListType $itemCompatibilityList = null, $itemCompatibilityCount = null, $conditionID = null, $conditionDescription = null, $conditionDisplayName = null, $taxCategory = null, $quantityAvailableHint = null, $quantityThreshold = null, \StructType\DiscountPriceInfoType $discountPriceInfo = null, $sellerProvidedTitle = null, $vIN = null, $vINLink = null, $vRM = null, $vRMLink = null, \StructType\QuantityInfoType $quantityInfo = null, \StructType\SellerProfilesType $sellerProfiles = null, \StructType\ShippingServiceCostOverrideListType $shippingServiceCostOverrideList = null, \StructType\ShippingOverrideType $shippingOverride = null, \StructType\ShipPackageDetailsType $shippingPackageDetails = null, $topRatedListing = null, \StructType\QuantityRestrictionPerBuyerInfoType $quantityRestrictionPerBuyer = null, \StructType\AmountType $floorPrice = null, \StructType\AmountType $ceilingPrice = null, $isIntermediatedShippingEligible = null, \StructType\UnitInfoType $unitInfo = null, $relistParentID = null, $conditionDefinition = null, $hideFromSearch = null, $reasonHideFromSearch = null, $includeRecommendations = false, \StructType\PickupInStoreDetailsType $pickupInStoreDetails = null, $siteId = null, $ignoreQuantity = null, $availableForPickupDropOff = null, $eligibleForPickupDropOff = null, $liveAuction = null, \StructType\DigitalGoodInfoType $digitalGoodInfo = null, $eBayPlus = null, $eBayPlusEligible = null, $eMailDeliveryAvailable = null, $isSecureDescription = null, \DOMDocument $any = null)
+    public function __construct($applicationData = null, \ArrayType\AttributeSetArrayType $attributeSetArray = null, \ArrayType\AttributeArrayType $attributeArray = null, \ArrayType\LookupAttributeArrayType $lookupAttributeArray = null, $autoPay = null, \StructType\BiddingDetailsType $biddingDetails = null, $buyerProtection = null, \StructType\AmountType $buyItNowPrice = null, $categoryMappingAllowed = false, \StructType\CharityType $charity = null, $country = null, \StructType\CrossPromotionsType $crossPromotion = null, $currency = null, $description = null, $descriptionReviseMode = null, \StructType\DistanceType $distance = null, $hitCounter = null, $itemID = null, \StructType\ListingDetailsType $listingDetails = null, $listingDuration = null, array $listingEnhancement = array(), $listingType = null, $location = null, $lotSize = null, $partnerCode = null, $partnerName = null, \StructType\PaymentDetailsType $paymentDetails = null, array $paymentMethods = array(), $payPalEmailAddress = null, \StructType\CategoryType $primaryCategory = null, $privateListing = null, \StructType\ProductListingDetailsType $productListingDetails = null, $quantity = null, $privateNotes = null, $regionID = null, $relistLink = null, \StructType\AmountType $reservePrice = null, \StructType\ReviseStatusType $reviseStatus = null, $scheduleTime = null, \StructType\CategoryType $secondaryCategory = null, \StructType\CategoryType $freeAddedCategory = null, \StructType\UserType $seller = null, \StructType\SellingStatusType $sellingStatus = null, \StructType\ShippingDetailsType $shippingDetails = null, array $shipToLocations = array(), $site = null, \StructType\AmountType $startPrice = null, \StructType\StorefrontType $storefront = null, $subTitle = null, $timeLeft = null, $title = null, $uUID = null, \StructType\VATDetailsType $vATDetails = null, $sellerVacationNote = null, $watchCount = null, $hitCount = null, $disableBuyerRequirements = null, \StructType\BestOfferDetailsType $bestOfferDetails = null, $locationDefaulted = null, $useTaxTable = null, $getItFast = null, $buyerResponsibleForShipping = null, $limitedWarrantyEligible = null, $eBayNotes = null, $questionCount = null, $relisted = null, $quantityAvailable = null, $sKU = null, \StructType\SearchDetailsType $searchDetails = null, $postalCode = null, \StructType\PictureDetailsType $pictureDetails = null, $dispatchTimeMax = null, $bestOfferEnabled = null, $localListing = null, \StructType\AddressType $sellerContactDetails = null, $totalQuestionCount = null, $proxyItem = null, \StructType\ExtendedContactDetailsType $extendedSellerContactDetails = null, $leadCount = null, $newLeadCount = null, \ArrayType\NameValueListArrayType $itemSpecifics = null, $groupCategoryID = null, \StructType\AmountType $classifiedAdPayPerLeadFee = null, $bidGroupItem = null, \StructType\BuyerProtectionDetailsType $applyBuyerProtection = null, $listingSubtype2 = null, $mechanicalCheckAccepted = null, $updateSellerInfo = null, $updateReturnPolicy = null, \StructType\ItemPolicyViolationType $itemPolicyViolation = null, array $crossBorderTrade = array(), \StructType\BusinessSellerDetailsType $businessSellerDetails = null, \StructType\AmountType $buyerGuaranteePrice = null, \StructType\BuyerRequirementDetailsType $buyerRequirementDetails = null, \StructType\ReturnPolicyType $returnPolicy = null, array $paymentAllowedSite = array(), $inventoryTrackingMethod = null, $integratedMerchantCreditCardEnabled = null, \StructType\VariationsType $variations = null, \StructType\ItemCompatibilityListType $itemCompatibilityList = null, $itemCompatibilityCount = null, $conditionID = null, $conditionDescription = null, $conditionDisplayName = null, $taxCategory = null, $quantityAvailableHint = null, $quantityThreshold = null, \StructType\DiscountPriceInfoType $discountPriceInfo = null, $sellerProvidedTitle = null, $vIN = null, $vINLink = null, $vRM = null, $vRMLink = null, \StructType\QuantityInfoType $quantityInfo = null, \StructType\SellerProfilesType $sellerProfiles = null, \StructType\ShippingServiceCostOverrideListType $shippingServiceCostOverrideList = null, \StructType\ShippingOverrideType $shippingOverride = null, \StructType\ShipPackageDetailsType $shippingPackageDetails = null, $topRatedListing = null, \StructType\QuantityRestrictionPerBuyerInfoType $quantityRestrictionPerBuyer = null, \StructType\AmountType $floorPrice = null, \StructType\AmountType $ceilingPrice = null, $isIntermediatedShippingEligible = null, \StructType\UnitInfoType $unitInfo = null, $relistParentID = null, $conditionDefinition = null, $hideFromSearch = null, $reasonHideFromSearch = null, $includeRecommendations = false, \StructType\PickupInStoreDetailsType $pickupInStoreDetails = null, $siteId = null, $ignoreQuantity = null, $availableForPickupDropOff = null, $eligibleForPickupDropOff = null, $liveAuction = null, \StructType\DigitalGoodInfoType $digitalGoodInfo = null, $eBayPlus = null, $eBayPlusEligible = null, $eMailDeliveryAvailable = null, $isSecureDescription = null, \DOMDocument $any = null)
     {
         $this
             ->setApplicationData($applicationData)
@@ -1841,7 +1847,6 @@ class ItemType extends AbstractStructBase
             ->setHitCounter($hitCounter)
             ->setItemID($itemID)
             ->setListingDetails($listingDetails)
-            ->setListingDesigner($listingDesigner)
             ->setListingDuration($listingDuration)
             ->setListingEnhancement($listingEnhancement)
             ->setListingType($listingType)
@@ -2360,24 +2365,6 @@ class ItemType extends AbstractStructBase
     public function setListingDetails(\StructType\ListingDetailsType $listingDetails = null)
     {
         $this->ListingDetails = $listingDetails;
-        return $this;
-    }
-    /**
-     * Get ListingDesigner value
-     * @return \StructType\ListingDesignerType|null
-     */
-    public function getListingDesigner()
-    {
-        return $this->ListingDesigner;
-    }
-    /**
-     * Set ListingDesigner value
-     * @param \StructType\ListingDesignerType $listingDesigner
-     * @return \StructType\ItemType
-     */
-    public function setListingDesigner(\StructType\ListingDesignerType $listingDesigner = null)
-    {
-        $this->ListingDesigner = $listingDesigner;
         return $this;
     }
     /**

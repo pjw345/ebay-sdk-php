@@ -96,11 +96,11 @@ class ShippingDetailsType extends AbstractStructBase
      * is only applicable to eBay US and Canada (English and French) sites. <br><br> This container can be used in an Add/Revise/Relist/Verify call to set sales tax settings for a specific tax jurisdiction, but it is actually a better practice if a user
      * sets up sales tax rates through the Sales Tax Table tool in My eBay (or by using the <b>SetTaxTable</b> call). A seller's Sales Tax Table is applied to the listing by including the <b>UseTaxTable</b> field in the request and setting its value to
      * <code>true</code>. The <b>GetTaxTable</b> call can be used to retrieve the current sales tax rates for different tax jurisdictions. <br><br> This container is only returned in order-related 'Get' calls if sales tax is applicable to the order line
-     * item. <br><br> <span class="tablenote"><b>Note: </b> As of November 1, 2019, buyers in over 30 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the
-     * buyer's behalf. So, if a sales tax rate is applied by the seller for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay during checkout process. For a list of the US states that will become subject to
-     * 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic. </span> <br> <span class="tablenote"><b>Note:
-     * </b> For eBay managed payment orders that are subject to 'Collect and Remit' taxes, these taxes will only be shown in the <b>eBayCollectAndRemitTaxes</b> container for line items, and the <b>SalesTax</b> will not be returned at all. For non-eBay
-     * managed payment orders, the 'Collect and Remit' taxes will be shown in both the <b>eBayCollectAndRemitTaxes</b> and <b>SalesTax</b> containers. </span>
+     * item. <br><br> <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the
+     * buyer's behalf. So, if a sales tax rate is applied by the seller for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay during checkout process. For a list of the US states that are currently subject to
+     * 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic. </span> <br> <span
+     * class="tablenote"><b>Note: </b> For eBay managed payment orders that are subject to 'Collect and Remit' taxes, these taxes will only be shown in the <b>eBayCollectAndRemitTaxes</b> container for line items, and the <b>SalesTax</b> will not be
+     * returned at all. For non-eBay managed payment orders, the 'Collect and Remit' taxes will be shown in both the <b>eBayCollectAndRemitTaxes</b> and <b>SalesTax</b> containers. </span>
      * - minOccurs: 0
      * @var \StructType\SalesTaxType
      */
@@ -312,9 +312,10 @@ class ShippingDetailsType extends AbstractStructBase
     /**
      * The CODCost
      * Meta information extracted from the WSDL
-     * - documentation: This dollar value indicates the money due from the buyer upon delivery of the item. <br><br> This field should only be specified in the request if 'COD' (cash-on-delivery) is a valid payment method for the site and it is included as
-     * a <b>PaymentMethods</b> value in the same request. <br><br> This field is only returned if set for the listing. <br><br> To see if 'COD' is a supported payment method for a site, call <b>GetCategoryFeatures</b>, specifying the listing category ID,
-     * and including the <b>FeatureID</b> field set to <b>PaymentMethods</b>. Look for a value of 'CashOnPickup' in one of the <b>Category.PaymentMethod</b> fields in the response.
+     * - documentation: This dollar value indicates the money due from the buyer upon delivery of the item. <br><br> This field should only be specified in the request if 'COD' (cash-on-delivery) is a valid payment method for the site and listing category,
+     * and it is included as a <b>PaymentMethods</b> value in the same request. <br><br> This field is only returned if set for the listing. <br><br> To see if 'COD' is a supported payment method for a site and category, call <b>GetCategoryFeatures</b>,
+     * specifying the listing category ID, and including the <b>FeatureID</b> field set to <b>PaymentMethods</b>. Look for a value of 'CashOnPickup' in one of the <b>Category.PaymentMethod</b> fields in the response. For some eBay sites, the 'COD' enum may
+     * also get returned.
      * - minOccurs: 0
      * @var \StructType\AmountType
      */
@@ -380,10 +381,10 @@ class ShippingDetailsType extends AbstractStructBase
      * international shipping rate table that specifies a surcharge by weight, you must specify the item weight in the <b>ShippingPackageDetails</b> container's <b>WeightMajor</b> and <b>WeightMinor</b> fields, even though the listing is using flat-rate
      * shipping. Do not use any other fields in the <b>ShippingPackageDetails</b> container because none of those fields are applicable in this use case. <br><br> This container is only returned in the 'Get' calls if one or more shipping rate tables have
      * been applied to the listing, and if the call is being made by the seller who listed the item. <br/><br/> <span class="tablenote"><b>Note: </b> The capability to create and use multiple domestic and international shipping rate tables (up to 40 per
-     * seller account) has rolled out to the US, Australia, UK, Germany, Canada (English and French), and Italy sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old
-     * default domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that
-     * will use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping
-     * rate tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields
+     * seller account) has rolled out to the US, Australia, Canada (English and French), and Italy sites. For other sites, only one domestic and one international shipping rate table may be set up per seller. Whether a seller is using the old default
+     * domestic and international shipping rate tables or the new shipping rate tables, these shipping rate tables are set up in My eBay Shipping Preferences or as part of a Shipping Business Policy. If using the Trading API to create a listing that will
+     * use the new shipping rate tables, the <b>DomesticRateTableId</b> and <b>InternationalRateTableId</b> fields are used to reference and apply these new shipping rate tables to the listing. If desired, sellers can still use the old default shipping rate
+     * tables, but they are not allowed to mix and match old and new shipping rate tables, meaning that they will get an error if they pass in both the old fields (<b>DomesticRateTable</b> and <b>InternationalRateTable</b>) and the new fields
      * (<b>DomesticRateTableId</b> and <b>InternationalRateTableId</b>). The new shipping rate tables have all of the functionality of the old shipping rate tables, plus the seller has access to all domestic regions and not just the special regions (such as
      * Alaska & Hawaii, US Protectorates, and APO/FPO locations in US).</span>
      * - minOccurs: 0

@@ -24,8 +24,8 @@ class DeliveryURLDetailType extends AbstractStructBase
     /**
      * The DeliveryURL
      * Meta information extracted from the WSDL
-     * - documentation: The address of a notification delivery URL. This address applies to the DeliveryURLName within the same ApplicationDeliveryPreferences.DeliveryURLDetails container. For delivery to a server, the URL begins with http:// or https://
-     * and must be well formed. Use a URL that is functional at the time of the call. For delivery to an email address, the URL begins with mailto: and specifies a valid email address.
+     * - documentation: The address of a notification delivery URL. This address applies to the DeliveryURLName within the same ApplicationDeliveryPreferences.DeliveryURLDetails container. For delivery to a server, the URL must begin with
+     * "<code>https://</code>" and must be well formed. Use a URL that is functional at the time of the call.
      * - minOccurs: 0
      * @var string
      */

@@ -7,7 +7,8 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for AddItemRequestType StructType
  * Meta information extracted from the WSDL
- * - documentation: Base request type for the <b>AddItem</b> call, which is used to create a fixed-price, auction, or classified ad listing.
+ * - documentation: Base request type for the <b>AddItem</b> call, which is used to create a fixed-price, auction, or classified ad listing. The <b>AddItem</b> call does not support multiple-variation listings, so the <b>AddFixedPriceItem</b> call must
+ * be used to create multiple-variation listings.
  * @subpackage Structs
  */
 class AddItemRequestType extends AbstractRequestType

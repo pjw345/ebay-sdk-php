@@ -5,9 +5,8 @@ namespace EnumType;
 /**
  * This class stands for FeaturedFirstCodeType EnumType
  * Meta information extracted from the WSDL
- * - documentation: Enumerated type that indicates if the Featured First listing upgrade is enabled for the specified site, and whether it is restricted to a specific seller level. <br/><br/> <span class="tablenote"><strong>Note:</strong> Beginning in
- * mid-August 2019, the Featured First listing upgrade can no longer be added for new listings in any eBay marketplace. Existing listings enabled with this feature will still be honored until mid-September 2019, at which time the feature will be fully
- * disabled. </span>
+ * - documentation: Enumerated type that indicates if the Featured First listing upgrade is enabled for the specified site, and whether it is restricted to a specific seller level. <br/><br/> <span class="tablenote"><strong>Note:</strong> The Featured
+ * First listing upgrade can no longer be added for new listings in any eBay marketplace. </span>
  * @subpackage Enumerations
  */
 class FeaturedFirstCodeType

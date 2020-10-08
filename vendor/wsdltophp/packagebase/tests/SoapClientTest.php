@@ -3,7 +3,6 @@
 namespace WsdlToPhp\PackageBase\Tests;
 
 use WsdlToPhp\PackageBase\Utils;
-use WsdlToPhp\PackageBase\Tests\SoapClient;
 
 class SoapClientTest extends TestCase
 {
@@ -363,8 +362,8 @@ class SoapClientTest extends TestCase
         $this->assertSame(array(
             'X-HEADER' => 'X-VALUE',
         ), $o['http']['Auth']);
-        $this->assertTrue(strpos($o['http']['header'], 'X-Header-Name: X-Header-Value') !== false);
-        $this->assertTrue(strpos($o['http']['header'], 'X-Header-ID: X-Header-ID-Value') !== false);
+        $this->assertContains('X-Header-Name: X-Header-Value', $o['http']['header']);
+        $this->assertContains('X-Header-ID: X-Header-ID-Value', $o['http']['header']);
     }
     /**
      *
@@ -528,5 +527,26 @@ class SoapClientTest extends TestCase
         ));
 
         $this->assertInstanceOf('\SoapClient', $soapClient->getSoapClient());
+    }
+    /**
+     *
+     */
+    public function test__toStringMustReturnTheClassNameOfTheInstance()
+    {
+        $this->assertSame('WsdlToPhp\PackageBase\Tests\SoapClient', (string) new SoapClient());
+    }
+    /**
+     *
+     */
+    public function testGetOutputHeadersWithoutRequestMustReturnAnEmptyArray()
+    {
+        $soapClient = new SoapClient(array(
+            SoapClient::WSDL_URL => null,
+            SoapClient::WSDL_LOCATION => 'http://api.bing.net:80/soap.asmx',
+            SoapClient::WSDL_URI => 'http://api.bing.net:80/soap.asmx',
+        ));
+
+        $this->assertTrue(is_array($soapClient->getOutputHeaders()));
+        $this->assertEmpty($soapClient->getOutputHeaders());
     }
 }

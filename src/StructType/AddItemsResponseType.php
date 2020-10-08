@@ -16,7 +16,7 @@ class AddItemsResponseType extends AbstractResponseType
     /**
      * The AddItemResponseContainer
      * Meta information extracted from the WSDL
-     * - documentation: One <b>AddItemResponseContainer</b> container is returned for each listing that is being created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is
+     * - documentation: One <b>AddItemResponseContainer</b> container is returned for each listing that was created with the <b>AddItems</b> call. Each container includes the <b>ItemID</b> of each newly created listings, the eBay category each item is
      * listed under, the seller-defined SKUs of the items (if any), the listing recommendations for each item (if applicable), the start and end time of each listing, and the estimated fees that each listing will incur.
      * - maxOccurs: unbounded
      * - minOccurs: 0

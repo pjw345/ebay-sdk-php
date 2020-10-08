@@ -7,7 +7,7 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetCategorySpecificsRequestType StructType
  * Meta information extracted from the WSDL
- * - documentation: This is the base request type for the <b>GetCategorySpecifics</b> call. This call is used to retrieve recommended Item Specifics names and values for one or multiple eBay Categories.
+ * - documentation: This is the base request type for the <b>GetCategorySpecifics</b> call. This call is used to retrieve required, recommended, and optional Item Specifics names and values for one or multiple eBay Categories.
  * @subpackage Structs
  */
 class GetCategorySpecificsRequestType extends AbstractRequestType
@@ -15,10 +15,11 @@ class GetCategorySpecificsRequestType extends AbstractRequestType
     /**
      * The CategoryID
      * Meta information extracted from the WSDL
-     * - documentation: A unique identifer for an eBay leaf-level category. Recommended Item Specifics names and values will be retrieved for each eBay category that is specified. Up to 100 <b>CategoryID</b> values may be specified in one call. <br><br> A
-     * <b>GetCategorySpecifics</b> call request requires at least one of the following: a <b>CategoryID</b> value, a <b>CategorySpecifics.CategoryID</b> value, or the <b>CategorySpecificsFileInfo</b> field with its value set to <code>true</code>.
-     * <b>CategoryID</b> values and <b>CategorySpecific.CategoryID</b> values can both be used in the same request. <br><br> Keep in mind that a high number of specified categories can result in longer response times and larger result sets. If your call
-     * request happens to time out, you might want specify fewer categories. If any <b>CategoryID</b> values are specified more than once, only the first instance will be used.
+     * - documentation: A unique identifer for an eBay category. Recommended Item Specifics names and values will be retrieved for each eBay category that is specified. Up to 100 <b>CategoryID</b> values may be specified in one call. Although Item Specifics
+     * metadata can be retrieved for any eBay category at any level in the hierarchy, it is recommended that users specify leaf category IDs, especially if they are using <b>GetCategorySpecifics</b> to retrieve the Item Specifics applicable to the listing
+     * categories they use. <br><br> A <b>GetCategorySpecifics</b> call request requires at least one of the following: a <b>CategoryID</b> value, a <b>CategorySpecifics.CategoryID</b> value, or the <b>CategorySpecificsFileInfo</b> field with its value set
+     * to <code>true</code>. <b>CategoryID</b> values and <b>CategorySpecific.CategoryID</b> values can both be used in the same request. <br><br> Keep in mind that a high number of specified categories can result in longer response times and larger result
+     * sets. If your call request happens to time out, you might want specify fewer categories. If any <b>CategoryID</b> values are specified more than once, only the first instance will be used.
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var string[]
@@ -43,9 +44,9 @@ class GetCategorySpecificsRequestType extends AbstractRequestType
      * Meta information extracted from the WSDL
      * - documentation: This field can be used if you want to control the number of Item Specifics that are returned for each specified eBay category. If you only wanted to retrieve the 10 most popular Item Specifics per category, you would include this
      * field and set its value to <code>10</code>. Note that mandatory Item Specifics are always returned first in the response. If this field is omitted, all available Item Specifics names for each specified category are returned. If this field's value is
-     * set to a value that is higher than the number of Item Specific names available, all Item Specific names are still returned. <br> <br> <span class="tablenote"><b>Note:</b> In October 2019, eBay has updated the <b>GetCategorySpecifics</b> call to
-     * retrieve all available Item Specifics name-value pairs for each specified category by default. Previously, 30 Item Specifics names would be returned by default (if the <b>MaxNames</b> filter wasn't used) and 25 corresponding Item Specifics values
-     * would be returned by default (if the <b>MaxValuesPerName</b> filter wasn't used). However, if a user wants to limit the number of Item Specifics names and corresponding values that are returned, they can still use the <b>MaxNames</b> and/or
+     * set to a value that is higher than the number of Item Specific names available, all Item Specific names are still returned. <br> <br> <span class="tablenote"><b>Note:</b> In October 2019, eBay updated the <b>GetCategorySpecifics</b> call to retrieve
+     * all available Item Specifics name-value pairs for each specified category by default. Previously, 30 Item Specifics names would be returned by default (if the <b>MaxNames</b> filter wasn't used) and 25 corresponding Item Specifics values would be
+     * returned by default (if the <b>MaxValuesPerName</b> filter wasn't used). However, if a user wants to limit the number of Item Specifics names and corresponding values that are returned, they can still use the <b>MaxNames</b> and/or
      * <b>MaxValuesPerName</b> filters to do this. </span> <br>
      * - minOccurs: 0
      * @var int

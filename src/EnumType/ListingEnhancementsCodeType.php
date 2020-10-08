@@ -73,7 +73,8 @@ class ListingEnhancementsCodeType
      * Constant for value 'ValuePackBundle'
      * Meta information extracted from the WSDL
      * - documentation: If this value is specified in an Add/Revise/Relist call, a Value Pack bundle is applied to the listing. The Value Pack bundle includes the Gallery Plus feature, a listing subtitle, and use of a Listing Designer template for a
-     * discounted price. Support for this feature varies by site and category.
+     * discounted price. Support for this feature varies by site and category. <br> <br> <span class="tablenote"><b>Note:</b> As of May 31, 2020, sellers are no longer able to use Listing Designer templates when they create or revise listings, so use of a
+     * Listing Designer template will no longer be a part of this bundle.</span>
      * @return string 'ValuePackBundle'
      */
     const VALUE_VALUE_PACK_BUNDLE = 'ValuePackBundle';

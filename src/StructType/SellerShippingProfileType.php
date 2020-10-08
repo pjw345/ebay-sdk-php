@@ -7,8 +7,8 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SellerShippingProfileType StructType
  * Meta information extracted from the WSDL
- * - documentation: Type defining the <b>SellerShippingProfile</b> container, which is used in an Add/Revise/Relist Trading API call to reference a Business Policies shipping policy profile. Business Policies shipping profiles contain detailed
- * information on domestic and international shipping, including shipping service options, handling time, package handling costs, excluded ship-to locations, and shipping insurance information.
+ * - documentation: Type defining the <b>SellerShippingProfile</b> container, which is used in an Add/Revise/Relist Trading API call to reference a shipping business policy. Shipping business policies contain detailed information on domestic and
+ * international shipping, including shipping service options and costs, handling time, shipping discount inormation, and excluded ship-to locations.
  * @subpackage Structs
  */
 class SellerShippingProfileType extends AbstractStructBase
@@ -16,10 +16,10 @@ class SellerShippingProfileType extends AbstractStructBase
     /**
      * The ShippingProfileID
      * Meta information extracted from the WSDL
-     * - documentation: The unique identifier of a Business Policies shipping profile. A <b>ShippingProfileID</b> and/or a <b>ShipppingProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the Shippping values of a Business
-     * Policies shipping profile. If both fields are provided and their values don't match, the <b>ShipppingProfileID</b> takes precedence. <br/><br/> Shipping profile IDs can be retrieved with the <b>getFulfillmentPolicies</b> call of the <b>Account
-     * API</b> or with the <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business Policy IDs can also be retrieved through the Business Policies section of My eBay. <br/><br/> In the 'Get' calls, the <b>ShipppingProfileID</b>
-     * value will always be returned if Business Policies are set for the listing, and the person making the API call is the seller of the listing. The <b>ShipppingProfileName</b> value will be returned if a name is assigned to the shipping profile.
+     * - documentation: The unique identifier of a shipping business policy. A <b>ShippingProfileID</b> and/or a <b>ShipppingProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the shippping-related settings/values of a
+     * shipping business policy. If both fields are provided and their values don't match, the <b>ShipppingProfileID</b> takes precedence. <br/><br/> Shipping profile IDs can be retrieved with the <b>getFulfillmentPolicies</b> call of the <b>Account API</b>
+     * or with the <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business policy IDs can also be retrieved through the Business policies section of My eBay. <br/><br/> In the 'Get' calls, the <b>ShipppingProfileID</b> value
+     * will always be returned if business policies are set for the listing, and the person making the API call is the seller of the listing. The <b>ShipppingProfileName</b> value will be returned if a name is assigned to the shipping business policy.
      * - minOccurs: 0
      * @var int
      */
@@ -27,9 +27,9 @@ class SellerShippingProfileType extends AbstractStructBase
     /**
      * The ShippingProfileName
      * Meta information extracted from the WSDL
-     * - documentation: The name of a Business Policies shipping profile. A <b>ShippingProfileID</b> and/or a <b>ShippingProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the shipping values of a Business Policies
-     * shipping profile. If both fields are provided and their values don't match, the <b>ShippingProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>ShippingProfileID</b> value will always be returned if Business Policies are set for the
-     * listing, and the person making the API call is the seller of the listing. The <b>ShippingProfileName</b> value will be returned if a name is assigned to the payment profile.
+     * - documentation: The name of a shipping business policy. A <b>ShippingProfileID</b> and/or a <b>ShippingProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the shipping-related settings/values of a shipping
+     * business policy. If both fields are provided and their values don't match, the <b>ShippingProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>ShippingProfileID</b> value will always be returned if business policies are set for the
+     * listing, and the person making the API call is the seller of the listing. The <b>ShippingProfileName</b> value will be returned if a name is assigned to the shipping business policy.
      * - minOccurs: 0
      * @var string
      */

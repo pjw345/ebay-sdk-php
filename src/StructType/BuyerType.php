@@ -16,8 +16,8 @@ class BuyerType extends AbstractStructBase
     /**
      * The ShippingAddress
      * Meta information extracted from the WSDL
-     * - documentation: This container uses <b>AddressType</b>, and each call that uses <b>BuyerType</b> uses the <b>ShippingAddress</b> container a little differently. See the Call Reference documentation for each call to see what fields of
-     * <b>AddressType</b> are used by each call. Output only.
+     * - documentation: This container shows the buyer's shipping address. <br> <br> <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program order returned in <b>GetItemTransactions</b> or <b>GetSellerTransactions</b>, this is the address
+     * of the authenticator's warehouse. The authenticator is responsible for delivery to the buyer's shipping address. </span>
      * - minOccurs: 0
      * @var \StructType\AddressType
      */

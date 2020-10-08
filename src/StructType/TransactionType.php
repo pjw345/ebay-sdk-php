@@ -306,7 +306,10 @@ class TransactionType extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - documentation: A Final Value Fee is calculated and charged to a seller's account immediately upon creation of an order line item. Note that this fee is created before the buyer makes a payment. As long as the <b>IncludeFinalValueFee</b> field is
      * included in the call request and set to 'true', the Final Value Fee for each order line item is returned, regardless of the checkout status. <br><br> If a seller requests a Final Value Fee credit, the value of <b>Transaction.FinalValueFee</b> will
-     * not change if a credit is issued. The credit only appears in the seller's account data.
+     * not change if a credit is issued. The credit only appears in the seller's account data. <br> <br> <span class="tablenote"><b>Note:</b> The calculation of the Final Value Fee is changing for managed payments sellers, so the value returned in this
+     * field should only be considered as an estimated value. The <b>getTransactions</b> method of the <b>Finances API</b> can be used to get accurate Final Value Fee values. <br><br> See the <a
+     * href="https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822" target="_blank">Selling fees for managed payments sellers</a> help page for more information about how Final Value Fees are changing for managed payments sellers.
+     * </span>
      * - minOccurs: 0
      * @var \StructType\AmountType
      */
@@ -517,9 +520,9 @@ class TransactionType extends AbstractStructBase
     /**
      * The IsMultiLegShipping
      * Meta information extracted from the WSDL
-     * - documentation: If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will be shipped internationally using the Global Shipping Program (GSP). With GSP, the shipment has a domestic leg and an international leg. In the
-     * domestic leg, the seller ships the item to eBay's shipping partner. This shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. eBay's shipping partner will be
-     * responsible for the international leg of the shipment and the order's final destination.
+     * - documentation: If <strong>IsMultilegShipping</strong> is <code>true</code>, the order line item will not be shipped directly to the buyer. Instead, the item may be shipped to eBay's Global Shipping Program (GSP) partner who will handle the
+     * international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be found in the
+     * <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. <br><br> If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be returned.
      * - minOccurs: 0
      * @var bool
      */
@@ -527,8 +530,10 @@ class TransactionType extends AbstractStructBase
     /**
      * The MultiLegShippingDetails
      * Meta information extracted from the WSDL
-     * - documentation: This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's
-     * shipping partner. <br/><br/> This container is only returned if the order line item requires shipping through GSP. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     * - documentation: This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg.
+     * In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner
+     * ships it directly to the buyer. <br/><br/> This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if
+     * <strong>IsMultilegShipping</strong> is <code>false</code>.
      * - minOccurs: 0
      * @var \StructType\MultiLegShippingDetailsType
      */
@@ -716,11 +721,10 @@ class TransactionType extends AbstractStructBase
      * field is also returned if <code>false</code> (not subject to eBay Collect and Remit). An <b>eBayCollectAndRemitTaxes</b> container is returned if the order line item is subject to such a tax, and the type and amount of this tax is displayed in the
      * <b>eBayCollectAndRemitTaxes.TaxDetails</b> container. <br/><br/> Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do
      * not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a
-     * href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of July 1, 2019, buyers in 22 US states will automatically be charged sales tax for eBay purchases,
-     * and at least six more US states are scheduled to be subject to eBay Collect and Remit Tax by the end of 2019. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps
-     * to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a
-     * list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a>
-     * help topic.
+     * href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases,
+     * and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is
+     * employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to
+     * 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      * - minOccurs: 0
      * @var bool
      */
@@ -731,14 +735,25 @@ class TransactionType extends AbstractStructBase
      * - documentation: This container is returned if the order line item is subject to a tax (US sales tax or Australian Goods and Services tax) that eBay will collect and remit to the proper taxing authority on the buyer's behalf. The type of tax will be
      * shown in the <b>TaxDetails.Imposition</b> and <b>TaxDetails.TaxDescription</b> fields, and the amount of this tax will be displayed in the <b>TaxDetails.TaxAmount</b> field. <br/><br/> Australian 'Goods and Services' tax (GST) is automatically
      * charged to buyers outside of Australia when they purchase items on the eBay Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the
-     * Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of January 1, 2019,
-     * buyers in some US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection
+     * Australian government. For more information about Australian GST, see the <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of April 1, 2020,
+     * buyers in 41 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection
      * of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states
      * that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      * - minOccurs: 0
      * @var \StructType\TaxesType
      */
     public $eBayCollectAndRemitTaxes;
+    /**
+     * The Program
+     * Meta information extracted from the WSDL
+     * - documentation: This container gives the status of an order line item going through the Authenticity Guarantee service process. In the Authenticity Guarantee service program, a third-party authenticator must verify the authenticity of the item
+     * before it can be sent to the buyer. <br/><br/> This container is only returned for order line items subject to the Authenticity Guarantee service process, and if it is returned, the seller must make sure to send the item to the third-party
+     * authenticator's address (shown in the <b>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</b> field), and not to the buyer's shipping address. If the item is successfully authenticated, the authenticator will ship the item to
+     * the buyer.
+     * - minOccurs: 0
+     * @var \StructType\TransactionProgramType
+     */
+    public $Program;
     /**
      * The any
      * @var \DOMDocument
@@ -820,6 +835,7 @@ class TransactionType extends AbstractStructBase
      * @uses TransactionType::setGuaranteedDelivery()
      * @uses TransactionType::setEBayCollectAndRemitTax()
      * @uses TransactionType::setEBayCollectAndRemitTaxes()
+     * @uses TransactionType::setProgram()
      * @uses TransactionType::setAny()
      * @param \StructType\AmountType $amountPaid
      * @param \StructType\AmountType $adjustmentAmount
@@ -895,9 +911,10 @@ class TransactionType extends AbstractStructBase
      * @param bool $guaranteedDelivery
      * @param bool $eBayCollectAndRemitTax
      * @param \StructType\TaxesType $eBayCollectAndRemitTaxes
+     * @param \StructType\TransactionProgramType $program
      * @param \DOMDocument $any
      */
-    public function __construct(\StructType\AmountType $amountPaid = null, \StructType\AmountType $adjustmentAmount = null, \StructType\AmountType $convertedAdjustmentAmount = null, \StructType\UserType $buyer = null, \StructType\ShippingDetailsType $shippingDetails = null, \StructType\AmountType $convertedAmountPaid = null, \StructType\AmountType $convertedTransactionPrice = null, $createdDate = null, $depositType = null, \StructType\ItemType $item = null, $quantityPurchased = null, \StructType\TransactionStatusType $status = null, $transactionID = null, \StructType\AmountType $transactionPrice = null, $bestOfferSale = null, $vATPercent = null, array $externalTransaction = array(), \StructType\SellingManagerProductDetailsType $sellingManagerProductDetails = null, \StructType\ShippingServiceOptionsType $shippingServiceSelected = null, $buyerMessage = null, \StructType\AmountType $dutchAuctionBid = null, $buyerPaidStatus = null, $sellerPaidStatus = null, $paidTime = null, $shippedTime = null, \StructType\AmountType $totalPrice = null, \StructType\FeedbackInfoType $feedbackLeft = null, \StructType\FeedbackInfoType $feedbackReceived = null, \StructType\OrderType $containingOrder = null, \StructType\AmountType $finalValueFee = null, \StructType\ListingCheckoutRedirectPreferenceType $listingCheckoutRedirectPreference = null, \ArrayType\RefundArrayType $refundArray = null, $transactionSiteID = null, $platform = null, $cartID = null, $sellerContactBuyerByEmail = null, $payPalEmailAddress = null, $paisaPayID = null, \StructType\AmountType $buyerGuaranteePrice = null, \StructType\VariationType $variation = null, $buyerCheckoutMessage = null, \StructType\AmountType $totalTransactionPrice = null, \StructType\TaxesType $taxes = null, $bundlePurchase = null, \StructType\AmountType $actualShippingCost = null, \StructType\AmountType $actualHandlingCost = null, $orderLineItemID = null, $eBayPaymentID = null, \StructType\PaymentHoldDetailType $paymentHoldDetails = null, \StructType\SellerDiscountsType $sellerDiscounts = null, \StructType\AmountType $refundAmount = null, $refundStatus = null, $codiceFiscale = null, $isMultiLegShipping = null, \StructType\MultiLegShippingDetailsType $multiLegShippingDetails = null, $invoiceSentTime = null, \StructType\UnpaidItemType $unpaidItem = null, $intangibleItem = null, \StructType\PaymentsInformationType $monetaryDetails = null, \StructType\PickupDetailsType $pickupDetails = null, \StructType\PickupMethodSelectedType $pickupMethodSelected = null, \StructType\AmountType $shippingConvenienceCharge = null, $logisticsPlanType = null, \StructType\BuyerPackageEnclosuresType $buyerPackageEnclosures = null, $inventoryReservationID = null, $extendedOrderID = null, $eBayPlusTransaction = null, \StructType\GiftSummaryType $giftSummary = null, \StructType\DigitalDeliverySelectedType $digitalDeliverySelected = null, $gift = null, $guaranteedShipping = null, $guaranteedDelivery = null, $eBayCollectAndRemitTax = null, \StructType\TaxesType $eBayCollectAndRemitTaxes = null, \DOMDocument $any = null)
+    public function __construct(\StructType\AmountType $amountPaid = null, \StructType\AmountType $adjustmentAmount = null, \StructType\AmountType $convertedAdjustmentAmount = null, \StructType\UserType $buyer = null, \StructType\ShippingDetailsType $shippingDetails = null, \StructType\AmountType $convertedAmountPaid = null, \StructType\AmountType $convertedTransactionPrice = null, $createdDate = null, $depositType = null, \StructType\ItemType $item = null, $quantityPurchased = null, \StructType\TransactionStatusType $status = null, $transactionID = null, \StructType\AmountType $transactionPrice = null, $bestOfferSale = null, $vATPercent = null, array $externalTransaction = array(), \StructType\SellingManagerProductDetailsType $sellingManagerProductDetails = null, \StructType\ShippingServiceOptionsType $shippingServiceSelected = null, $buyerMessage = null, \StructType\AmountType $dutchAuctionBid = null, $buyerPaidStatus = null, $sellerPaidStatus = null, $paidTime = null, $shippedTime = null, \StructType\AmountType $totalPrice = null, \StructType\FeedbackInfoType $feedbackLeft = null, \StructType\FeedbackInfoType $feedbackReceived = null, \StructType\OrderType $containingOrder = null, \StructType\AmountType $finalValueFee = null, \StructType\ListingCheckoutRedirectPreferenceType $listingCheckoutRedirectPreference = null, \ArrayType\RefundArrayType $refundArray = null, $transactionSiteID = null, $platform = null, $cartID = null, $sellerContactBuyerByEmail = null, $payPalEmailAddress = null, $paisaPayID = null, \StructType\AmountType $buyerGuaranteePrice = null, \StructType\VariationType $variation = null, $buyerCheckoutMessage = null, \StructType\AmountType $totalTransactionPrice = null, \StructType\TaxesType $taxes = null, $bundlePurchase = null, \StructType\AmountType $actualShippingCost = null, \StructType\AmountType $actualHandlingCost = null, $orderLineItemID = null, $eBayPaymentID = null, \StructType\PaymentHoldDetailType $paymentHoldDetails = null, \StructType\SellerDiscountsType $sellerDiscounts = null, \StructType\AmountType $refundAmount = null, $refundStatus = null, $codiceFiscale = null, $isMultiLegShipping = null, \StructType\MultiLegShippingDetailsType $multiLegShippingDetails = null, $invoiceSentTime = null, \StructType\UnpaidItemType $unpaidItem = null, $intangibleItem = null, \StructType\PaymentsInformationType $monetaryDetails = null, \StructType\PickupDetailsType $pickupDetails = null, \StructType\PickupMethodSelectedType $pickupMethodSelected = null, \StructType\AmountType $shippingConvenienceCharge = null, $logisticsPlanType = null, \StructType\BuyerPackageEnclosuresType $buyerPackageEnclosures = null, $inventoryReservationID = null, $extendedOrderID = null, $eBayPlusTransaction = null, \StructType\GiftSummaryType $giftSummary = null, \StructType\DigitalDeliverySelectedType $digitalDeliverySelected = null, $gift = null, $guaranteedShipping = null, $guaranteedDelivery = null, $eBayCollectAndRemitTax = null, \StructType\TaxesType $eBayCollectAndRemitTaxes = null, \StructType\TransactionProgramType $program = null, \DOMDocument $any = null)
     {
         $this
             ->setAmountPaid($amountPaid)
@@ -974,6 +991,7 @@ class TransactionType extends AbstractStructBase
             ->setGuaranteedDelivery($guaranteedDelivery)
             ->setEBayCollectAndRemitTax($eBayCollectAndRemitTax)
             ->setEBayCollectAndRemitTaxes($eBayCollectAndRemitTaxes)
+            ->setProgram($program)
             ->setAny($any);
     }
     /**
@@ -2499,6 +2517,24 @@ class TransactionType extends AbstractStructBase
     public function setEBayCollectAndRemitTaxes(\StructType\TaxesType $eBayCollectAndRemitTaxes = null)
     {
         $this->eBayCollectAndRemitTaxes = $eBayCollectAndRemitTaxes;
+        return $this;
+    }
+    /**
+     * Get Program value
+     * @return \StructType\TransactionProgramType|null
+     */
+    public function getProgram()
+    {
+        return $this->Program;
+    }
+    /**
+     * Set Program value
+     * @param \StructType\TransactionProgramType $program
+     * @return \StructType\TransactionType
+     */
+    public function setProgram(\StructType\TransactionProgramType $program = null)
+    {
+        $this->Program = $program;
         return $this;
     }
     /**

@@ -21,6 +21,18 @@ class GetAccountResponseType extends AbstractResponseType
      */
     public $AccountID;
     /**
+     * The FeeNettingStatus
+     * Meta information extracted from the WSDL
+     * - documentation: This enumeration value indicates the current status of the seller's account for the fee netting mechanism. The seller's account has to be enabled for eBay managed payments in order for fee netting to be available. If the
+     * <code>Enabled</code> value is returned, the seller may include the <b>IncludeNettedEntries</b> field in the request to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the
+     * seller. The total net amount of any seller credits related to these fees is also shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response. <br> <br> <span class="tablenote"><b>Note: </b> For a limited number of managed
+     * payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until
+     * mid-July 2020. </span>
+     * - minOccurs: 0
+     * @var string
+     */
+    public $FeeNettingStatus;
+    /**
      * The AccountSummary
      * Meta information extracted from the WSDL
      * - documentation: Contains summary data for the seller's account, such as the overall balance, bank account and credit card information, and amount and date of any past due balances. Can also contain data for one or more additional accounts, if the
@@ -84,6 +96,7 @@ class GetAccountResponseType extends AbstractResponseType
     /**
      * Constructor method for GetAccountResponseType
      * @uses GetAccountResponseType::setAccountID()
+     * @uses GetAccountResponseType::setFeeNettingStatus()
      * @uses GetAccountResponseType::setAccountSummary()
      * @uses GetAccountResponseType::setCurrency()
      * @uses GetAccountResponseType::setAccountEntries()
@@ -92,6 +105,7 @@ class GetAccountResponseType extends AbstractResponseType
      * @uses GetAccountResponseType::setEntriesPerPage()
      * @uses GetAccountResponseType::setPageNumber()
      * @param string $accountID
+     * @param string $feeNettingStatus
      * @param \StructType\AccountSummaryType $accountSummary
      * @param string $currency
      * @param \StructType\AccountEntriesType $accountEntries
@@ -100,10 +114,11 @@ class GetAccountResponseType extends AbstractResponseType
      * @param int $entriesPerPage
      * @param int $pageNumber
      */
-    public function __construct($accountID = null, \StructType\AccountSummaryType $accountSummary = null, $currency = null, \StructType\AccountEntriesType $accountEntries = null, \StructType\PaginationResultType $paginationResult = null, $hasMoreEntries = null, $entriesPerPage = null, $pageNumber = null)
+    public function __construct($accountID = null, $feeNettingStatus = null, \StructType\AccountSummaryType $accountSummary = null, $currency = null, \StructType\AccountEntriesType $accountEntries = null, \StructType\PaginationResultType $paginationResult = null, $hasMoreEntries = null, $entriesPerPage = null, $pageNumber = null)
     {
         $this
             ->setAccountID($accountID)
+            ->setFeeNettingStatus($feeNettingStatus)
             ->setAccountSummary($accountSummary)
             ->setCurrency($currency)
             ->setAccountEntries($accountEntries)
@@ -132,6 +147,31 @@ class GetAccountResponseType extends AbstractResponseType
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($accountID, true), gettype($accountID)), __LINE__);
         }
         $this->AccountID = $accountID;
+        return $this;
+    }
+    /**
+     * Get FeeNettingStatus value
+     * @return string|null
+     */
+    public function getFeeNettingStatus()
+    {
+        return $this->FeeNettingStatus;
+    }
+    /**
+     * Set FeeNettingStatus value
+     * @uses \EnumType\FeenettingStatusCodeType::valueIsValid()
+     * @uses \EnumType\FeenettingStatusCodeType::getValidValues()
+     * @throws \InvalidArgumentException
+     * @param string $feeNettingStatus
+     * @return \StructType\GetAccountResponseType
+     */
+    public function setFeeNettingStatus($feeNettingStatus = null)
+    {
+        // validation for constraint: enumeration
+        if (!\EnumType\FeenettingStatusCodeType::valueIsValid($feeNettingStatus)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \EnumType\FeenettingStatusCodeType', is_array($feeNettingStatus) ? implode(', ', $feeNettingStatus) : var_export($feeNettingStatus, true), implode(', ', \EnumType\FeenettingStatusCodeType::getValidValues())), __LINE__);
+        }
+        $this->FeeNettingStatus = $feeNettingStatus;
         return $this;
     }
     /**

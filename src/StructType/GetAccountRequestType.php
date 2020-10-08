@@ -86,6 +86,18 @@ class GetAccountRequestType extends AbstractRequestType
      */
     public $IncludeConversionRate;
     /**
+     * The IncludeNettedEntries
+     * Meta information extracted from the WSDL
+     * - documentation: An eBay managed payments seller includes this field and sets it to <code>true</code> to retrieve the total net amount of all charges/fees that have been deducted from seller payouts instead of being invoiced to the seller. The total
+     * net amount of any seller credits related to these fees is also shown. These fees and credit amounts will be shown in the <b>AccountSummary.NettedTransactionSummary</b> container in the response. <br> <br> The seller's account has to be enabled for
+     * managed payments and the fee netting mechanism must be enabled for the managed payments account in order to retrieve the fee netted amounts. A seller can check their status for the fee netting mechanism by checking the value in the
+     * <b>FeeNettingStatus</b> field. <br> <br> <span class="tablenote"><b>Note: </b> For a limited number of managed payments sellers, final value fees and payment processing fees will start getting deducted from seller payouts as early as mid-June 2020,
+     * but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020. </span>
+     * - minOccurs: 0
+     * @var bool
+     */
+    public $IncludeNettedEntries;
+    /**
      * The AccountEntrySortType
      * Meta information extracted from the WSDL
      * - documentation: Specifies how account entries should be sorted in the response, by an element and then in ascending or descending order.
@@ -119,7 +131,7 @@ class GetAccountRequestType extends AbstractRequestType
      * related to a specific eBay order. <br><br> It is possible that no account entries will be found directly related to the specified order ID, and if this is the case, no <b>AccountEntries</b> container will be returned, and the <b>ack</b> value will
      * still be <code>Success</code>. <br><br> <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the
      * old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in
-     * API calls. <b>Beginning in April 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate
+     * API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate
      * payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as filters in the request payload, including the <b>GetAccount</b> call, will support the identifiers for both
      * unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and
      * exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and eBay customer support. <br><br> Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the
@@ -139,6 +151,7 @@ class GetAccountRequestType extends AbstractRequestType
      * @uses GetAccountRequestType::setExcludeBalance()
      * @uses GetAccountRequestType::setExcludeSummary()
      * @uses GetAccountRequestType::setIncludeConversionRate()
+     * @uses GetAccountRequestType::setIncludeNettedEntries()
      * @uses GetAccountRequestType::setAccountEntrySortType()
      * @uses GetAccountRequestType::setCurrency()
      * @uses GetAccountRequestType::setItemID()
@@ -151,12 +164,13 @@ class GetAccountRequestType extends AbstractRequestType
      * @param bool $excludeBalance
      * @param bool $excludeSummary
      * @param bool $includeConversionRate
+     * @param bool $includeNettedEntries
      * @param string $accountEntrySortType
      * @param string $currency
      * @param string $itemID
      * @param string $orderID
      */
-    public function __construct($accountHistorySelection = null, $invoiceDate = null, $beginDate = null, $endDate = null, \StructType\PaginationType $pagination = null, $excludeBalance = null, $excludeSummary = null, $includeConversionRate = null, $accountEntrySortType = null, $currency = null, $itemID = null, $orderID = null)
+    public function __construct($accountHistorySelection = null, $invoiceDate = null, $beginDate = null, $endDate = null, \StructType\PaginationType $pagination = null, $excludeBalance = null, $excludeSummary = null, $includeConversionRate = null, $includeNettedEntries = null, $accountEntrySortType = null, $currency = null, $itemID = null, $orderID = null)
     {
         $this
             ->setAccountHistorySelection($accountHistorySelection)
@@ -167,6 +181,7 @@ class GetAccountRequestType extends AbstractRequestType
             ->setExcludeBalance($excludeBalance)
             ->setExcludeSummary($excludeSummary)
             ->setIncludeConversionRate($includeConversionRate)
+            ->setIncludeNettedEntries($includeNettedEntries)
             ->setAccountEntrySortType($accountEntrySortType)
             ->setCurrency($currency)
             ->setItemID($itemID)
@@ -345,6 +360,28 @@ class GetAccountRequestType extends AbstractRequestType
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($includeConversionRate, true), gettype($includeConversionRate)), __LINE__);
         }
         $this->IncludeConversionRate = $includeConversionRate;
+        return $this;
+    }
+    /**
+     * Get IncludeNettedEntries value
+     * @return bool|null
+     */
+    public function getIncludeNettedEntries()
+    {
+        return $this->IncludeNettedEntries;
+    }
+    /**
+     * Set IncludeNettedEntries value
+     * @param bool $includeNettedEntries
+     * @return \StructType\GetAccountRequestType
+     */
+    public function setIncludeNettedEntries($includeNettedEntries = null)
+    {
+        // validation for constraint: boolean
+        if (!is_null($includeNettedEntries) && !is_bool($includeNettedEntries)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($includeNettedEntries, true), gettype($includeNettedEntries)), __LINE__);
+        }
+        $this->IncludeNettedEntries = $includeNettedEntries;
         return $this;
     }
     /**

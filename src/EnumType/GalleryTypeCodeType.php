@@ -22,10 +22,8 @@ class GalleryTypeCodeType
      * Meta information extracted from the WSDL
      * - documentation: Highlights the listing by randomly placing it at the top of the search results. When the Featured First listing upgrade is selected for an item listing, the listing also automatically gets the Gallery and Plus functionality at no
      * extra cost. <br><br> A user can see if a site supports the Featured First listing upgrade by using the <b>GeteBayDetails</b> call and passing in <code>ListingFeatureDetails</code> in the <b>DetailName</b> field. In the response, the value of the
-     * <b>ListingFeatureDetails.FeaturedFirst</b> field will show a value other than <code>Disabled</code> if the eBay site supports the Featured First listing upgrade. <br/><br/> <span class="tablenote"><strong>Note:</strong> Beginning in mid-August 2019,
-     * the Featured First listing upgrade can no longer be added for new listings in any eBay marketplace. Existing listings enabled with this feature will still be honored until mid-September 2019, at which time the feature will be fully disabled.
-     * <br/><br/> After August 1, 2019, if this value is used in an Add/Revise/Relist call, sellers will get a warning message about this value/feature being deprecated. In mid-August 2019, sellers will no longer be able to use this value for new listings
-     * or for revising existing listings. </span>
+     * <b>ListingFeatureDetails.FeaturedFirst</b> field will show a value other than <code>Disabled</code> if the eBay site supports the Featured First listing upgrade. <br/><br/> <span class="tablenote"><strong>Note:</strong> The Featured First listing
+     * upgrade can no longer be used for new listings or revising existing listings in any eBay marketplace. If this value is used in an Add/Revise/Relist call, sellers will get a warning message about this value/feature being deprecated. </span>
      * @return string 'Featured'
      */
     const VALUE_FEATURED = 'Featured';

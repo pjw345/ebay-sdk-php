@@ -11,9 +11,10 @@ namespace EnumType;
  * the request, and set its value to <code>PaymentOptionDetails</code></li> <li><b>GetCategoryFeatures</b>: through <b>PaymentMethod</b> fields that are returned under the <b>SiteDefaults</b> container or under one or more <b>Category</b> containers in
  * the response, this call will show the seller all of the payment methods that are available for the specified marketplace, including any category exceptions. To retrieve this metadata, the seller should include the <b>FeatureID</b> field in the
  * request, and set its value to <code>PaymentMethods</code>. Note that <b>Category</b> containers will only be returned for categories that differ from Site Defaults as far as supported payment methods are concerned. </li> </ul> <br> <span
- * class="tablenote"><b>Note: </b> If a seller is opted in to the new eBay Managed Payments program, a payment method does not need to be specified at listing time, as eBay manages the payment methods that are available to the buyer. Any payment method
- * that is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. The eBay Managed Payments program is currently only available to a
- * limited number of sellers on the US site, but this feature will be rolled out to more and more US sellers throughout 2019, and is expected to start being rolled out to some Germany sellers in Q3 of 2019. </span>
+ * class="tablenote"><b>Note: </b> If a seller's account is enabled for eBay Managed Payments, a payment method does not need to be specified at listing time, as eBay manages the payment methods that are available to the buyer. Any payment method that
+ * is specified at listing time (or defined in a payment business policy) will be ignored and dropped from the listing, and the seller will get a warning message in the response. eBay managed payments is currently only available to a limited number of
+ * sellers on the US and Germany sites, but will start becoming available to some sellers in the Canada, UK, and Australia marketplaces in July 2020. Eventually, throughout 2021 and beyond, all sellers on all eBay marketplaces will be onboarded to eBay
+ * managed payments. </span>
  * @subpackage Enumerations
  */
 class BuyerPaymentMethodCodeType
@@ -94,7 +95,7 @@ class BuyerPaymentMethodCodeType
      * Meta information extracted from the WSDL
      * - documentation: This enumeration value indicates that PayPal is accepted as a payment method. If PayPal is set by the seller as an accepted payment method, the seller must also supply their PayPal email address through the
      * <b>Item.PayPalEmailAddress</b> field in an Add/Revise/Relist call. <br> <br> If you don't pass PayPal in the listing request but the seller's eBay preferences are set to accept PayPal on all listings, eBay will add PayPal as a payment method for you
-     * in most cases, and we may return a warning. <br> <br> Except for sellers opted in to eBay Managed Payments, PayPal must be the only accepted payment method to enable the immediate payment feature (Item.AutoPay). PayPal must be accepted for charity
+     * in most cases, and we may return a warning. <br> <br> Except for sellers using eBay managed payments, PayPal must be the only accepted payment method to enable the immediate payment feature (Item.AutoPay). PayPal must be accepted for charitable
      * listings. PayPal must be accepted for event ticket listings when the venue is in New York state or Illinois, so that eBay can offer buyer protection (per state law). (For some applications, it may be simplest to use errors returned from VerifyAddItem
      * to flag the PayPal requirement for New York and Illinois ticket listings.) PayPal must be accepted for US eBay Motors listings that require a deposit (and it will not be set automatically based on the seller's preferences). Conversely, if PayPal is
      * specified for US eBay Motors listings, deposit attributes must be specified.<br>
@@ -211,7 +212,7 @@ class BuyerPaymentMethodCodeType
      * Meta information extracted from the WSDL
      * - documentation: <span class="tablenote"><b>Note: </b> This enumeration value should no longer be passed in as an accepted payment method on any eBay marketplace. If this value is specified in an Add/Revise/Relist call, it will be ignored and
      * dropped. eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must use specify 'PayPal' as a payment method, and the buyer can pay by credit card
-     * through their PayPal account, or the seller must opt in to eBay Managed Payments program, and eBay will process credit card payments. </span>
+     * through their PayPal account, or the seller must opt in to eBay managed payments program, and eBay will process credit card payments. </span>
      * @return string 'IntegratedMerchantCreditCard'
      */
     const VALUE_INTEGRATED_MERCHANT_CREDIT_CARD = 'IntegratedMerchantCreditCard';
@@ -273,7 +274,7 @@ class BuyerPaymentMethodCodeType
     /**
      * Constant for value 'CreditCard'
      * Meta information extracted from the WSDL
-     * - documentation: This enumeration value is returned in the response of order management calls if the seller is opted in to eBay Managed Payments, and the buyer has paid for the order with any accepted payment method except an eBay gift card. If the
+     * - documentation: This enumeration value is returned in the response of order management calls if the seller is opted in to eBay managed payments, and the buyer has paid for the order with any accepted payment method except an eBay gift card. If the
      * buyer used an eBay gift card to pay the full or partial balance of the order, the <code>CCAccepted</code> value will be returned instead. <br/><br/> This is not an enumeration value that a seller would pass in as an accepted payment method.
      * @return string 'CreditCard'
      */

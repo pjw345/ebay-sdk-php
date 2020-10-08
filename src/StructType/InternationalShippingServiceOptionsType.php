@@ -54,7 +54,8 @@ class InternationalShippingServiceOptionsType extends AbstractStructBase
      * - documentation: This integer value controls the order (relative to other shipping services) in which the corresponding <b>ShippingService</b> will appear in the View Item and Checkout page. Sellers can specify up to five international shipping
      * services (with five <b>InternationalShippingServiceOption</b> containers), so valid values are 1, 2, 3, 4, and 5. A shipping service with a <b>ShippingServicePriority</b> value of <code>1</code> appears at the top. Conversely, a shipping service with
      * a <b>ShippingServicePriority</b> value of 5 appears at the bottom of a list of five shipping service options. If the Global Shipping Program is enabled on the listing for international shipping, only four additional shipping services may be
-     * specified. <br><br> This field is applicable to Flat and Calculated shipping.
+     * specified. <br><br> If this field is omitted from international shipping service options, the order of the shipping service options in View Item and Checkout pages will be determined by the order that these shipping service options are presented in
+     * the request payload of an Add/Revise/Relist call.
      * - minOccurs: 0
      * @var int
      */

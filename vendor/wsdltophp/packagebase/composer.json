@@ -34,13 +34,19 @@
         {
             "name": "hordijk",
             "role": "Contributor"
+        },
+        {
+            "name": "Jacob Dreesen",
+            "email": "jacob.dreesen@gmail.com",
+            "role": "Contributor"
         }
     ],
     "support" : {
         "email" : "contact@wsdltophp.com"
     },
     "require": {
-        "php" : ">=5.4"
+        "php" : ">=5.4",
+        "ext-soap": "*"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",

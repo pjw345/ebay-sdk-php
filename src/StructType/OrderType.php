@@ -25,9 +25,9 @@ class OrderType extends AbstractStructBase
      * parties (except PayPal): <ul> <li>If using a Trading WSDL older than version 1019, the Order ID will be returned to third parties as dummy data in the form of <code>1000000000000</code> or <code>1000000000000-1000000000000</code>.</li> <li>If using
      * Trading WSDL version 1019 or newer, the Order ID will be returned to third parties as an empty field (<code>&lt;OrderID/&gt;</code>).</li> </ul> <br><br> <span class="tablenote"><b>Note: </b> In June 2019, eBay introduced a new order ID format, but
      * allowed developers/sellers to decide whether to immediately adopt the new format, or to continue working with the old format. Users who wanted to adopt the new format, could either use a Trading WSDL Version 1113 (or newer), or they could even use an
-     * older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in April 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of
-     * the WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values
-     * as filters in the request payload, including the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay
+     * older Trading WSDL but set the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP header value to <code>1113</code> in API calls. <b>Beginning in June 2020, only the new order ID format will be returned in response payloads for paid orders, regardless of the
+     * WSDL version number or compatibility level.</b> <br><br> Note that the unique identifier of a 'non-immediate payment' order will change as it goes from an unpaid order to a paid order. Due to this scenario, all calls that accept Order ID values as
+     * filters in the request payload, including the <b>GetOrders</b> and <b>GetOrderTransactions</b> calls, will support the identifiers for both unpaid and paid orders. The new order ID format is a non-parsable string, globally unique across all eBay
      * marketplaces, and consistent for both single line item and multiple line item orders. Unlike in the past, instead of just being known and exposed to the seller, these unique order identifiers will also be known and used/referenced by the buyer and
      * eBay customer support. <br><br> Sellers can check to see if an order has been paid by looking for a value of 'Complete' in the <b>CheckoutStatus.Status</b> field in the response of <b>GetOrders</b> or <b>GetOrderTransactions</b> call, or in the
      * <b>Status.CompleteStatus</b> field in the response of <b>GetItemTransactions</b> or <b>GetSellerTransactions</b> call. Sellers should not fulfill orders until buyer has made payment. </span> | Type that represents the unique identifier for an eBay
@@ -130,14 +130,15 @@ class OrderType extends AbstractStructBase
     /**
      * The PaymentMethods
      * Meta information extracted from the WSDL
-     * - documentation: A <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order, any and all of these <b>PaymentMethods</b> fields will stop being
-     * returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container. <br> <br> In an <b>AddOrder</b> call, the seller can use one or more <b>PaymentMethods</b> fields to
-     * override whatever available payment methods were already defined for each individual line item. For sellers opted in to eBay Managed Payments, only the <code>CreditCard</code> enumeration value should be passed into this field or the call may fail.
-     * <br> <br> <span class="tablenote"><b>Note:</b> For sellers opted in to the new eBay Managed Payments program, the enumeration value returned in this field will be <code>CreditCard</code>, regardless of which payment method that the buyer used (or is
-     * planning to use). <br><br>Similarly, for an <b>AddOrder</b> call, a seller opted in to eBay Managed Payments should only pass a value of <code>CreditCard</code> into this field.<br><br> eBay Managed Payments is currently only available to a limited
-     * number of sellers on the US site. For sellers in the eBay Managed Payments program, a payment method does not need to be specified at listing/checkout time. </span><br> <span class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports
-     * electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify <code>PayPal</code> as an accepted payment method, or opt in to the eBay Managed Payments
-     * program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the only specified payment method). </span>
+     * - documentation: In <b>GetOrders</b>, <b>GetOrderTransactions</b>, and <b>OrderReport</b>, a <b>PaymentMethods</b> field will appear for each payment method available to the buyer for the order's purchase. However, once the buyer pays for the order,
+     * any and all of these <b>PaymentMethods</b> fields will stop being returned, and instead, the actual payment method used will be returned in the <b>PaymentMethod</b> field of the <b>CheckoutStatus</b> container. <br> <br> In an <b>AddOrder</b> call,
+     * the seller can use one or more <b>PaymentMethods</b> fields to override whatever available payment methods were already defined for each individual line item. For sellers opted in to eBay managed payments, only the <code>CreditCard</code> enumeration
+     * value should be passed into this field or the call may fail. <br> <br> <span class="tablenote"><b>Note:</b> For sellers opted in to the new eBay managed payments program, the enumeration value returned in this field will be <code>CreditCard</code>,
+     * regardless of which payment method that the buyer used (or is planning to use). <br><br>Similarly, for an <b>AddOrder</b> call, a seller opted in to eBay managed payments should only pass a value of <code>CreditCard</code> into this field.<br><br>
+     * eBay managed payments is currently only available to a limited number of sellers on the US and Germany sites. For sellers in the eBay managed payments program, a payment method does not need to be specified at listing/checkout time. </span><br> <span
+     * class="tablenote"><b>Note:</b> As of May 1, 2019, eBay no longer supports electronic payments through a seller's Integrated Merchant Credit Card account. To accept online credit card payments from buyers, a seller must either specify
+     * <code>PayPal</code> as an accepted payment method, or opt in to the eBay managed payments program. If <code>IMCC</code> is passed in as a value, this value will be ignored and dropped (and listing will possibly get blocked if <code>IMCC</code> is the
+     * only specified payment method). </span>
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var string[]
@@ -154,8 +155,9 @@ class OrderType extends AbstractStructBase
     /**
      * The ShippingAddress
      * Meta information extracted from the WSDL
-     * - documentation: Container holding the shipping address of the buyer involved in the order. <br> <br> <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the
-     * <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container. </span><br>
+     * - documentation: This container shows the shipping address for the order. <br> <br> <span class="tablenote"><b>Note:</b> For an Authenticity Guarantee program shipment, this is the address of the authenticator's warehouse. The authenticator is
+     * responsible for delivery to the buyer's shipping address. </span> <span class="tablenote"><b>Note:</b> For GetOrderTransactions, the buyer's shipping address may also be returned at the order line item level in the
+     * <b>Transaction.Buyer.BuyerInfo.ShippingAddress</b> container. </span>
      * - minOccurs: 0
      * @var \StructType\AddressType
      */
@@ -249,7 +251,7 @@ class OrderType extends AbstractStructBase
      * The IntegratedMerchantCreditCardEnabled
      * Meta information extracted from the WSDL
      * - documentation: This field being returned with a value of <code>true</code> indicates that the order can be paid for with a credit card through the seller's payment gateway account. <br><br> <span class="tablenote"><b>Note: </b> As of May 1, 2019,
-     * eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay Managed Payments program
+     * eBay no longer supports electronic payments through Integrated Merchant Credit Card accounts. To accept online credit card payments from buyers, a seller must specify PayPal as an accepted payment method, or opt in to eBay managed payments program
      * (if the program is available to that seller). </span>
      * - minOccurs: 0
      * @var bool
@@ -327,9 +329,10 @@ class OrderType extends AbstractStructBase
     /**
      * The IsMultiLegShipping
      * Meta information extracted from the WSDL
-     * - documentation: If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will use the Global Shipping Program (GSP) to ship internationally. With GSP, the shipment has a domestic leg and an international
-     * leg. In the domestic leg, the seller ships the item to eBay's shipping partner. This shipping address can be found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. eBay's shipping partner will
-     * be responsible for the international leg of the shipment and the order's final destination.
+     * - documentation: If <strong>IsMultilegShipping</strong> is <code>true</code>, at least one order line item in the order will not be shipped directly to the buyer. Instead, the item(s) may be shipped to eBay's Global Shipping Program (GSP) partner who
+     * will handle the international leg of shipment, or the item may be shipped to eBay's Authenticity Guarantee service partner if the item is subject to the Authenticity Guarantee service program. In both cases, the partner's shipping address can be
+     * found in the <strong>MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress</strong> container. <br><br> If an order line item is subject to the Authenticity Guarantee service, the <b>Transaction.Program<b> container will be
+     * returned.
      * - minOccurs: 0
      * @var bool
      */
@@ -337,8 +340,10 @@ class OrderType extends AbstractStructBase
     /**
      * The MultiLegShippingDetails
      * Meta information extracted from the WSDL
-     * - documentation: This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment. With GSP, the shipment has a domestic leg and an international leg. In the domestic leg, the seller ships the item to eBay's
-     * shipping partner. <br/><br/> This container is only returned if the order has one or more order line items that require shipping through GSP. It is not returned if <strong>IsMultilegShipping</strong> is <code>false</code>.
+     * - documentation: This container consists of details about the domestic leg of a Global Shipping Program (GSP) shipment or shipment to eBay's Authenticity Guarantee service partner. With GSP, the shipment has a domestic leg and an international leg.
+     * In the domestic leg, the seller ships the item to eBay's shipping partner. In the Authenticity Guarantee service, the seller ships the item to the authentication partner, and if the item passes an authentication inspection, the authentication partner
+     * ships it directly to the buyer. <br/><br/> This container is only returned if the order has one or more order line items that require shipping through GSP or shipment to an Authenticity Guarantee service partner. It is not returned if
+     * <strong>IsMultilegShipping</strong> is <code>false</code>.
      * - minOccurs: 0
      * @var \StructType\MultiLegShippingDetailsType
      */
@@ -403,8 +408,10 @@ class OrderType extends AbstractStructBase
      * - documentation: This value indicates the reason why the order cancellation was initiated. This field is only returned if an order cancellation has been initiated by the buyer or seller. Typical buyer-initiated cancellation reasons include
      * 'OrderPlacedByMistake', 'WontArriveInTime', or 'FoundCheaperPrice'. Sellers may initiate an order cancellation on behalf of the buyer. In this scenario, the seller should state the cancellation reason as 'BuyerCancelOrder'. If the seller is
      * cancelling an order because he/she is out of stock on an item, the seller should state the cancellation reason as 'OutOfStock'. Unfortunately, in this scenario, the seller will receive a seller defect for this cancellation reason. See <a
-     * href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field. <br><br> <span class="tablenote"><strong>Note:</strong> Currently, the <b>CancelReason</b> field is being
-     * returned under the <b>Order</b> container and under the <b>CancelDetail</b> container. However, there are plans to deprecate this field from <b>OrderType</b> in the future. </span>
+     * href="types/CancelReasonCodeType.html">CancelReasonCodeType</a> for the complete list of enumeration values that can be returned in this field. <br><br> <span class="tablenote"><strong>Note:</strong> Only the <b>CancelReason</b> and
+     * <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a
+     * href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the
+     * Order ID or Item ID as a filter in the request to retrieve the correct cancellation request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -413,7 +420,9 @@ class OrderType extends AbstractStructBase
      * The CancelStatus
      * Meta information extracted from the WSDL
      * - documentation: The current status for the order cancellation request (if it exists for the order). This field is only returned if a cancellation request has been made on the order, or if the order is currently going through the cancellation
-     * process, or if the order has already been cancelled.
+     * process, or if the order has already been cancelled. <br><br> <span class="tablenote"><strong>Note:</strong> Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the
+     * <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more
+     * details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -422,8 +431,9 @@ class OrderType extends AbstractStructBase
      * The CancelReasonDetails
      * Meta information extracted from the WSDL
      * - documentation: The detailed reason for the cancellation of an eBay order. This field is only returned if it is available when a cancellation request has been made on the order, or if the order is currently going through the cancellation process, or
-     * if the order has already been cancelled. <br><br> <span class="tablenote"><strong>Note:</strong> Currently, the <b>CancelReasonDetails</b> field is being returned under the <b>Order</b> container and under the <b>CancelDetail</b> container. However,
-     * there are plans to deprecate this field from <b>OrderType</b> in the future. </span>
+     * if the order has already been cancelled. <br><br> <span class="tablenote"><strong>Note:</strong> Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are
+     * no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of the Post-Order API to retrieve more details on a cancelled order. If the
+     * seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request. </span>
      * - minOccurs: 0
      * @var string
      */
@@ -440,7 +450,9 @@ class OrderType extends AbstractStructBase
      * The CancelDetail
      * Meta information extracted from the WSDL
      * - documentation: This container consists of details related to an eBay order that has been cancelled or is in the process of possibly being cancelled. Order cancellation requests can be viewed and managed with the cancellation API calls that are
-     * available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>.
+     * available in the <a href="https://developer.ebay.com/Devzone/post-order/index.html#CallIndex">Post Order API</a>. <br><br> <span class="tablenote"><strong>Note:</strong> Only the <b>CancelReason</b> and <b>CancelStatus</b> fields are returned. The
+     * <b>CancelDetail</b> container and the <b>CancelReasonDetails</b> field are no longer returned. A seller can use the <a href="https://developer.ebay.com/Devzone/post-order/post-order_v2_cancellation_search__get.html">Search Cancellations</a> method of
+     * the Post-Order API to retrieve more details on a cancelled order. If the seller does use this method, they can use the Order ID or Item ID as a filter in the request to retrieve the correct cancellation request. </span>
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var \StructType\CancelDetailType[]
@@ -515,11 +527,10 @@ class OrderType extends AbstractStructBase
      * the buyer's behalf. This field is also returned if <code>false</code> (not subject to eBay Collect and Remit). A <b>Transaction.eBayCollectAndRemitTaxes</b> container is returned for any order line items subject to such a tax, and the type and amount
      * of this tax is displayed in the <b>Transaction.eBayCollectAndRemitTaxes.TaxDetails</b> container. <br/><br/> Australian 'Goods and Services' tax (GST) is automatically charged to buyers outside of Australia when they purchase items on the eBay
      * Australia site. Sellers on the Australia site do not have to take any extra steps to enable the collection of GST, as this tax is collected by eBay and remitted to the Australian government. For more information about Australian GST, see the <a
-     * href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of July 1, 2019, buyers in 22 US states will automatically be charged sales tax for eBay purchases,
-     * and at least six more US states are scheduled to be subject to eBay Collect and Remit Tax by the end of 2019. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps
-     * to enable the collection of this sales tax. If the seller is employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a
-     * list of the US states that are or will become subject to 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a>
-     * help topic.
+     * href="https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges?id=4121">Taxes and import charges</a> help topic. <br/><br/> As of April 1, 2020, buyers in 40 US states will automatically be charged sales tax for eBay purchases,
+     * and are subject to eBay Collect and Remit Tax. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. Sellers do not have to take any extra steps to enable the collection of this sales tax. If the seller is
+     * employing a Sales Tax Table for the listing, and a sales tax rate is established for a state that is subject to 'eBay Collect and Remit', this sales tax rate will be ignored by eBay. For a list of the US states that are or will become subject to
+     * 'eBay Collect and Remit Tax' (and effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic.
      * - minOccurs: 0
      * @var bool
      */

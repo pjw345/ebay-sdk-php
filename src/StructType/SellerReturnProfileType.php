@@ -7,8 +7,9 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SellerReturnProfileType StructType
  * Meta information extracted from the WSDL
- * - documentation: Type defining the <b>SellerReturnProfile</b> container, which is used in an Add/Revise/Relist/Verify Trading API call to reference a Business Policies return policy profile. Business Policies return policy profiles contain detailed
- * information on the seller's return policy, including the refund option and how many days the buyer has to return the item for a refund.
+ * - documentation: Type defining the <b>SellerReturnProfile</b> container, which is used in an Add/Revise/Relist/Verify Trading API call to reference a return policy business policy. Return policy business policies contain detailed information on the
+ * seller's return policy for domestic and international buyers (if the seller ships internationally), including whether or not the seller accepts returns from domestic and international buyers, how many days the buyer has to return the item for a
+ * refund, and who pays the return shipping costs.
  * @subpackage Structs
  */
 class SellerReturnProfileType extends AbstractStructBase
@@ -16,11 +17,11 @@ class SellerReturnProfileType extends AbstractStructBase
     /**
      * The ReturnProfileID
      * Meta information extracted from the WSDL
-     * - documentation: The unique identifier of a Business Policies return policy profile. A <b>ReturnProfileID</b> and/or a <b>ReturnProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the return policy values of a
-     * Business Policies return policy profile. If both fields are provided and their values don't match, the <b>ReturnProfileID</b> takes precedence. <br/><br/> Return Policy profile IDs can be retrieved with the <b>getReturnPolicies</b> call of the
-     * <b>Account API</b> or with the <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business Policy IDs can also be retrieved through the Business Policies section of My eBay. <br/><br/> In the 'Get' calls, the
-     * <b>ReturnProfileID</b> value will always be returned if Business Policies are set for the listing, and the person making the API call is the seller of the listing. The <b>ReturnProfileName</b> value will be returned if a name is assigned to the
-     * return policy profile.
+     * - documentation: The unique identifier of a return policy business policy. A <b>ReturnProfileID</b> and/or a <b>ReturnProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the return policy settings/values of a
+     * return policy business policy. If both fields are provided and their values don't match, the <b>ReturnProfileID</b> takes precedence. <br/><br/> Return policy profile IDs can be retrieved with the <b>getReturnPolicies</b> call of the <b>Account
+     * API</b> or with the <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business policy IDs can also be retrieved through the Business policies section of My eBay. <br/><br/> In the 'Get' calls, the <b>ReturnProfileID</b>
+     * value will always be returned if business policies are set for the listing, and the person making the API call is the seller of the listing. The <b>ReturnProfileName</b> value will be returned if a name is assigned to the return policy business
+     * policy.
      * - minOccurs: 0
      * @var int
      */
@@ -28,9 +29,9 @@ class SellerReturnProfileType extends AbstractStructBase
     /**
      * The ReturnProfileName
      * Meta information extracted from the WSDL
-     * - documentation: The name of a Business Policies return policy profile. A <b>ReturnProfileID</b> and/or a <b>ReturnProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the return policy values of a Business Policies
-     * return policy profile. If both fields are provided and their values don't match, the <b>ReturnProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>ReturnProfileID</b> value will always be returned if Business Policies are set for the
-     * listing, and the person making the API call is the seller of the listing. The <b>ReturnProfileName</b> value will be returned if a name is assigned to the return policy profile.
+     * - documentation: The name of a return policy business policy. A <b>ReturnProfileID</b> and/or a <b>ReturnProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the return policy settings/values of a return policy
+     * business policy. If both fields are provided and their values don't match, the <b>ReturnProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>ReturnProfileID</b> value will always be returned if business policies are set for the
+     * listing, and the person making the API call is the seller of the listing. The <b>ReturnProfileName</b> value will be returned if a name is assigned to the return policy business policy.
      * - minOccurs: 0
      * @var string
      */

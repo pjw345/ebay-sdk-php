@@ -58,8 +58,10 @@ class ReviseFixedPriceItemResponseType extends AbstractResponseType
     /**
      * The Fees
      * Meta information extracted from the WSDL
-     * - documentation: This container consists of the estimated listing fees for the revised listing. Each type of fee is returned even if it is not appplicable (has a value of <code>0.0</code>. The Final Value Fee (FVF) is not in this container, as this
-     * value cannot be determined until a sale is made.
+     * - documentation: This container is an array of fees associated with the revised listing. The fees in this container will not include any fees that are based on the purchase price (such as Final Value Fee) and only come into play when the listing has
+     * a sale. <br> <br> All listing fee types are returned, even if those fees are not applicable for the revised listing and are '0.0'. <br> <br> <span class="tablenote"><b>Note:</b> The currency used for all fees returned under the <b>Fees</b> container
+     * reflects the currency used for the listing site, and not necessarily in the seller's default/home currency. For example, if a Canadian seller is using the <b>ReviseFixedPriceItem</b> call to relist an item on the eBay US site, the currency type shown
+     * for each fee will be <code>USD</code> and not <code>CAD</code>. </span>
      * - minOccurs: 0
      * @var \StructType\FeesType
      */

@@ -8,19 +8,20 @@
     "packages": [
         {
             "name": "wsdltophp/packagebase",
-            "version": "2.0.3",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WsdlToPhp/PackageBase.git",
-                "reference": "cc57d912b37e2b7420a4456d533cb9a423f66e5b"
+                "reference": "3acde5c5b6c8c85293e077e3910b7990dfac64ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WsdlToPhp/PackageBase/zipball/cc57d912b37e2b7420a4456d533cb9a423f66e5b",
-                "reference": "cc57d912b37e2b7420a4456d533cb9a423f66e5b",
+                "url": "https://api.github.com/repos/WsdlToPhp/PackageBase/zipball/3acde5c5b6c8c85293e077e3910b7990dfac64ca",
+                "reference": "3acde5c5b6c8c85293e077e3910b7990dfac64ca",
                 "shasum": ""
             },
             "require": {
+                "ext-soap": "*",
                 "php": ">=5.4"
             },
             "require-dev": {
@@ -38,11 +39,6 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Gemorroj",
-                    "email": "wapinet@mail.ru",
-                    "role": "Contributor"
-                },
                 {
                     "name": "Mikaël DELSOL",
                     "email": "contact@wsdltophp.com",
@@ -64,7 +60,17 @@
                     "role": "Contributor"
                 },
                 {
+                    "name": "Gemorroj",
+                    "email": "wapinet@mail.ru",
+                    "role": "Contributor"
+                },
+                {
                     "name": "hordijk",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Jacob Dreesen",
+                    "email": "jacob.dreesen@gmail.com",
                     "role": "Contributor"
                 }
             ],
@@ -74,7 +80,7 @@
                 "models",
                 "php"
             ],
-            "time": "2019-01-10T10:25:59+00:00"
+            "time": "2020-09-11T08:37:47+00:00"
         }
     ],
     "packages-dev": [],

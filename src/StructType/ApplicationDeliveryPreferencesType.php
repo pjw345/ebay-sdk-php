@@ -15,8 +15,7 @@ class ApplicationDeliveryPreferencesType extends AbstractStructBase
     /**
      * The ApplicationURL
      * Meta information extracted from the WSDL
-     * - documentation: The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL begins with "<code>http://</code>" or "<code>https://</code>" and must be well formed. For
-     * delivery to an email address, the URL begins with ""<code>mailto://</code>" and specifies a valid email address.
+     * - documentation: The URL to which eBay delivers all Platform Notifications and Client Alerts sent to the application. For delivery to a server, the URL must begin with "<code>https://</code>" and must be well formed.
      * - minOccurs: 0
      * @var string
      */

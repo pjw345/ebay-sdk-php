@@ -190,6 +190,17 @@ class AccountSummaryType extends AbstractStructBase
      */
     public $PaymentMethod;
     /**
+     * The NettedTransactionSummary
+     * Meta information extracted from the WSDL
+     * - documentation: This container shows the total amount of fees (and credits if applicable) that have already been paid through seller payout deductions. The seller must include the <b>IncludeNettedEntries</b> field in the request and set it to
+     * <code>true</code> in order for this container to be returned. <br> <br> The seller's account has to be enabled for managed payments and the fee netting mechanism must be enabled for the managed payments account in order to retrieve the fee netted
+     * amounts. A seller can check their status for the fee netting mechanism by checking the value in the <b>FeeNettingStatus</b> field. <br> <br> <span class="tablenote"><b>Note: </b> For a limited number of managed payments sellers, final value fees and
+     * payment processing fees will start getting deducted from seller payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020. </span>
+     * - minOccurs: 0
+     * @var \StructType\NettedTransactionSummaryType
+     */
+    public $NettedTransactionSummary;
+    /**
      * The any
      * @var \DOMDocument
      */
@@ -216,6 +227,7 @@ class AccountSummaryType extends AbstractStructBase
      * @uses AccountSummaryType::setLastPaymentDate()
      * @uses AccountSummaryType::setPastDue()
      * @uses AccountSummaryType::setPaymentMethod()
+     * @uses AccountSummaryType::setNettedTransactionSummary()
      * @uses AccountSummaryType::setAny()
      * @param string $accountState
      * @param \StructType\AmountType $invoicePayment
@@ -237,9 +249,10 @@ class AccountSummaryType extends AbstractStructBase
      * @param string $lastPaymentDate
      * @param bool $pastDue
      * @param string $paymentMethod
+     * @param \StructType\NettedTransactionSummaryType $nettedTransactionSummary
      * @param \DOMDocument $any
      */
-    public function __construct($accountState = null, \StructType\AmountType $invoicePayment = null, \StructType\AmountType $invoiceCredit = null, \StructType\AmountType $invoiceNewFee = null, array $additionalAccount = array(), \StructType\AmountType $amountPastDue = null, $bankAccountInfo = null, $bankModifyDate = null, $billingCycleDate = null, $creditCardExpiration = null, $creditCardInfo = null, $creditCardModifyDate = null, \StructType\AmountType $currentBalance = null, $email = null, \StructType\AmountType $invoiceBalance = null, $invoiceDate = null, \StructType\AmountType $lastAmountPaid = null, $lastPaymentDate = null, $pastDue = null, $paymentMethod = null, \DOMDocument $any = null)
+    public function __construct($accountState = null, \StructType\AmountType $invoicePayment = null, \StructType\AmountType $invoiceCredit = null, \StructType\AmountType $invoiceNewFee = null, array $additionalAccount = array(), \StructType\AmountType $amountPastDue = null, $bankAccountInfo = null, $bankModifyDate = null, $billingCycleDate = null, $creditCardExpiration = null, $creditCardInfo = null, $creditCardModifyDate = null, \StructType\AmountType $currentBalance = null, $email = null, \StructType\AmountType $invoiceBalance = null, $invoiceDate = null, \StructType\AmountType $lastAmountPaid = null, $lastPaymentDate = null, $pastDue = null, $paymentMethod = null, \StructType\NettedTransactionSummaryType $nettedTransactionSummary = null, \DOMDocument $any = null)
     {
         $this
             ->setAccountState($accountState)
@@ -262,6 +275,7 @@ class AccountSummaryType extends AbstractStructBase
             ->setLastPaymentDate($lastPaymentDate)
             ->setPastDue($pastDue)
             ->setPaymentMethod($paymentMethod)
+            ->setNettedTransactionSummary($nettedTransactionSummary)
             ->setAny($any);
     }
     /**
@@ -718,6 +732,24 @@ class AccountSummaryType extends AbstractStructBase
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \EnumType\SellerPaymentMethodCodeType', is_array($paymentMethod) ? implode(', ', $paymentMethod) : var_export($paymentMethod, true), implode(', ', \EnumType\SellerPaymentMethodCodeType::getValidValues())), __LINE__);
         }
         $this->PaymentMethod = $paymentMethod;
+        return $this;
+    }
+    /**
+     * Get NettedTransactionSummary value
+     * @return \StructType\NettedTransactionSummaryType|null
+     */
+    public function getNettedTransactionSummary()
+    {
+        return $this->NettedTransactionSummary;
+    }
+    /**
+     * Set NettedTransactionSummary value
+     * @param \StructType\NettedTransactionSummaryType $nettedTransactionSummary
+     * @return \StructType\AccountSummaryType
+     */
+    public function setNettedTransactionSummary(\StructType\NettedTransactionSummaryType $nettedTransactionSummary = null)
+    {
+        $this->NettedTransactionSummary = $nettedTransactionSummary;
         return $this;
     }
     /**

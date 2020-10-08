@@ -16,7 +16,7 @@ class PicturesType extends AbstractStructBase
      * The VariationSpecificName
      * Meta information extracted from the WSDL
      * - documentation: One aspect of the variations that will be illustrated in the pictures for all variations. For example, if each variation is visually distinguished by color and the pictures show the different colors available, then specify "Color" as
-     * the name. The name must match one of the names specified in the <b>VariationSpecifics</b> container. <br><br> This field is required in each <b>Item.Variations.Pictures</b> container that is used.
+     * the name. The name must match one of the names specified in the <b>VariationSpecifics</b> container. <br><br> This field is required in each <b>Item.Variations.Pictures</b> container that is used. <br>
      * - minOccurs: 0
      * @var string
      */

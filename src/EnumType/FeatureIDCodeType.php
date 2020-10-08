@@ -114,7 +114,8 @@ class FeatureIDCodeType
      * Constant for value 'ValuePack'
      * Meta information extracted from the WSDL
      * - documentation: If this value is specified, the <b>SiteDefaults.ValuePackEnabled</b> and <b>Category.ValuePackEnabled</b> boolean fields in the <b>GetCategoryFeatures</b> response will indicate whether or not the specified eBay site and individual
-     * categories support the Value Pack listing enhancement bundle. The Value Pack bundle includes the Gallery Plus feature, a listing subtitle, and use of a Listing Designer template.
+     * categories support the Value Pack listing enhancement bundle. The Value Pack bundle includes the Gallery Plus feature, a listing subtitle, and use of a Listing Designer template. <br> <br> <span class="tablenote"><b>Note:</b> As of May 31, 2020,
+     * sellers are no longer able to use Listing Designer templates when they create or revise listings, so use of a Listing Designer template will no longer be a part of this bundle.</span>
      * @return string 'ValuePack'
      */
     const VALUE_VALUE_PACK = 'ValuePack';
@@ -1076,7 +1077,10 @@ class FeatureIDCodeType
      * Constant for value 'DomesticReturnsAcceptedValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for whether or not a seller accepts domestic returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to
-     * <code>true</code> for the associated marketplace and category.
+     * <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers.
+     * If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'DomesticReturnsAcceptedValues'
      */
     const VALUE_DOMESTIC_RETURNS_ACCEPTED_VALUES = 'DomesticReturnsAcceptedValues';
@@ -1084,7 +1088,10 @@ class FeatureIDCodeType
      * Constant for value 'InternationalReturnsAcceptedValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for whether or not a seller accepts international returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to
-     * <code>true</code> for the associated marketplace and category.
+     * <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers.
+     * If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'InternationalReturnsAcceptedValues'
      */
     const VALUE_INTERNATIONAL_RETURNS_ACCEPTED_VALUES = 'InternationalReturnsAcceptedValues';
@@ -1092,7 +1099,10 @@ class FeatureIDCodeType
      * Constant for value 'DomesticReturnsDurationValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for the return duration for domestic returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to
-     * <code>true</code> for the associated marketplace and category.
+     * <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers.
+     * If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'DomesticReturnsDurationValues'
      */
     const VALUE_DOMESTIC_RETURNS_DURATION_VALUES = 'DomesticReturnsDurationValues';
@@ -1100,7 +1110,10 @@ class FeatureIDCodeType
      * Constant for value 'InternationalReturnsDurationValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for the return duration for international returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to
-     * <code>true</code> for the associated marketplace and category.
+     * <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers.
+     * If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'InternationalReturnsDurationValues'
      */
     const VALUE_INTERNATIONAL_RETURNS_DURATION_VALUES = 'InternationalReturnsDurationValues';
@@ -1108,7 +1121,10 @@ class FeatureIDCodeType
      * Constant for value 'DomesticReturnsShipmentPayeeValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for who pays any return shipping costs for domestic returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set
-     * to <code>true</code> for the associated marketplace and category.
+     * to <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international
+     * customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'DomesticReturnsShipmentPayeeValues'
      */
     const VALUE_DOMESTIC_RETURNS_SHIPMENT_PAYEE_VALUES = 'DomesticReturnsShipmentPayeeValues';
@@ -1116,7 +1132,10 @@ class FeatureIDCodeType
      * Constant for value 'InternationalReturnsShipmentPayeeValues'
      * Meta information extracted from the WSDL
      * - documentation: Use this ID to return the values you can specify for who pays any return shipping costs for international returns. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is
-     * set to <code>true</code> for the associated marketplace and category.
+     * set to <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018, eBay added the ability to create a separate international return policy for items that are shipped to international
+     * customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used instead. For more information on setting separate domestic and international return policies, see the <a
+     * href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy" target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the
+     * <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'InternationalReturnsShipmentPayeeValues'
      */
     const VALUE_INTERNATIONAL_RETURNS_SHIPMENT_PAYEE_VALUES = 'InternationalReturnsShipmentPayeeValues';
@@ -1124,7 +1143,10 @@ class FeatureIDCodeType
      * Constant for value 'DomesticRefundMethodValues'
      * Meta information extracted from the WSDL
      * - documentation: In US, sellers can offer item replacement in addition to offering a money-back refund for domestic returns. Use this ID to return whether or not the seller can offer <code>MoneyBackorReplacement</code> for the specified category.
-     * <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
+     * <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May 2018,
+     * eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be used
+     * instead. For more information on setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy"
+     * target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'DomesticRefundMethodValues'
      */
     const VALUE_DOMESTIC_REFUND_METHOD_VALUES = 'DomesticRefundMethodValues';
@@ -1132,7 +1154,10 @@ class FeatureIDCodeType
      * Constant for value 'InternationalRefundMethodValues'
      * Meta information extracted from the WSDL
      * - documentation: In US, sellers can offer item replacement in addition to offering a money-back refund for international returns. Use this ID to return whether or not the seller can offer <code>MoneyBackorReplacement</code> for the specified
-     * category. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category.
+     * category. <br><br> The values returned in this field are pertinent only if <b>ReturnPolicyEnabled</b> in GetCategoryFeatures is set to <code>true</code> for the associated marketplace and category. <br><br> <span class="tablenote"><b>Note:</b> In May
+     * 2018, eBay added the ability to create a separate international return policy for items that are shipped to international customers. If a seller does not add a separate international return policy, the settings in the domestic return policy will be
+     * used instead. For more information on setting separate domestic and international return policies, see the <a href="https://pages.ebay.com/seller-center/seller-updates/2018-summer/simplified-returns.html#international-returns-policy"
+     * target="_blank">International returns policy</a> help topic. For the international equivalent of this field, see the <b>InternationalReturnsAcceptedValues</b> field.</span>
      * @return string 'InternationalRefundMethodValues'
      */
     const VALUE_INTERNATIONAL_REFUND_METHOD_VALUES = 'InternationalRefundMethodValues';

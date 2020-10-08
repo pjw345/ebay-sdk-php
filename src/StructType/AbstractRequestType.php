@@ -55,7 +55,7 @@ abstract class AbstractRequestType extends AbstractStructBase
     /**
      * The Version
      * Meta information extracted from the WSDL
-     * - documentation: The version number of the API code that you are programming against (e.g., 859). The version you specify for a call has these basic effects: <b></b> <ul> <li>It indicates the version of the code lists and other data that eBay should
+     * - documentation: The version number of the API code that you are programming against (e.g., 1149). The version you specify for a call has these basic effects: <b></b> <ul> <li>It indicates the version of the code lists and other data that eBay should
      * use to process your request.</li> <li>It indicates the schema version you are using.</li> </ul> You need to use a version that is greater than or equal to the lowest supported version. <br> <b>For the SOAP API:</b> If you are using the SOAP API, this
      * field is required. Specify the version of the WSDL your application is using.<br> <br> <b>For the XML API:</b> If you are using the XML API, this field has no effect. Instead, specify the version in the <b>X-EBAY-API-COMPATIBILITY-LEVEL</b> HTTP
      * header. (If you specify <b>Version</b> in the body of an XML API request and it is different from the value in the HTTP header, eBay returns an informational warning that the value in the HTTP header was used instead.)

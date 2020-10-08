@@ -24,7 +24,7 @@ class PickupInStoreDetailsType extends AbstractStructBase
      * using the <b>Create Inventory Location</b> call, and then, using the <b>Create Inventory Item</b> call, they can add inventory to specific stores;</li> <li>Include the seller-defined SKU value of the product(s) in the call request. For a
      * single-variation listing, the SKU value would be specified in the <b>Item.SKU</b> field, and for a multiple-variation listing, the SKU value(s) would be specified in the <b>Item.Variations.Variation.SKU</b> field(s);</li> <li>Set an immediate payment
      * requirement on the item. </li> </ul> When a seller is successful at listing an item with the In-Store Pickup feature enabled, prospective buyers within a reasonable distance (25 miles or so) from one of the seller's stores (that has stock available)
-     * will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item. <br/><br/> This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature.
+     * will see the "Available for In-Store Pickup" option on the listing, along with information on the closest store that has the item. <br/><br/> This field is returned in the 'Get' calls if the listing is enabled with the In-Store Pickup feature. <br/>
      * - maxOccurs: 1
      * - minOccurs: 0
      * @var bool

@@ -15,7 +15,10 @@ class ConditionValuesType extends AbstractStructBase
     /**
      * The Condition
      * Meta information extracted from the WSDL
-     * - documentation: Defines an item condition that a category supports.
+     * - documentation: This repeatable container shows the display name and unique identifier of each item condition supported by the corresponding eBay category. <br> <br> <span class="tablenote"><strong>Note:</strong> Starting in mid-September 2020, the
+     * 'Manufacturer Refurbished' item condition (Condition ID 2000) will no longer be supported on the US and Australian marketplaces. Active listings on these two marketplaces will automatically be updated by eBay to the 'Seller Refurbished' item
+     * condition (Condition ID 2500). Once this change happens, if a seller attempts to create a new listing or revise an existing listing with the Inventory or Trading APIs using the 'Manufacturer Refurbished' item condition, the listing or revision will
+     * be blocked. </span>
      * - maxOccurs: unbounded
      * - minOccurs: 0
      * @var \StructType\ConditionType[]

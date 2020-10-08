@@ -7,7 +7,7 @@ use \WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SellerPaymentProfileType StructType
  * Meta information extracted from the WSDL
- * - documentation: Type defining the <b>SellerPaymentProfile</b> container, which is used in an Add/Revise/Relist/Verify Trading API call to reference a Business Policies payment profile.
+ * - documentation: Type defining the <b>SellerPaymentProfile</b> container, which is used in an Add/Revise/Relist/Verify Trading API call to reference and use a payment business policy.
  * @subpackage Structs
  */
 class SellerPaymentProfileType extends AbstractStructBase
@@ -15,10 +15,10 @@ class SellerPaymentProfileType extends AbstractStructBase
     /**
      * The PaymentProfileID
      * Meta information extracted from the WSDL
-     * - documentation: The unique identifier of a Business Policies payment profile. A <b>PaymentProfileID</b> and/or a <b>PaymentProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the payment policy values of a
-     * Business Policies payment profile. If both fields are provided and their values don't match, the <b>PaymentProfileID</b> takes precedence. <br/><br/> Payment profile IDs can be retrieved with the <b>getPaymentPolicies</b> call of the <b>Account
-     * API</b> or with the <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business Policy IDs can also be retrieved through the Business Policies section of My eBay. <br/><br/> In the 'Get' calls, the <b>PaymentProfileID</b>
-     * value will always be returned if Business Policies are set for the listing, and the person making the API call is the seller of the listing. The <b>PaymentProfileName</b> value will be returned if a name is assigned to the payment profile.
+     * - documentation: The unique identifier of a payment business policy. A <b>PaymentProfileID</b> and/or a <b>PaymentProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the payment settings/values of a payment
+     * business policy. If both fields are provided and their values don't match, the <b>PaymentProfileID</b> takes precedence. <br/><br/> Payment profile IDs can be retrieved with the <b>getPaymentPolicies</b> call of the <b>Account API</b> or with the
+     * <b>getSellerProfiles</b> call of the <b>Business Policies Management API</b>. Business policy IDs can also be retrieved through the Business policies section of My eBay. <br/><br/> In the 'Get' calls, the <b>PaymentProfileID</b> value will always be
+     * returned if business policies are set for the listing, and the person making the API call is the seller of the listing. The <b>PaymentProfileName</b> value will be returned if a name is assigned to the payment business policy.
      * - minOccurs: 0
      * @var int
      */
@@ -26,9 +26,9 @@ class SellerPaymentProfileType extends AbstractStructBase
     /**
      * The PaymentProfileName
      * Meta information extracted from the WSDL
-     * - documentation: The name of a Business Policies payment profile. A <b>PaymentProfileID</b> and/or a <b>PaymentProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the payment policy values of a Business Policies
-     * payment profile. If both fields are provided and their values don't match, the <b>PaymentProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>PaymentProfileID</b> value will always be returned if Business Policies are set for the
-     * listing, and the person making the API call is the seller of the listing. The <b>PaymentProfileName</b> value will be returned if a name is assigned to the payment profile.
+     * - documentation: The name of a payment business policy. A <b>PaymentProfileID</b> and/or a <b>PaymentProfileName</b> value is used in the Add/Revise/Relist/Verify call to reference and use the payment settings/values of a payment business policy. If
+     * both fields are provided and their values don't match, the <b>PaymentProfileID</b> takes precedence. <br/><br/> In the 'Get' calls, the <b>PaymentProfileID</b> value will always be returned if business policies are set for the listing, and the person
+     * making the API call is the seller of the listing. The <b>PaymentProfileName</b> value will be returned if a name is assigned to the payment business policy.
      * - minOccurs: 0
      * @var string
      */

@@ -18,9 +18,9 @@ class SalesTaxType extends AbstractStructBase
      * - documentation: This float value is the sales tax percentage rate applicable to the corresponding tax jurisdiction (US state or Canadian province). Sellers are responsible for providing accurate sales tax rates for each jurisdiction. This sales tax
      * rate comes into play when a buyer from that tax jurisdiction makes a purchase from the seller. The value passed in is stored with a precision of 3 digits after the decimal point (##.###). <br><br> This field is only returned in order management calls
      * if sales tax applies to the order line item, and is only in <b>GetItem</b> (and other 'Get' calls) if sales tax is applicable to the listing or order line item, and the seller is the person making the call. <br><br> <span class="tablenote"><b>Note:
-     * </b> As of November 1, 2019, buyers in over 30 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied
-     * to the listing by the seller for a state that is subject to eBay 'Collect and Remit', the sales tax rate in this field is ignored by eBay during the checkout process. For a list of US states that are subject to eBay 'Collect and Remit' taxes (and
-     * effective dates), see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic. </span>
+     * </b> As of September 1, 2020, buyers in over 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a sales tax rate is applied
+     * to the listing by the seller for a state that is subject to eBay 'Collect and Remit', the sales tax rate in this field is ignored by eBay during the checkout process. For a list of the US states that are currently subject to 'eBay Collect and Remit',
+     * or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic. </span>
      * - minOccurs: 0
      * @var float
      */
@@ -40,10 +40,11 @@ class SalesTaxType extends AbstractStructBase
      * The ShippingIncludedInTax
      * Meta information extracted from the WSDL
      * - documentation: This field is included in an Add/Revise/Relist/Verify call and set to <code>true</code> if the seller wants sales tax for the jurisdiction to apply to the cumulative amount of item cost and shipping charges. This value defaults to
-     * <code>false</code> if not specified. <br><br> This field is always returned with the <b>SalesTax</b> container (whether <code>true</code> or <code>false</code>). <br><br> <span class="tablenote"><b>Note: </b> As of January 1, 2019, buyers in some US
-     * states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. So, if a <code>true</code> value is set for this field for a state that is subject to
-     * 'eBay Collect and Remit', this setting is ignored by eBay during checkout process. For a list of the US states that will become subject to 'eBay Collect and Remit' (and effective dates), see the <a
-     * href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help topic. </span>
+     * <code>false</code> if not specified. <br><br> This field is always returned with the <b>SalesTax</b> container (whether <code>true</code> or <code>false</code>). <br><br> <span class="tablenote"><b>Note: </b> As of September 1, 2020, buyers in over
+     * 40 US states will automatically be charged sales tax for eBay purchases. eBay will collect and remit this sales tax to the proper taxing authority on the buyer's behalf. With 'eBay Collect and Remit' sales tax, the sales tax is applied against the
+     * full cost of the order, including any shipping and handling charges. So, if this field is included for a state that is subject to 'eBay Collect and Remit', this setting is ignored by eBay during checkout process. For a list of the US states that are
+     * currently subject to 'eBay Collect and Remit', or will become subject to 'eBay Collect and Remit', see the <a href="https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121#section4">eBay sales tax collection</a> help
+     * topic. </span>
      * - minOccurs: 0
      * @var bool
      */

@@ -5,7 +5,7 @@ namespace EnumType;
 /**
  * This class stands for PhotoDisplayCodeType EnumType
  * Meta information extracted from the WSDL
- * - documentation: Specifies the type of image display used in a listing. Some options are only available if images are hosted through eBay Picture Services (EPS). Cannot be used with Listing Designer layouts (specified in Item.ListingDesigner).
+ * - documentation: Specifies the type of image display used in a listing. Some options are only available if images are hosted through eBay Picture Services (EPS).
  * @subpackage Enumerations
  */
 class PhotoDisplayCodeType

@@ -210,7 +210,7 @@ class CharityInfoType extends AbstractStructBase
     /**
      * The id
      * Meta information extracted from the WSDL
-     * - documentation: This attribute is a unique identifier used by the corresponding social networking site to identify the nonprofit charity organization.
+     * - documentation: This attribute is the eBay-assigned, unique identifier of the nonprofit charity organization.
      * @var string
      */
     public $id;
