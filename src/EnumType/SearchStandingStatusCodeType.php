@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SearchStandingStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: The Search standing that you have earned.
  * @subpackage Enumerations
  */
-class SearchStandingStatusCodeType
+class SearchStandingStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Raised'
@@ -41,16 +43,6 @@ class SearchStandingStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RAISED
      * @uses self::VALUE_STANDARD
@@ -66,13 +58,5 @@ class SearchStandingStatusCodeType
             self::VALUE_LOWERED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

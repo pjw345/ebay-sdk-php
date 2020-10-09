@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PromotionalSaleStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * become available to sellers. </span> Values indicate the status of a sale. Used for the Promotional Price Display feature, which enables sellers to apply discounts across many listings.
  * @subpackage Enumerations
  */
-class PromotionalSaleStatusCodeType
+class PromotionalSaleStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Active'
@@ -56,16 +58,6 @@ class PromotionalSaleStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACTIVE
      * @uses self::VALUE_SCHEDULED
@@ -85,13 +77,5 @@ class PromotionalSaleStatusCodeType
             self::VALUE_DELETED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

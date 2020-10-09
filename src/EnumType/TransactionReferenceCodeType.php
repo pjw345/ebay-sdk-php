@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for TransactionReferenceCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type defining the possible values that can returned in the attribute of the <b>Payment.ReferenceID</b> and <b>Payment.PaymentReferenceID</b> field.
  * @subpackage Enumerations
  */
-class TransactionReferenceCodeType
+class TransactionReferenceCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ExternalTransactionID'
@@ -32,16 +34,6 @@ class TransactionReferenceCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_EXTERNAL_TRANSACTION_ID
      * @uses self::VALUE_MANDATE_REFERENCE_NUMBER
@@ -55,13 +47,5 @@ class TransactionReferenceCodeType
             self::VALUE_MANDATE_REFERENCE_NUMBER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

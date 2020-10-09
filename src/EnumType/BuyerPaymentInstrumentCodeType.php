@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BuyerPaymentInstrumentCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type identifies all of the payment methods supported for the 'Pay Upon Invoice' feature. The 'Pay Upon Invoice' feature is only available through the eBay Germany marketplace.
  * @subpackage Enumerations
  */
-class BuyerPaymentInstrumentCodeType
+class BuyerPaymentInstrumentCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'None'
@@ -144,16 +146,6 @@ class BuyerPaymentInstrumentCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NONE
      * @uses self::VALUE_CREDIT_CARD
@@ -199,13 +191,5 @@ class BuyerPaymentInstrumentCodeType
             self::VALUE_PAY_UPON_INVOICE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

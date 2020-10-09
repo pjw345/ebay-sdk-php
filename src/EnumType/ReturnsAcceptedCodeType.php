@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReturnsAcceptedCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enum defines the different options that are available for specifying whether or not the seller accepts returns.
  * @subpackage Enumerations
  */
-class ReturnsAcceptedCodeType
+class ReturnsAcceptedCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ReturnsAccepted'
@@ -25,16 +27,6 @@ class ReturnsAcceptedCodeType
      */
     const VALUE_RETURNS_NOT_ACCEPTED = 'ReturnsNotAccepted';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RETURNS_ACCEPTED
      * @uses self::VALUE_RETURNS_NOT_ACCEPTED
@@ -46,13 +38,5 @@ class ReturnsAcceptedCodeType
             self::VALUE_RETURNS_ACCEPTED,
             self::VALUE_RETURNS_NOT_ACCEPTED,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

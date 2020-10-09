@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingRateTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: A shipping rate scale for shipping through UPS that affects the shipping cost calculated for UPS (lower if <strong>ShippingRateType</strong> is <code>DailyPickup</code>). For calculated shipping only.
  * @subpackage Enumerations
  */
-class ShippingRateTypeCodeType
+class ShippingRateTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'OnDemand'
@@ -74,16 +76,6 @@ class ShippingRateTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ON_DEMAND
      * @uses self::VALUE_DAILY_PICKUP
@@ -109,13 +101,5 @@ class ShippingRateTypeCodeType
             self::VALUE_PLAT_TITANIUM,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

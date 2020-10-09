@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RefundStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class RefundStatusCodeType
+class RefundStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Successful'
@@ -39,16 +41,6 @@ class RefundStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SUCCESSFUL
      * @uses self::VALUE_PENDING
@@ -64,13 +56,5 @@ class RefundStatusCodeType
             self::VALUE_FAILED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

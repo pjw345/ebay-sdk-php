@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for HomePageFeaturedCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies whether a listing feature is available for the site specified in the request.
  * @subpackage Enumerations
  */
-class HomePageFeaturedCodeType
+class HomePageFeaturedCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Enabled'
@@ -32,16 +34,6 @@ class HomePageFeaturedCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENABLED
      * @uses self::VALUE_DISABLED
@@ -55,13 +47,5 @@ class HomePageFeaturedCodeType
             self::VALUE_DISABLED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ProductStateCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class ProductStateCodeType
+class ProductStateCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Update'
@@ -53,16 +55,6 @@ class ProductStateCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UPDATE
      * @uses self::VALUE_UPDATE_MAJOR
@@ -82,13 +74,5 @@ class ProductStateCodeType
             self::VALUE_DELETE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

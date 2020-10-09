@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RefundSourceTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type defining the refund types that a merchant can offer a buyer who is returning an In-Store Pickup item to the store.
  * @subpackage Enumerations
  */
-class RefundSourceTypeCodeType
+class RefundSourceTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'StoreCredit'
@@ -32,16 +34,6 @@ class RefundSourceTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_STORE_CREDIT
      * @uses self::VALUE_PAYMENT_REFUND
@@ -55,13 +47,5 @@ class RefundSourceTypeCodeType
             self::VALUE_PAYMENT_REFUND,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

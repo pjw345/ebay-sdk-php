@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaymentMethodSearchCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: <span class="tablenote"><b>Note:</b> This enumerated type is no longer applicable, as filtering by a payment method in an advanced item search is no longer supported. </span>
  * @subpackage Enumerations
  */
-class PaymentMethodSearchCodeType
+class PaymentMethodSearchCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PayPal'
@@ -46,16 +48,6 @@ class PaymentMethodSearchCodeType
      */
     const VALUE_PAISA_PAY_ESCROW_EMI = 'PaisaPayEscrowEMI';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PAY_PAL
      * @uses self::VALUE_PAISA_PAY
@@ -73,13 +65,5 @@ class PaymentMethodSearchCodeType
             self::VALUE_CUSTOM_CODE,
             self::VALUE_PAISA_PAY_ESCROW_EMI,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

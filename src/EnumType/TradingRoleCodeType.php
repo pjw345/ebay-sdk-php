@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for TradingRoleCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type listing the possible roles an eBay user may have in regards to an eBay order.
  * @subpackage Enumerations
  */
-class TradingRoleCodeType
+class TradingRoleCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Buyer'
@@ -32,16 +34,6 @@ class TradingRoleCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BUYER
      * @uses self::VALUE_SELLER
@@ -55,13 +47,5 @@ class TradingRoleCodeType
             self::VALUE_SELLER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

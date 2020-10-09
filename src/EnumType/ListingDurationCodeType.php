@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ListingDurationCodeType EnumType
  * Meta information extracted from the WSDL
@@ -12,7 +14,7 @@ namespace EnumType;
  * durations other than GTC, but if/when these items need to be relisted, only GTC will be supported. If any other listing duration value besides <code>GTC</code> is specified in this field, it will be ignored, and GTC will be used instead. </span>
  * @subpackage Enumerations
  */
-class ListingDurationCodeType
+class ListingDurationCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Days_1'
@@ -118,16 +120,6 @@ class ListingDurationCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DAYS_1
      * @uses self::VALUE_DAYS_3
@@ -161,13 +153,5 @@ class ListingDurationCodeType
             self::VALUE_GTC,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaymentTransactionStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Type defining the possible states of a payment transaction. This type is used by several containers in order management-related calls.
  * @subpackage Enumerations
  */
-class PaymentTransactionStatusCodeType
+class PaymentTransactionStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Failed'
@@ -44,16 +46,6 @@ class PaymentTransactionStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_FAILED
      * @uses self::VALUE_SUCCEEDED
@@ -69,13 +61,5 @@ class PaymentTransactionStatusCodeType
             self::VALUE_PENDING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

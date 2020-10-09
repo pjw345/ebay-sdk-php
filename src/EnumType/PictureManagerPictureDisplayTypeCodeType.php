@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PictureManagerPictureDisplayTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class PictureManagerPictureDisplayTypeCodeType
+class PictureManagerPictureDisplayTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Thumbnail'
@@ -60,16 +62,6 @@ class PictureManagerPictureDisplayTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_THUMBNAIL
      * @uses self::VALUE_BIBO
@@ -91,13 +83,5 @@ class PictureManagerPictureDisplayTypeCodeType
             self::VALUE_ORIGINAL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

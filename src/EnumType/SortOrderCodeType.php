@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SortOrderCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This type specifies the sort order of a returned array of elements. The array or list to be sorted, the sort key, and the default sort order depend on the call.
  * @subpackage Enumerations
  */
-class SortOrderCodeType
+class SortOrderCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Ascending'
@@ -32,16 +34,6 @@ class SortOrderCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ASCENDING
      * @uses self::VALUE_DESCENDING
@@ -55,13 +47,5 @@ class SortOrderCodeType
             self::VALUE_DESCENDING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

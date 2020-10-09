@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PictureManagerActionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class PictureManagerActionCodeType
+class PictureManagerActionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Add'
@@ -53,16 +55,6 @@ class PictureManagerActionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ADD
      * @uses self::VALUE_DELETE
@@ -82,13 +74,5 @@ class PictureManagerActionCodeType
             self::VALUE_CHANGE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

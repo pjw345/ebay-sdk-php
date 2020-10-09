@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for TaxTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that lists the types of taxes that may be charged to the buyer for each order line item purchased.
  * @subpackage Enumerations
  */
-class TaxTypeCodeType
+class TaxTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'SalesTax'
@@ -39,16 +41,6 @@ class TaxTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SALES_TAX
      * @uses self::VALUE_WASTE_RECYCLING_FEE
@@ -64,13 +56,5 @@ class TaxTypeCodeType
             self::VALUE_GST,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ItemTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type containing values that provide more information on the type of filtering the buyer used when setting up a Saved Search in My eBay.
  * @subpackage Enumerations
  */
-class ItemTypeCodeType
+class ItemTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AuctionItemsOnly'
@@ -94,16 +96,6 @@ class ItemTypeCodeType
      */
     const VALUE_AD_FORMAT = 'AdFormat';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_AUCTION_ITEMS_ONLY
      * @uses self::VALUE_FIXED_PRICED_ITEM
@@ -133,13 +125,5 @@ class ItemTypeCodeType
             self::VALUE_CLASSIFIED_ITEMS_ONLY,
             self::VALUE_AD_FORMAT,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

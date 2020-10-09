@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for NotificationRoleCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Defines roles for platform notifications.
  * @subpackage Enumerations
  */
-class NotificationRoleCodeType
+class NotificationRoleCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Application'
@@ -46,16 +48,6 @@ class NotificationRoleCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_APPLICATION
      * @uses self::VALUE_USER
@@ -73,13 +65,5 @@ class NotificationRoleCodeType
             self::VALUE_EVENT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

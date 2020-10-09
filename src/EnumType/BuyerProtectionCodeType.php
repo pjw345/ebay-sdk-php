@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BuyerProtectionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumeration type indicates the item's eligibility status for PayPal's buyer protection program or eBay's Money Back Guarantee program.
  * @subpackage Enumerations
  */
-class BuyerProtectionCodeType
+class BuyerProtectionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ItemIneligible'
@@ -53,16 +55,6 @@ class BuyerProtectionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ITEM_INELIGIBLE
      * @uses self::VALUE_ITEM_ELIGIBLE
@@ -82,13 +74,5 @@ class BuyerProtectionCodeType
             self::VALUE_NO_COVERAGE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

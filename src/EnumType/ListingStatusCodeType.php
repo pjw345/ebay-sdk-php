@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ListingStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * listing.
  * @subpackage Enumerations
  */
-class ListingStatusCodeType
+class ListingStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Active'
@@ -51,16 +53,6 @@ class ListingStatusCodeType
      */
     const VALUE_CUSTOM = 'Custom';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACTIVE
      * @uses self::VALUE_ENDED
@@ -78,13 +70,5 @@ class ListingStatusCodeType
             self::VALUE_CUSTOM_CODE,
             self::VALUE_CUSTOM,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DeliveryStatusEmailCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * to the recipient by email.
  * @subpackage Enumerations
  */
-class DeliveryStatusEmailCodeType
+class DeliveryStatusEmailCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Notified'
@@ -26,16 +28,6 @@ class DeliveryStatusEmailCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NOTIFIED
      * @uses self::VALUE_CUSTOM_CODE
@@ -47,13 +39,5 @@ class DeliveryStatusEmailCodeType
             self::VALUE_NOTIFIED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

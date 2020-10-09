@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReturnsShipmentPayeeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enum defines the different options that are available for specifying the return shipment payee.
  * @subpackage Enumerations
  */
-class ReturnsShipmentPayeeCodeType
+class ReturnsShipmentPayeeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Buyer'
@@ -25,16 +27,6 @@ class ReturnsShipmentPayeeCodeType
      */
     const VALUE_SELLER = 'Seller';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BUYER
      * @uses self::VALUE_SELLER
@@ -46,13 +38,5 @@ class ReturnsShipmentPayeeCodeType
             self::VALUE_BUYER,
             self::VALUE_SELLER,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

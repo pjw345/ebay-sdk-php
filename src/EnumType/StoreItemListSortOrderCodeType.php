@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for StoreItemListSortOrderCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: List of available options for how items are sorted in an eBay Store.
  * @subpackage Enumerations
  */
-class StoreItemListSortOrderCodeType
+class StoreItemListSortOrderCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'EndingFirst'
@@ -60,16 +62,6 @@ class StoreItemListSortOrderCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENDING_FIRST
      * @uses self::VALUE_NEWLY_LISTED
@@ -91,13 +83,5 @@ class StoreItemListSortOrderCodeType
             self::VALUE_HIGHEST_PRICED_PLUS_SHIPPING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

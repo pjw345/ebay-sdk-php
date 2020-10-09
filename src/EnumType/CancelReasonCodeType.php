@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CancelReasonCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines all possible reasons why an eBay order can be cancelled.
  * @subpackage Enumerations
  */
-class CancelReasonCodeType
+class CancelReasonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'OutOfStock'
@@ -116,16 +118,6 @@ class CancelReasonCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_OUT_OF_STOCK
      * @uses self::VALUE_BUYER_NO_SHOW
@@ -161,13 +153,5 @@ class CancelReasonCodeType
             self::VALUE_OUT_OF_STOCK_OR_CANNOT_FULFILL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

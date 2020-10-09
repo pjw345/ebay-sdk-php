@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CommentTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type list the Feedback ratings that can be left by one eBay user for another user regarding that user's experience with the another user during the purchase/checkout flow of an order line item.
  * @subpackage Enumerations
  */
-class CommentTypeCodeType
+class CommentTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Positive'
@@ -58,16 +60,6 @@ class CommentTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_POSITIVE
      * @uses self::VALUE_NEUTRAL
@@ -87,13 +79,5 @@ class CommentTypeCodeType
             self::VALUE_INDEPENDENTLY_WITHDRAWN,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

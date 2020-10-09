@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReturnsAcceptedOptionsCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specified whether returns are accepted.
  * @subpackage Enumerations
  */
-class ReturnsAcceptedOptionsCodeType
+class ReturnsAcceptedOptionsCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ReturnsAccepted'
@@ -32,16 +34,6 @@ class ReturnsAcceptedOptionsCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RETURNS_ACCEPTED
      * @uses self::VALUE_RETURNS_NOT_ACCEPTED
@@ -55,13 +47,5 @@ class ReturnsAcceptedOptionsCodeType
             self::VALUE_RETURNS_NOT_ACCEPTED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

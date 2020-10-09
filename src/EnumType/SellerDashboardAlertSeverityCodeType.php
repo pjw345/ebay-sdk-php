@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellerDashboardAlertSeverityCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Alerts can be either informational or a warning that identifies a problem.
  * @subpackage Enumerations
  */
-class SellerDashboardAlertSeverityCodeType
+class SellerDashboardAlertSeverityCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Informational'
@@ -42,16 +44,6 @@ class SellerDashboardAlertSeverityCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_INFORMATIONAL
      * @uses self::VALUE_WARNING
@@ -67,13 +59,5 @@ class SellerDashboardAlertSeverityCodeType
             self::VALUE_STRONG_WARNING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

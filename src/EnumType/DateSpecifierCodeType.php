@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DateSpecifierCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This type is deprecated.
  * @subpackage Enumerations
  */
-class DateSpecifierCodeType
+class DateSpecifierCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'M'
@@ -39,16 +41,6 @@ class DateSpecifierCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_M
      * @uses self::VALUE_D
@@ -64,13 +56,5 @@ class DateSpecifierCodeType
             self::VALUE_Y,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

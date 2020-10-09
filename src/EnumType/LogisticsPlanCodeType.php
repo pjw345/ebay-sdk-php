@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for LogisticsPlanCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * Collect" and digital gift card use cases, but more logistics plan types may be added in the future.
  * @subpackage Enumerations
  */
-class LogisticsPlanCodeType
+class LogisticsPlanCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PickUpDropOff'
@@ -34,16 +36,6 @@ class LogisticsPlanCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PICK_UP_DROP_OFF
      * @uses self::VALUE_DIGITAL_DELIVERY
@@ -57,13 +49,5 @@ class LogisticsPlanCodeType
             self::VALUE_DIGITAL_DELIVERY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

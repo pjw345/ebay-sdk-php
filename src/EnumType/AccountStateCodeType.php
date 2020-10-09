@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AccountStateCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that lists the possible states of an eBay user account.
  * @subpackage Enumerations
  */
-class AccountStateCodeType
+class AccountStateCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Active'
@@ -39,16 +41,6 @@ class AccountStateCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACTIVE
      * @uses self::VALUE_PENDING
@@ -64,13 +56,5 @@ class AccountStateCodeType
             self::VALUE_INACTIVE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

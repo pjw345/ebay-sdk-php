@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DiscountReasonCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is used in the response of Add/Revise/Relist item calls to indicate if eBay has applied a Special offer or Promotional discount to the order line item.
  * @subpackage Enumerations
  */
-class DiscountReasonCodeType
+class DiscountReasonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'SpecialOffer'
@@ -32,16 +34,6 @@ class DiscountReasonCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SPECIAL_OFFER
      * @uses self::VALUE_PROMOTION
@@ -55,13 +47,5 @@ class DiscountReasonCodeType
             self::VALUE_PROMOTION,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

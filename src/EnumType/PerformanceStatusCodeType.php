@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PerformanceStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines eBay Seller Levels.
  * @subpackage Enumerations
  */
-class PerformanceStatusCodeType
+class PerformanceStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'TopRated'
@@ -46,16 +48,6 @@ class PerformanceStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_TOP_RATED
      * @uses self::VALUE_ABOVE_STANDARD
@@ -73,13 +65,5 @@ class PerformanceStatusCodeType
             self::VALUE_BELOW_STANDARD,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

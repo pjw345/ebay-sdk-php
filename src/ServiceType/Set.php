@@ -394,12 +394,4 @@ class Set extends AbstractSoapClientBase
     {
         return parent::getResult();
     }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
-    }
 }

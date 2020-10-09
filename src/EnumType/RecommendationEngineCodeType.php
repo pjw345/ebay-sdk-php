@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RecommendationEngineCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class RecommendationEngineCodeType
+class RecommendationEngineCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ListingAnalyzer'
@@ -53,16 +55,6 @@ class RecommendationEngineCodeType
      */
     const VALUE_ITEM_SPECIFICS = 'ItemSpecifics';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LISTING_ANALYZER
      * @uses self::VALUE_SIFFTAS
@@ -82,13 +74,5 @@ class RecommendationEngineCodeType
             self::VALUE_SUGGESTED_ATTRIBUTES,
             self::VALUE_ITEM_SPECIFICS,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

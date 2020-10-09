@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CollectionMethodCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * Although the <b>CollectionMethod</b> field is returned for orders subject to 'Collect and Remit' sales tax or 'Good and Services' tax, the <b>CollectionMethod</b> field and <b>CollectionMethodCodeType</b> are currently not applicable. </span>
  * @subpackage Enumerations
  */
-class CollectionMethodCodeType
+class CollectionMethodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'INVOICE'
@@ -26,16 +28,6 @@ class CollectionMethodCodeType
      */
     const VALUE_NET = 'NET';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_INVOICE
      * @uses self::VALUE_NET
@@ -47,13 +39,5 @@ class CollectionMethodCodeType
             self::VALUE_INVOICE,
             self::VALUE_NET,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

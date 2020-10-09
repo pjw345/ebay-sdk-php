@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SelectionModeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type contains the values that will indicate whether a seller can specify their own custom values for an Item Specific, or if they need to use a value (or values) that eBay has defined.
  * @subpackage Enumerations
  */
-class SelectionModeCodeType
+class SelectionModeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Automatic'
@@ -55,16 +57,6 @@ class SelectionModeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_AUTOMATIC
      * @uses self::VALUE_MANUAL
@@ -84,13 +76,5 @@ class SelectionModeCodeType
             self::VALUE_FREE_TEXT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

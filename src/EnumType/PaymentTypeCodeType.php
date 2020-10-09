@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaymentTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * applicable. </span>
  * @subpackage Enumerations
  */
-class PaymentTypeCodeType
+class PaymentTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Sale'
@@ -68,16 +70,6 @@ class PaymentTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SALE
      * @uses self::VALUE_REFUND
@@ -101,13 +93,5 @@ class PaymentTypeCodeType
             self::VALUE_RENTAL_BUYOUT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

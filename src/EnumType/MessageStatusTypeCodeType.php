@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MessageStatusTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is used to indicate whether or not a question has been answered.
  * @subpackage Enumerations
  */
-class MessageStatusTypeCodeType
+class MessageStatusTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Answered'
@@ -32,16 +34,6 @@ class MessageStatusTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ANSWERED
      * @uses self::VALUE_UNANSWERED
@@ -55,13 +47,5 @@ class MessageStatusTypeCodeType
             self::VALUE_UNANSWERED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

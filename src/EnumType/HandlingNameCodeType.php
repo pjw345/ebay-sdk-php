@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for HandlingNameCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: How packaging/handling cost is to be determined for <a href="http://developer.ebay.com/DevZone/guides/features-guide/default.html#development/Listing-AnItem.html#CombinedInvoice">Combined Invoice</a> orders.
  * @subpackage Enumerations
  */
-class HandlingNameCodeType
+class HandlingNameCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'EachAdditionalAmount'
@@ -53,16 +55,6 @@ class HandlingNameCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_EACH_ADDITIONAL_AMOUNT
      * @uses self::VALUE_EACH_ADDITIONAL_AMOUNT_OFF
@@ -82,13 +74,5 @@ class HandlingNameCodeType
             self::VALUE_COMBINED_HANDLING_FEE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

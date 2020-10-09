@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PromotionItemPriceTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class PromotionItemPriceTypeCodeType
+class PromotionItemPriceTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AuctionPrice'
@@ -46,16 +48,6 @@ class PromotionItemPriceTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_AUCTION_PRICE
      * @uses self::VALUE_BUY_IT_NOW_PRICE
@@ -73,13 +65,5 @@ class PromotionItemPriceTypeCodeType
             self::VALUE_CLASSIFIED_AD_PRICE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DisplayPayNowButtonCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * worldwide to managed payments by 2021. </span> <br>
  * @subpackage Enumerations
  */
-class DisplayPayNowButtonCodeType
+class DisplayPayNowButtonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ShowPayNowButtonForAllPaymentMethods'
@@ -35,16 +37,6 @@ class DisplayPayNowButtonCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SHOW_PAY_NOW_BUTTON_FOR_ALL_PAYMENT_METHODS
      * @uses self::VALUE_SHOW_PAY_NOW_BUTTON_FOR_PAY_PAL_ONLY
@@ -58,13 +50,5 @@ class DisplayPayNowButtonCodeType
             self::VALUE_SHOW_PAY_NOW_BUTTON_FOR_PAY_PAL_ONLY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

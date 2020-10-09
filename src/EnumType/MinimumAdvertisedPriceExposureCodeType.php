@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MinimumAdvertisedPriceExposureCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the special price treatments that can be set up for listings enabled with the Minimum Advertised Price feature. The Minimum Advertised Price (MAP) feature is only supported on the eBay US site.
  * @subpackage Enumerations
  */
-class MinimumAdvertisedPriceExposureCodeType
+class MinimumAdvertisedPriceExposureCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PreCheckout'
@@ -42,16 +44,6 @@ class MinimumAdvertisedPriceExposureCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PRE_CHECKOUT
      * @uses self::VALUE_DURING_CHECKOUT
@@ -67,13 +59,5 @@ class MinimumAdvertisedPriceExposureCodeType
             self::VALUE_NONE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

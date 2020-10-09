@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReturnsRefundMethodCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enum defines the different options that are available for specifying the available refund methods.
  * @subpackage Enumerations
  */
-class ReturnsRefundMethodCodeType
+class ReturnsRefundMethodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'MoneyBack'
@@ -25,16 +27,6 @@ class ReturnsRefundMethodCodeType
      */
     const VALUE_MONEY_BACKOR_REPLACEMENT = 'MoneyBackorReplacement';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_MONEY_BACK
      * @uses self::VALUE_MONEY_BACKOR_REPLACEMENT
@@ -46,13 +38,5 @@ class ReturnsRefundMethodCodeType
             self::VALUE_MONEY_BACK,
             self::VALUE_MONEY_BACKOR_REPLACEMENT,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

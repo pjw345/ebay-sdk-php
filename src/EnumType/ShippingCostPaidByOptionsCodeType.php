@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingCostPaidByOptionsCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * <code>InternationalReturnsShipmentPayeeValues</code> as <b>FeatureID</b> values to see the return shipping 'payee' values available for domestic and international returns, respectively. </span>
  * @subpackage Enumerations
  */
-class ShippingCostPaidByOptionsCodeType
+class ShippingCostPaidByOptionsCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Buyer'
@@ -57,16 +59,6 @@ class ShippingCostPaidByOptionsCodeType
      */
     const VALUE_EUBUYER_CANCEL_RIGHTS_UNDER_40 = 'EUBuyer_CancelRightsUnder40';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BUYER
      * @uses self::VALUE_SELLER
@@ -86,13 +78,5 @@ class ShippingCostPaidByOptionsCodeType
             self::VALUE_EUSELLER_CANCEL_RIGHTS,
             self::VALUE_EUBUYER_CANCEL_RIGHTS_UNDER_40,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

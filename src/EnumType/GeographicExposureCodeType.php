@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for GeographicExposureCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is used to indicate if an eBay site or category supports Motors National Listings and/or Motors Local Market listings.
  * @subpackage Enumerations
  */
-class GeographicExposureCodeType
+class GeographicExposureCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'National'
@@ -39,16 +41,6 @@ class GeographicExposureCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NATIONAL
      * @uses self::VALUE_LOCAL_ONLY
@@ -64,13 +56,5 @@ class GeographicExposureCodeType
             self::VALUE_LOCAL_OPTIONAL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

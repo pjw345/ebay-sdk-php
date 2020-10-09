@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for FeatureIDCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * site or category level. Multiple <b>FeatureID</b> fields can be used in the request. If no <b>FeatureID</b> fields are used, the call retrieves data for all features defined within this enumerated type.
  * @subpackage Enumerations
  */
-class FeatureIDCodeType
+class FeatureIDCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ListingDurations'
@@ -1170,16 +1172,6 @@ class FeatureIDCodeType
      */
     const VALUE_RETURN_POLICY_DESCRIPTION_ENABLED = 'ReturnPolicyDescriptionEnabled';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LISTING_DURATIONS
      * @uses self::VALUE_BEST_OFFER_ENABLED
@@ -1467,13 +1459,5 @@ class FeatureIDCodeType
             self::VALUE_INTERNATIONAL_REFUND_METHOD_VALUES,
             self::VALUE_RETURN_POLICY_DESCRIPTION_ENABLED,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

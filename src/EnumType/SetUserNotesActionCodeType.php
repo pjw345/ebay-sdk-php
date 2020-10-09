@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SetUserNotesActionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies the action to take for an item's My eBay notes.
  * @subpackage Enumerations
  */
-class SetUserNotesActionCodeType
+class SetUserNotesActionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AddOrUpdate'
@@ -32,16 +34,6 @@ class SetUserNotesActionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ADD_OR_UPDATE
      * @uses self::VALUE_DELETE
@@ -55,13 +47,5 @@ class SetUserNotesActionCodeType
             self::VALUE_DELETE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

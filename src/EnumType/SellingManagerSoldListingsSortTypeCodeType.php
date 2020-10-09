@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellingManagerSoldListingsSortTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: SellingManagerSoldListingsSortType - Specifies the fields that can be used to sort the listings.
  * @subpackage Enumerations
  */
-class SellingManagerSoldListingsSortTypeCodeType
+class SellingManagerSoldListingsSortTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'SalesRecordID'
@@ -165,16 +167,6 @@ class SellingManagerSoldListingsSortTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SALES_RECORD_ID
      * @uses self::VALUE_BUYER_EMAIL
@@ -226,13 +218,5 @@ class SellingManagerSoldListingsSortTypeCodeType
             self::VALUE_LISTED_ON,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

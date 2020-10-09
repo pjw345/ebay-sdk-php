@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MyMessagesAlertResolutionStatusCode EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class MyMessagesAlertResolutionStatusCode
+class MyMessagesAlertResolutionStatusCode extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Unresolved'
@@ -39,16 +41,6 @@ class MyMessagesAlertResolutionStatusCode
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UNRESOLVED
      * @uses self::VALUE_RESOLVED_BY_AUTO_RESOLUTION
@@ -64,13 +56,5 @@ class MyMessagesAlertResolutionStatusCode
             self::VALUE_RESOLVED_BY_USER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

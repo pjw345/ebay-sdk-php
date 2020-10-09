@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RequiredSellerActionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the list of possible actions that a seller can take to expedite the release of funds for an order into their account.
  * @subpackage Enumerations
  */
-class RequiredSellerActionCodeType
+class RequiredSellerActionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ResolveeBPCase'
@@ -101,16 +103,6 @@ class RequiredSellerActionCodeType
      */
     const VALUE_RESOLVE_RETURN = 'ResolveReturn';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RESOLVEE_BPCASE
      * @uses self::VALUE_MARK_AS_SHIPPED
@@ -142,13 +134,5 @@ class RequiredSellerActionCodeType
             self::VALUE_CUSTOM_CODE,
             self::VALUE_RESOLVE_RETURN,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

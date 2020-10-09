@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for GranularityLevelCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * at a time. For GetSellerList, use DetailLevel or GranularityLevel in a given request, but not both. For GetSellerList, if GranularityLevel is specified, DetailLevel is ignored.
  * @subpackage Enumerations
  */
-class GranularityLevelCodeType
+class GranularityLevelCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Coarse'
@@ -42,16 +44,6 @@ class GranularityLevelCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_COARSE
      * @uses self::VALUE_FINE
@@ -67,13 +59,5 @@ class GranularityLevelCodeType
             self::VALUE_MEDIUM,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

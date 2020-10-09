@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for QuantityOperatorCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * desires compares to the quantity available.
  * @subpackage Enumerations
  */
-class QuantityOperatorCodeType
+class QuantityOperatorCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'LessThan'
@@ -54,16 +56,6 @@ class QuantityOperatorCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LESS_THAN
      * @uses self::VALUE_LESS_THAN_OR_EQUAL
@@ -83,13 +75,5 @@ class QuantityOperatorCodeType
             self::VALUE_GREATER_THAN_OR_EQUAL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

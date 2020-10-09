@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ErrorHandlingCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * href="http://developer.ebay.com/devzone/guides/features-guide/default.html#Basics/Call-ErrorHandling.html">Error Handling</a> for details about these preferences and their effects.
  * @subpackage Enumerations
  */
-class ErrorHandlingCodeType
+class ErrorHandlingCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Legacy'
@@ -43,16 +45,6 @@ class ErrorHandlingCodeType
      */
     const VALUE_FAIL_ON_ERROR = 'FailOnError';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LEGACY
      * @uses self::VALUE_BEST_EFFORT
@@ -68,13 +60,5 @@ class ErrorHandlingCodeType
             self::VALUE_ALL_OR_NOTHING,
             self::VALUE_FAIL_ON_ERROR,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

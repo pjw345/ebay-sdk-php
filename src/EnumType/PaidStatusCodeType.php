@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaidStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies the payment status of an order, as seen by the buyer and seller.
  * @subpackage Enumerations
  */
-class PaidStatusCodeType
+class PaidStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NotPaid'
@@ -152,16 +154,6 @@ class PaidStatusCodeType
      */
     const VALUE_PAY_UPON_INVOICE = 'PayUponInvoice';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NOT_PAID
      * @uses self::VALUE_BUYER_HAS_NOT_COMPLETED_CHECKOUT
@@ -209,13 +201,5 @@ class PaidStatusCodeType
             self::VALUE_PAID,
             self::VALUE_PAY_UPON_INVOICE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

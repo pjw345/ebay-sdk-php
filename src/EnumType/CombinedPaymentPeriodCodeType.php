@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CombinedPaymentPeriodCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * Sellers can offer buyers shipping discounts through Combined Invoice orders, and buyers only have to make one payment for multiple orders as opposed to a payment for each order.
  * @subpackage Enumerations
  */
-class CombinedPaymentPeriodCodeType
+class CombinedPaymentPeriodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Days_3'
@@ -62,16 +64,6 @@ class CombinedPaymentPeriodCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DAYS_3
      * @uses self::VALUE_DAYS_5
@@ -93,13 +85,5 @@ class CombinedPaymentPeriodCodeType
             self::VALUE_INELIGIBLE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

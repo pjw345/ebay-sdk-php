@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CharityAffiliationTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumeration type defines the possible values that can be returned for the <b>CharityAffiliationDetail.AffiliationType</b> field in the <b>GetUser</b> response.
  * @subpackage Enumerations
  */
-class CharityAffiliationTypeCodeType
+class CharityAffiliationTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Community'
@@ -39,16 +41,6 @@ class CharityAffiliationTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_COMMUNITY
      * @uses self::VALUE_DIRECT
@@ -64,13 +56,5 @@ class CharityAffiliationTypeCodeType
             self::VALUE_REMOVE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

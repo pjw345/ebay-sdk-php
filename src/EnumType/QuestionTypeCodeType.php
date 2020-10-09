@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for QuestionTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type used by the member messaging calls to indicate the type of question that was asked.
  * @subpackage Enumerations
  */
-class QuestionTypeCodeType
+class QuestionTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'General'
@@ -60,16 +62,6 @@ class QuestionTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_GENERAL
      * @uses self::VALUE_SHIPPING
@@ -91,13 +83,5 @@ class QuestionTypeCodeType
             self::VALUE_NONE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

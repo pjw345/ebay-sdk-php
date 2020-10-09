@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BuyerSatisfactionStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type contains the list of possible Buyer Satisfaction ratings for a seller.
  * @subpackage Enumerations
  */
-class BuyerSatisfactionStatusCodeType
+class BuyerSatisfactionStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Excellent'
@@ -62,16 +64,6 @@ class BuyerSatisfactionStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_EXCELLENT
      * @uses self::VALUE_GOOD
@@ -93,13 +85,5 @@ class BuyerSatisfactionStatusCodeType
             self::VALUE_UNACCEPTABLE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

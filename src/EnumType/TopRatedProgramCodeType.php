@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for TopRatedProgramCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that consists of the Top-Rated Seller programs that exist around the world.
  * @subpackage Enumerations
  */
-class TopRatedProgramCodeType
+class TopRatedProgramCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'US'
@@ -46,16 +48,6 @@ class TopRatedProgramCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_US
      * @uses self::VALUE_UK
@@ -73,13 +65,5 @@ class TopRatedProgramCodeType
             self::VALUE_GLOBAL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

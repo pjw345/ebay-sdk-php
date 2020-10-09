@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SearchFlagCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * buyer's Saved Search.
  * @subpackage Enumerations
  */
-class SearchFlagCodeType
+class SearchFlagCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Charity'
@@ -107,16 +109,6 @@ class SearchFlagCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CHARITY
      * @uses self::VALUE_GIFT
@@ -150,13 +142,5 @@ class SearchFlagCodeType
             self::VALUE_DIGITAL_DELIVERY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

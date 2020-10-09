@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for GalleryStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumeration type that returns the status of the gallery image generation. That status returns either a value of 'Success' or a value that indicates why the gallery image has not been generated.
  * @subpackage Enumerations
  */
-class GalleryStatusCodeType
+class GalleryStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Success'
@@ -88,16 +90,6 @@ class GalleryStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SUCCESS
      * @uses self::VALUE_PENDING
@@ -127,13 +119,5 @@ class GalleryStatusCodeType
             self::VALUE_IMAGE_PROCESSING_ERROR,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

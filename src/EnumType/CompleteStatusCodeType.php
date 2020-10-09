@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CompleteStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that contains values which indicate whether an order or order line item is complete, incomplete, or pending.
  * @subpackage Enumerations
  */
-class CompleteStatusCodeType
+class CompleteStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Incomplete'
@@ -45,16 +47,6 @@ class CompleteStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_INCOMPLETE
      * @uses self::VALUE_COMPLETE
@@ -70,13 +62,5 @@ class CompleteStatusCodeType
             self::VALUE_PENDING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

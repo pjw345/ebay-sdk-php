@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for NotificationDeliveryStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class NotificationDeliveryStatusCodeType
+class NotificationDeliveryStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'CustomCode'
@@ -36,16 +38,6 @@ class NotificationDeliveryStatusCodeType
      */
     const VALUE_MARKED_DOWN = 'MarkedDown';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CUSTOM_CODE
      * @uses self::VALUE_DELIVERED
@@ -63,13 +55,5 @@ class NotificationDeliveryStatusCodeType
             self::VALUE_REJECTED,
             self::VALUE_MARKED_DOWN,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

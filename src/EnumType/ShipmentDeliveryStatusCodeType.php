@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShipmentDeliveryStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Status of the delivery.
  * @subpackage Enumerations
  */
-class ShipmentDeliveryStatusCodeType
+class ShipmentDeliveryStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Created'
@@ -88,16 +90,6 @@ class ShipmentDeliveryStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CREATED
      * @uses self::VALUE_DROPPED_OFF
@@ -127,13 +119,5 @@ class ShipmentDeliveryStatusCodeType
             self::VALUE_ERROR,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

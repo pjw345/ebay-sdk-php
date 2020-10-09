@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for StoreCustomPageStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: List of possible statuses for Store custom pages.
  * @subpackage Enumerations
  */
-class StoreCustomPageStatusCodeType
+class StoreCustomPageStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Active'
@@ -39,16 +41,6 @@ class StoreCustomPageStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACTIVE
      * @uses self::VALUE_DELETE
@@ -64,13 +56,5 @@ class StoreCustomPageStatusCodeType
             self::VALUE_INACTIVE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

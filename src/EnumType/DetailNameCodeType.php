@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DetailNameCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * filters are used, all applicable metadata will be returned.
  * @subpackage Enumerations
  */
-class DetailNameCodeType
+class DetailNameCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'CountryDetails'
@@ -221,16 +223,6 @@ class DetailNameCodeType
      */
     const VALUE_PRODUCT_DETAILS = 'ProductDetails';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_COUNTRY_DETAILS
      * @uses self::VALUE_CURRENCY_DETAILS
@@ -290,13 +282,5 @@ class DetailNameCodeType
             self::VALUE_SHIPPING_CATEGORY_DETAILS,
             self::VALUE_PRODUCT_DETAILS,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

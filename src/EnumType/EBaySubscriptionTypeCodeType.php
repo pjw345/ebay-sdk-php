@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for EBaySubscriptionTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type contains a list of eBay subscriptions that an eBay user may be subscribed to.
  * @subpackage Enumerations
  */
-class EBaySubscriptionTypeCodeType
+class EBaySubscriptionTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'SellerAssistant'
@@ -164,16 +166,6 @@ class EBaySubscriptionTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SELLER_ASSISTANT
      * @uses self::VALUE_SELLER_ASSISTANT_PRO
@@ -223,13 +215,5 @@ class EBaySubscriptionTypeCodeType
             self::VALUE_LOCAL_MARKET_PREMIUM,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

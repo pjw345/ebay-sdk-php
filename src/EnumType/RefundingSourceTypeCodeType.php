@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RefundingSourceTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class RefundingSourceTypeCodeType
+class RefundingSourceTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ScheduledPayout'
@@ -39,16 +41,6 @@ class RefundingSourceTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SCHEDULED_PAYOUT
      * @uses self::VALUE_PAYPAL
@@ -64,13 +56,5 @@ class RefundingSourceTypeCodeType
             self::VALUE_BANK_ACCOUNT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

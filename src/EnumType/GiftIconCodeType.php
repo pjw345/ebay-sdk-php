@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for GiftIconCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: <span class="tablenote"><b>Note: </b> This enumerated type is deprecated as the Gift Icon feature is no longer available on any eBay Marketplace sites. </span>
  * @subpackage Enumerations
  */
-class GiftIconCodeType
+class GiftIconCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Enabled'
@@ -32,16 +34,6 @@ class GiftIconCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENABLED
      * @uses self::VALUE_DISABLED
@@ -55,13 +47,5 @@ class GiftIconCodeType
             self::VALUE_DISABLED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

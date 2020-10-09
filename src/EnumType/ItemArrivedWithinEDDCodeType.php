@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ItemArrivedWithinEDDCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type list the possible status values regarding whether or not a buyer received an order line item within the estimated delivery date timeframe.
  * @subpackage Enumerations
  */
-class ItemArrivedWithinEDDCodeType
+class ItemArrivedWithinEDDCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'EddQuestionWasNotAsked'
@@ -46,16 +48,6 @@ class ItemArrivedWithinEDDCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_EDD_QUESTION_WAS_NOT_ASKED
      * @uses self::VALUE_BUYER_DIDNT_PROVIDE_ANSWER
@@ -73,13 +65,5 @@ class ItemArrivedWithinEDDCodeType
             self::VALUE_BUYER_INDICATED_ITEM_NOT_ARRIVED_WITHIN_EDDRANGE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

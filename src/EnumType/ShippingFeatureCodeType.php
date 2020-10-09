@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingFeatureCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Miscellaneous details of the shipment.
  * @subpackage Enumerations
  */
-class ShippingFeatureCodeType
+class ShippingFeatureCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'DeliveryConfirmation'
@@ -60,16 +62,6 @@ class ShippingFeatureCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DELIVERY_CONFIRMATION
      * @uses self::VALUE_SIGNATURE_CONFIRMATION
@@ -91,13 +83,5 @@ class ShippingFeatureCodeType
             self::VALUE_NOT_DEFINED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

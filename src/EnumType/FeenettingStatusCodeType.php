@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for FeenettingStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * payouts as early as mid-June 2020, but for many other managed payments sellers, these fees won't start getting deducted from seller payouts until mid-July 2020. </span>
  * @subpackage Enumerations
  */
-class FeenettingStatusCodeType
+class FeenettingStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Enabled'
@@ -35,16 +37,6 @@ class FeenettingStatusCodeType
      */
     const VALUE_EXEMPTED = 'Exempted';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENABLED
      * @uses self::VALUE_DISABLED
@@ -58,13 +50,5 @@ class FeenettingStatusCodeType
             self::VALUE_DISABLED,
             self::VALUE_EXEMPTED,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

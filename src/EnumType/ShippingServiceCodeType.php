@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingServiceCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * <strong>ShippingServiceDetails</strong> node. If this flag is not returned for a specific shipping service, that shipping service can no longer be used in the AddItem family of calls. </span>
  * @subpackage Enumerations
  */
-class ShippingServiceCodeType
+class ShippingServiceCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'UPSGround'
@@ -5008,16 +5010,6 @@ class ShippingServiceCodeType
      */
     const VALUE_E_BAY_NOW_IMMEDIATE_DELIVERY = 'eBayNowImmediateDelivery';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UPSGROUND
      * @uses self::VALUE_UPS_3_RD_DAY
@@ -6449,13 +6441,5 @@ class ShippingServiceCodeType
             self::VALUE_UK_ROYAL_MAIL_TRACKED,
             self::VALUE_E_BAY_NOW_IMMEDIATE_DELIVERY,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DiscountNameCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is used by the seller to set the shipping discount type. Some of these shipping discount types apply to flat-rate shipping and others apply to calculated shipping.
  * @subpackage Enumerations
  */
-class DiscountNameCodeType
+class DiscountNameCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'EachAdditionalAmount'
@@ -90,16 +92,6 @@ class DiscountNameCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_EACH_ADDITIONAL_AMOUNT
      * @uses self::VALUE_EACH_ADDITIONAL_AMOUNT_OFF
@@ -127,13 +119,5 @@ class DiscountNameCodeType
             self::VALUE_MAXIMUM_SHIPPING_COST_PER_ORDER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

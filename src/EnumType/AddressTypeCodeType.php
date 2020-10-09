@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AddressTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * topic for more information on registering with the PayPal Giving Fund and the benefits that come with being a registered eBay for Charity organization.
  * @subpackage Enumerations
  */
-class AddressTypeCodeType
+class AddressTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Contact'
@@ -33,16 +35,6 @@ class AddressTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CONTACT
      * @uses self::VALUE_REGISTERED
@@ -56,13 +48,5 @@ class AddressTypeCodeType
             self::VALUE_REGISTERED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

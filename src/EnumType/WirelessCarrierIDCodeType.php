@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for WirelessCarrierIDCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type contains a list of wireless carriers that may be providing SMS messages for a Platform Notifications subscriber.
  * @subpackage Enumerations
  */
-class WirelessCarrierIDCodeType
+class WirelessCarrierIDCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Cingular'
@@ -116,16 +118,6 @@ class WirelessCarrierIDCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CINGULAR
      * @uses self::VALUE_TMOBILE
@@ -163,13 +155,5 @@ class WirelessCarrierIDCodeType
             self::VALUE_ATT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

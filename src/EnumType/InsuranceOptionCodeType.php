@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for InsuranceOptionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This type is deprecated, as shipping insurance is no longer applicable or supported in eBay APIs.
  * @subpackage Enumerations
  */
-class InsuranceOptionCodeType
+class InsuranceOptionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Optional'
@@ -55,16 +57,6 @@ class InsuranceOptionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_OPTIONAL
      * @uses self::VALUE_REQUIRED
@@ -84,13 +76,5 @@ class InsuranceOptionCodeType
             self::VALUE_NOT_OFFERED_ON_SITE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

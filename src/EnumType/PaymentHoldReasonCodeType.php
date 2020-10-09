@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaymentHoldReasonCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * as three days after the buyer receives the order, but the hold can be up to 21 days based on the scenario, and in some cases, the seller's lack of action in helping to expedite the release of funds.
  * @subpackage Enumerations
  */
-class PaymentHoldReasonCodeType
+class PaymentHoldReasonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NewSeller'
@@ -92,16 +94,6 @@ class PaymentHoldReasonCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NEW_SELLER
      * @uses self::VALUE_BELOW_STANDARD_SELLER
@@ -131,13 +123,5 @@ class PaymentHoldReasonCodeType
             self::VALUE_NONE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

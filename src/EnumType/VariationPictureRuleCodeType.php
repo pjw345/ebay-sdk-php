@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for VariationPictureRuleCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * provide URLs to multiple pictures showcasing the available colors of the shirts. These URLs are specified through multiple <b>Variations.Pictures.VariationSpecificPictureSet.PictureURL</b> fields.
  * @subpackage Enumerations
  */
-class VariationPictureRuleCodeType
+class VariationPictureRuleCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Required'
@@ -46,16 +48,6 @@ class VariationPictureRuleCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_REQUIRED
      * @uses self::VALUE_ENABLED
@@ -71,13 +63,5 @@ class VariationPictureRuleCodeType
             self::VALUE_DISABLED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

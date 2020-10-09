@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ItemSortTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * any of the three calls above unless it is specifically called out that a certain enumeration value will not work/is not applicable to a call.
  * @subpackage Enumerations
  */
-class ItemSortTypeCodeType
+class ItemSortTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ItemID'
@@ -591,16 +593,6 @@ class ItemSortTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ITEM_ID
      * @uses self::VALUE_PRICE
@@ -762,13 +754,5 @@ class ItemSortTypeCodeType
             self::VALUE_CLASSIFIED_AD_PAY_PER_LEAD_FEE_DESCENDING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

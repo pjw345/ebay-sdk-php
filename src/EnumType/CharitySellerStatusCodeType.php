@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CharitySellerStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type defining the possible states for a seller's charity seller account.
  * @subpackage Enumerations
  */
-class CharitySellerStatusCodeType
+class CharitySellerStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Suspended'
@@ -91,16 +93,6 @@ class CharitySellerStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SUSPENDED
      * @uses self::VALUE_REGISTERED
@@ -132,13 +124,5 @@ class CharitySellerStatusCodeType
             self::VALUE_REGISTERED_NO_PAYMENT_METHOD,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

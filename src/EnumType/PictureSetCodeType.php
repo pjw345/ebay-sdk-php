@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PictureSetCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies whether to generate the 'standard' set of images for each picture or to also generate a super-sized image. <br/><br/> <b>Note:</b> This type is used only for images that will be used in a listing.
  * @subpackage Enumerations
  */
-class PictureSetCodeType
+class PictureSetCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Standard'
@@ -41,16 +43,6 @@ class PictureSetCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_STANDARD
      * @uses self::VALUE_SUPERSIZE
@@ -66,13 +58,5 @@ class PictureSetCodeType
             self::VALUE_LARGE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

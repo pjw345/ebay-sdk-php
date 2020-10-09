@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for NotificationEventPropertyNameCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Defines all property names that can be used.
  * @subpackage Enumerations
  */
-class NotificationEventPropertyNameCodeType
+class NotificationEventPropertyNameCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'TimeLeft'
@@ -26,16 +28,6 @@ class NotificationEventPropertyNameCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_TIME_LEFT
      * @uses self::VALUE_CUSTOM_CODE
@@ -47,13 +39,5 @@ class NotificationEventPropertyNameCodeType
             self::VALUE_TIME_LEFT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

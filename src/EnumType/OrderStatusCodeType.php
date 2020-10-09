@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for OrderStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * management calls under the <b>OrderStatus</b> field. See the individual value descriptions for more information on how they are used and/or when they are returned.
  * @subpackage Enumerations
  */
-class OrderStatusCodeType
+class OrderStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Active'
@@ -103,16 +105,6 @@ class OrderStatusCodeType
      */
     const VALUE_CANCEL_PENDING = 'CancelPending';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACTIVE
      * @uses self::VALUE_INACTIVE
@@ -144,13 +136,5 @@ class OrderStatusCodeType
             self::VALUE_ALL,
             self::VALUE_CANCEL_PENDING,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

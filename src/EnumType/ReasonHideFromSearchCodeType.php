@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReasonHideFromSearchCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the possible reasons why a listing is being hidden from search on the eBay site.
  * @subpackage Enumerations
  */
-class ReasonHideFromSearchCodeType
+class ReasonHideFromSearchCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'DuplicateListing'
@@ -29,16 +31,6 @@ class ReasonHideFromSearchCodeType
      */
     const VALUE_OUT_OF_STOCK = 'OutOfStock';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DUPLICATE_LISTING
      * @uses self::VALUE_OUT_OF_STOCK
@@ -50,13 +42,5 @@ class ReasonHideFromSearchCodeType
             self::VALUE_DUPLICATE_LISTING,
             self::VALUE_OUT_OF_STOCK,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

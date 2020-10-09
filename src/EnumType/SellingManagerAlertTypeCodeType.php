@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellingManagerAlertTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the types of alerts that may me returned in the <b>GetSellingManagerAlerts</b> response
  * @subpackage Enumerations
  */
-class SellingManagerAlertTypeCodeType
+class SellingManagerAlertTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Sold'
@@ -54,16 +56,6 @@ class SellingManagerAlertTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_SOLD
      * @uses self::VALUE_INVENTORY
@@ -83,13 +75,5 @@ class SellingManagerAlertTypeCodeType
             self::VALUE_GENERAL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

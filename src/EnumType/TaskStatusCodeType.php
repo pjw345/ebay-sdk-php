@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for TaskStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * GetStoreCategoryUpdateStatus, otherwise, the status is returned in the SetStoreCategories response.
  * @subpackage Enumerations
  */
-class TaskStatusCodeType
+class TaskStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Pending'
@@ -47,16 +49,6 @@ class TaskStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PENDING
      * @uses self::VALUE_IN_PROGRESS
@@ -74,13 +66,5 @@ class TaskStatusCodeType
             self::VALUE_FAILED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

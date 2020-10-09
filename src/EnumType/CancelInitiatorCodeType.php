@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CancelInitiatorCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the possible parties that can initiate the cancellation of an eBay order.
  * @subpackage Enumerations
  */
-class CancelInitiatorCodeType
+class CancelInitiatorCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Unknown'
@@ -53,16 +55,6 @@ class CancelInitiatorCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UNKNOWN
      * @uses self::VALUE_SELLER
@@ -82,13 +74,5 @@ class CancelInitiatorCodeType
             self::VALUE_SYSTEM,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AdFormatLeadStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that indicates to the owner of a classified ad whether or not an email correspondence from a prospective buyer has been answered.
  * @subpackage Enumerations
  */
-class AdFormatLeadStatusCodeType
+class AdFormatLeadStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'New'
@@ -32,16 +34,6 @@ class AdFormatLeadStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NEW
      * @uses self::VALUE_RESPONDED
@@ -55,13 +47,5 @@ class AdFormatLeadStatusCodeType
             self::VALUE_RESPONDED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

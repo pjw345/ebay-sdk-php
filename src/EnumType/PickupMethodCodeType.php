@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PickupMethodCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Simple type defining all possible local pickup methods for buyers. A <strong>PickupMethodCodeType</strong> value is always returned under the <strong>PickupOptions</strong> and <strong>PickupMethodSelected</strong> containers.
  * @subpackage Enumerations
  */
-class PickupMethodCodeType
+class PickupMethodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'InStorePickup'
@@ -35,16 +37,6 @@ class PickupMethodCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_IN_STORE_PICKUP
      * @uses self::VALUE_PICK_UP_DROP_OFF
@@ -58,13 +50,5 @@ class PickupMethodCodeType
             self::VALUE_PICK_UP_DROP_OFF,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

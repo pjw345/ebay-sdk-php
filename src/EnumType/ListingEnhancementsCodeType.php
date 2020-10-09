@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ListingEnhancementsCodeType EnumType
  * Meta information extracted from the WSDL
@@ -10,7 +12,7 @@ namespace EnumType;
  * will either be listed as <code>Enabled</code> or <code>Disabled</code>.
  * @subpackage Enumerations
  */
-class ListingEnhancementsCodeType
+class ListingEnhancementsCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Border'
@@ -95,16 +97,6 @@ class ListingEnhancementsCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BORDER
      * @uses self::VALUE_BOLD_TITLE
@@ -132,13 +124,5 @@ class ListingEnhancementsCodeType
             self::VALUE_PRO_PACK_PLUS_BUNDLE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

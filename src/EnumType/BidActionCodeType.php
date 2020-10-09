@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BidActionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type lists the possible actions that can be made on a listing or Best Offer and the possible states of a bid or Best Offer.
  * @subpackage Enumerations
  */
-class BidActionCodeType
+class BidActionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Unknown'
@@ -122,16 +124,6 @@ class BidActionCodeType
      */
     const VALUE_DECLINE = 'Decline';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UNKNOWN
      * @uses self::VALUE_BID
@@ -169,13 +161,5 @@ class BidActionCodeType
             self::VALUE_ACCEPT,
             self::VALUE_DECLINE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

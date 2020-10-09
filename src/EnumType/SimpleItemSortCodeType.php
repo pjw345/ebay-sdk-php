@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SimpleItemSortCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the sort values that can be used in the <b>FavoriteSearch.ItemSort</b> filter in a <b>GetMyeBayBuying</b> request.
  * @subpackage Enumerations
  */
-class SimpleItemSortCodeType
+class SimpleItemSortCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'BestMatch'
@@ -82,16 +84,6 @@ class SimpleItemSortCodeType
      */
     const VALUE_PRICE_PLUS_SHIPPING = 'PricePlusShipping';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BEST_MATCH
      * @uses self::VALUE_CUSTOM_CODE
@@ -119,13 +111,5 @@ class SimpleItemSortCodeType
             self::VALUE_BEST_MATCH_CATEGORY_GROUP,
             self::VALUE_PRICE_PLUS_SHIPPING,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingPackageCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: The nature of the package used to ship the item(s). Required for calculated shipping only. Not all package types are supported by a specific shipping service (ShippingServiceCodeType).
  * @subpackage Enumerations
  */
-class ShippingPackageCodeType
+class ShippingPackageCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'None'
@@ -228,16 +230,6 @@ class ShippingPackageCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NONE
      * @uses self::VALUE_LETTER
@@ -307,13 +299,5 @@ class ShippingPackageCodeType
             self::VALUE_WINEPAK,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

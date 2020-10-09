@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BestOfferStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the possible values for the status of a Best Offer or a buyer's/seller's counter offer.
  * @subpackage Enumerations
  */
-class BestOfferStatusCodeType
+class BestOfferStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Pending'
@@ -97,16 +99,6 @@ class BestOfferStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PENDING
      * @uses self::VALUE_ACCEPTED
@@ -138,13 +130,5 @@ class BestOfferStatusCodeType
             self::VALUE_PENDING_BUYER_CONFIRMATION,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PreferredLocationCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies the criteria for filtering search results by site, where site is determined by the site ID in the request.
  * @subpackage Enumerations
  */
-class PreferredLocationCodeType
+class PreferredLocationCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ListedInCurrencyImplied'
@@ -53,16 +55,6 @@ class PreferredLocationCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LISTED_IN_CURRENCY_IMPLIED
      * @uses self::VALUE_LOCATED_IN_COUNTRY_IMPLIED
@@ -82,13 +74,5 @@ class PreferredLocationCodeType
             self::VALUE_BELGIUM_LISTING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

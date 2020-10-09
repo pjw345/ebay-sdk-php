@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ValueFormatCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the date format that is used for a date-related field that is returned in the <b>GetCategorySpecifics</b> call. on which are enforceable for validation purposes
  * @subpackage Enumerations
  */
-class ValueFormatCodeType
+class ValueFormatCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'FullDate'
@@ -39,16 +41,6 @@ class ValueFormatCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_FULL_DATE
      * @uses self::VALUE_PARTIAL_DATE
@@ -64,13 +56,5 @@ class ValueFormatCodeType
             self::VALUE_YEAR,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

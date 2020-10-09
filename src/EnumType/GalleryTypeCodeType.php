@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for GalleryTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Indicates which Gallery image enhancements to apply to the listing.
  * @subpackage Enumerations
  */
-class GalleryTypeCodeType
+class GalleryTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'None'
@@ -58,16 +60,6 @@ class GalleryTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NONE
      * @uses self::VALUE_FEATURED
@@ -85,13 +77,5 @@ class GalleryTypeCodeType
             self::VALUE_PLUS,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

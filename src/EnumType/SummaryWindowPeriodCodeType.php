@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SummaryWindowPeriodCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: The period of time for which to create a summary.
  * @subpackage Enumerations
  */
-class SummaryWindowPeriodCodeType
+class SummaryWindowPeriodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Last24Hours'
@@ -72,16 +74,6 @@ class SummaryWindowPeriodCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LAST_24_HOURS
      * @uses self::VALUE_LAST_7_DAYS
@@ -107,13 +99,5 @@ class SummaryWindowPeriodCodeType
             self::VALUE_LAST_60_DAYS,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RefundReasonCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: <span class="tablenote"><b>Note: </b> This type was only used for Half.com order refunds, and since the Half.com site has been shut down, this type is no longer applicable. </span>
  * @subpackage Enumerations
  */
-class RefundReasonCodeType
+class RefundReasonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'CannotShipProduct'
@@ -60,16 +62,6 @@ class RefundReasonCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CANNOT_SHIP_PRODUCT
      * @uses self::VALUE_WRONG_ITEM_SHIPPED
@@ -91,13 +83,5 @@ class RefundReasonCodeType
             self::VALUE_OTHER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

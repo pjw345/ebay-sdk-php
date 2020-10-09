@@ -2,11 +2,13 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MessageTypeCodeType EnumType
  * @subpackage Enumerations
  */
-class MessageTypeCodeType
+class MessageTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AskSellerQuestion'
@@ -93,16 +95,6 @@ class MessageTypeCodeType
      */
     const VALUE_CLASSIFIEDS_BEST_OFFER = 'ClassifiedsBestOffer';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ASK_SELLER_QUESTION
      * @uses self::VALUE_RESPONSE_TO_ASQQUESTION
@@ -134,13 +126,5 @@ class MessageTypeCodeType
             self::VALUE_CLASSIFIEDS_CONTACT_SELLER,
             self::VALUE_CLASSIFIEDS_BEST_OFFER,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

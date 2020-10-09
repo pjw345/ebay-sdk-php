@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AccessRuleStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type contains values that describe an application's current status with respect to an API access rule.
  * @subpackage Enumerations
  */
-class AccessRuleStatusCodeType
+class AccessRuleStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'RuleOff'
@@ -39,16 +41,6 @@ class AccessRuleStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RULE_OFF
      * @uses self::VALUE_RULE_ON
@@ -64,13 +56,5 @@ class AccessRuleStatusCodeType
             self::VALUE_APPLICATION_BLOCKED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

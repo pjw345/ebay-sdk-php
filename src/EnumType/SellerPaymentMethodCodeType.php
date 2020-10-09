@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellerPaymentMethodCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the payment methods that an eBay user can use to pay fees on monthly eBay invoice.
  * @subpackage Enumerations
  */
-class SellerPaymentMethodCodeType
+class SellerPaymentMethodCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NothingOnFile'
@@ -67,16 +69,6 @@ class SellerPaymentMethodCodeType
      */
     const VALUE_DIRECT_DEBIT_PENDING_VERIFICATION = 'DirectDebitPendingVerification';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NOTHING_ON_FILE
      * @uses self::VALUE_CREDIT_CARD
@@ -100,13 +92,5 @@ class SellerPaymentMethodCodeType
             self::VALUE_CUSTOM_CODE,
             self::VALUE_DIRECT_DEBIT_PENDING_VERIFICATION,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ProfileCategoryGroupCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the category group values. Business Policies profiles (Payment, Shipping, and Return Policy) are linked to category groups.
  * @subpackage Enumerations
  */
-class ProfileCategoryGroupCodeType
+class ProfileCategoryGroupCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Inherit'
@@ -39,16 +41,6 @@ class ProfileCategoryGroupCodeType
      */
     const VALUE_MOTORS_VEHICLE = 'MOTORS_VEHICLE';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_INHERIT
      * @uses self::VALUE_NONE
@@ -64,13 +56,5 @@ class ProfileCategoryGroupCodeType
             self::VALUE_ALL,
             self::VALUE_MOTORS_VEHICLE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MeasurementSystemCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the two measurement systems that are used globally.
  * @subpackage Enumerations
  */
-class MeasurementSystemCodeType
+class MeasurementSystemCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'English'
@@ -26,16 +28,6 @@ class MeasurementSystemCodeType
      */
     const VALUE_METRIC = 'Metric';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENGLISH
      * @uses self::VALUE_METRIC
@@ -47,13 +39,5 @@ class MeasurementSystemCodeType
             self::VALUE_ENGLISH,
             self::VALUE_METRIC,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

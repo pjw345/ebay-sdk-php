@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for FeedbackRatingDetailCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * for a seller, they also can leave ratings in four areas: item as described, communication, shipping time, and charges for shipping and handling. Users retrieve detailed ratings as averages of the ratings left by buyers.
  * @subpackage Enumerations
  */
-class FeedbackRatingDetailCodeType
+class FeedbackRatingDetailCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ItemAsDescribed'
@@ -47,16 +49,6 @@ class FeedbackRatingDetailCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ITEM_AS_DESCRIBED
      * @uses self::VALUE_COMMUNICATION
@@ -74,13 +66,5 @@ class FeedbackRatingDetailCodeType
             self::VALUE_SHIPPING_AND_HANDLING_CHARGES,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DetailLevelCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies standard subsets of data to return for each result within the set of results in the response payload. If no detail level is specified, a base set of data is returned. The base set of data varies per call.
  * @subpackage Enumerations
  */
-class DetailLevelCodeType
+class DetailLevelCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ReturnAll'
@@ -67,16 +69,6 @@ class DetailLevelCodeType
      */
     const VALUE_RETURN_MESSAGES = 'ReturnMessages';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RETURN_ALL
      * @uses self::VALUE_ITEM_RETURN_DESCRIPTION
@@ -98,13 +90,5 @@ class DetailLevelCodeType
             self::VALUE_RETURN_HEADERS,
             self::VALUE_RETURN_MESSAGES,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

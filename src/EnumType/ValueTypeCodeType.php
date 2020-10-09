@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ValueTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * the recommended Item Specific called out in the <b>NameRecommendation.Name</b> field. <br/><br/> The values used by <b>GetOrders</b> (and other order management calls) is the type of tax ID used in the <strong>BuyerTaxIdentifier</strong> container.
  * @subpackage Enumerations
  */
-class ValueTypeCodeType
+class ValueTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Decimal'
@@ -154,16 +156,6 @@ class ValueTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DECIMAL
      * @uses self::VALUE_NUMERIC
@@ -209,13 +201,5 @@ class ValueTypeCodeType
             self::VALUE_CNPJ,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

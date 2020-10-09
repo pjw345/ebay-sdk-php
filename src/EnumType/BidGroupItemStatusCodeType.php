@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BidGroupItemStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class BidGroupItemStatusCodeType
+class BidGroupItemStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'CurrentBid'
@@ -67,16 +69,6 @@ class BidGroupItemStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CURRENT_BID
      * @uses self::VALUE_CANCELLED
@@ -100,13 +92,5 @@ class BidGroupItemStatusCodeType
             self::VALUE_GROUP_CLOSED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

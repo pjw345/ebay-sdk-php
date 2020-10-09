@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for EndReasonCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * wants to sell the item to the high bidder now.
  * @subpackage Enumerations
  */
-class EndReasonCodeType
+class EndReasonCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'LostOrBroken'
@@ -71,16 +73,6 @@ class EndReasonCodeType
      */
     const VALUE_PRODUCT_DELETED = 'ProductDeleted';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_LOST_OR_BROKEN
      * @uses self::VALUE_NOT_AVAILABLE
@@ -104,13 +96,5 @@ class EndReasonCodeType
             self::VALUE_SOLD,
             self::VALUE_PRODUCT_DELETED,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

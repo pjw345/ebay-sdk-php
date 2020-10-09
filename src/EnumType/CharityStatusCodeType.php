@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CharityStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type defining the possible states for a nonprofit charity organization registered with the PayPal Giving Fund.
  * @subpackage Enumerations
  */
-class CharityStatusCodeType
+class CharityStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Valid'
@@ -32,16 +34,6 @@ class CharityStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_VALID
      * @uses self::VALUE_NO_LONGER_VALID
@@ -55,13 +47,5 @@ class CharityStatusCodeType
             self::VALUE_NO_LONGER_VALID,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

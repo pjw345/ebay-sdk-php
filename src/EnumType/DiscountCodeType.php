@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DiscountCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is used to specify if the discount used for a promotional sale is a price (dollar value) discount or a percentage (of sale price) discount.
  * @subpackage Enumerations
  */
-class DiscountCodeType
+class DiscountCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Percentage'
@@ -34,16 +36,6 @@ class DiscountCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PERCENTAGE
      * @uses self::VALUE_PRICE
@@ -57,13 +49,5 @@ class DiscountCodeType
             self::VALUE_PRICE,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

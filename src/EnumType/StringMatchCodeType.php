@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for StringMatchCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Indicates the type of string matching to use when a value is submitted in CharityName. If no value is specified, default behavior is "StartsWith." Does not apply to Query.
  * @subpackage Enumerations
  */
-class StringMatchCodeType
+class StringMatchCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'CustomCode'
@@ -32,16 +34,6 @@ class StringMatchCodeType
      */
     const VALUE_CONTAINS = 'Contains';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CUSTOM_CODE
      * @uses self::VALUE_STARTS_WITH
@@ -55,13 +47,5 @@ class StringMatchCodeType
             self::VALUE_STARTS_WITH,
             self::VALUE_CONTAINS,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

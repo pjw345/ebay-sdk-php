@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ShippingTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: The shipping cost model offered by the seller.
  * @subpackage Enumerations
  */
-class ShippingTypeCodeType
+class ShippingTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Flat'
@@ -80,16 +82,6 @@ class ShippingTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_FLAT
      * @uses self::VALUE_CALCULATED
@@ -115,13 +107,5 @@ class ShippingTypeCodeType
             self::VALUE_FREIGHT_FLAT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

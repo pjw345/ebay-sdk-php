@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellingManagerPaisaPayPropertyTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Container for the PaisaPay alert types.
  * @subpackage Enumerations
  */
-class SellingManagerPaisaPayPropertyTypeCodeType
+class SellingManagerPaisaPayPropertyTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PaisaPayAwaitingShipment'
@@ -53,16 +55,6 @@ class SellingManagerPaisaPayPropertyTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PAISA_PAY_AWAITING_SHIPMENT
      * @uses self::VALUE_PAISA_PAY_TIME_EXTENSION_REQUEST_DECLINED
@@ -82,13 +74,5 @@ class SellingManagerPaisaPayPropertyTypeCodeType
             self::VALUE_PAISA_PAY_TIME_EXTENSION_REQUESTED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SiteCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: eBay sites (by the country in which each resides) on which a user is registered and on which items can be listed through the Trading API.
  * @subpackage Enumerations
  */
-class SiteCodeType
+class SiteCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'US'
@@ -197,16 +199,6 @@ class SiteCodeType
      */
     const VALUE_RUSSIA = 'Russia';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_US
      * @uses self::VALUE_CANADA
@@ -268,13 +260,5 @@ class SiteCodeType
             self::VALUE_CANADA_FRENCH,
             self::VALUE_RUSSIA,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

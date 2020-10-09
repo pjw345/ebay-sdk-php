@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for FeedbackRatingStarCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: The color of a feedback score star visually denotes the range in which the member's summary feedback score falls. The score is the net positive feedback minus the net negative feedback left for the member.
  * @subpackage Enumerations
  */
-class FeedbackRatingStarCodeType
+class FeedbackRatingStarCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'None'
@@ -109,16 +111,6 @@ class FeedbackRatingStarCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NONE
      * @uses self::VALUE_YELLOW
@@ -154,13 +146,5 @@ class FeedbackRatingStarCodeType
             self::VALUE_SILVER_SHOOTING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

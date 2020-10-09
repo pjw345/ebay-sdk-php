@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CancelStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the possible states of an eBay order cancellation.
  * @subpackage Enumerations
  */
-class CancelStatusCodeType
+class CancelStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Invalid'
@@ -96,16 +98,6 @@ class CancelStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_INVALID
      * @uses self::VALUE_NOT_APPLICABLE
@@ -137,13 +129,5 @@ class CancelStatusCodeType
             self::VALUE_CANCEL_FAILED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

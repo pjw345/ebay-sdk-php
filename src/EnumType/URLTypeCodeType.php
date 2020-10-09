@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for URLTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type consists of the different eBay URLs that can be returned under the <b>URLDetails</b> containers of a <b>GeteBayDetails</b> response.
  * @subpackage Enumerations
  */
-class URLTypeCodeType
+class URLTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ViewItemURL'
@@ -120,16 +122,6 @@ class URLTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_VIEW_ITEM_URL
      * @uses self::VALUE_VIEW_USER_URL
@@ -167,13 +159,5 @@ class URLTypeCodeType
             self::VALUE_MANAGE_PRODUCT_URL,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

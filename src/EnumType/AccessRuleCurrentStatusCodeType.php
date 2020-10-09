@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AccessRuleCurrentStatusCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * call limit for the corresponding API call has been exceeded, or if a call limit does not apply to the API call.
  * @subpackage Enumerations
  */
-class AccessRuleCurrentStatusCodeType
+class AccessRuleCurrentStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NotSet'
@@ -70,16 +72,6 @@ class AccessRuleCurrentStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NOT_SET
      * @uses self::VALUE_HOURLY_LIMIT_EXCEEDED
@@ -103,13 +95,5 @@ class AccessRuleCurrentStatusCodeType
             self::VALUE_PERIODIC_SOFT_LIMIT_EXCEEDED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

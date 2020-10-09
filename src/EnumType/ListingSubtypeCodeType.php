@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ListingSubtypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * <strong>ListingType</strong> value is set to <code>LeadGeneration</code>.
  * @subpackage Enumerations
  */
-class ListingSubtypeCodeType
+class ListingSubtypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'ClassifiedAd'
@@ -35,16 +37,6 @@ class ListingSubtypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_CLASSIFIED_AD
      * @uses self::VALUE_LOCAL_MARKET_BEST_OFFER_ONLY
@@ -58,13 +50,5 @@ class ListingSubtypeCodeType
             self::VALUE_LOCAL_MARKET_BEST_OFFER_ONLY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

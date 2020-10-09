@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ProductCreationEnabledCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Values indicate whether product creation is enabled, disabled or required for a category.
  * @subpackage Enumerations
  */
-class ProductCreationEnabledCodeType
+class ProductCreationEnabledCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Disabled'
@@ -39,16 +41,6 @@ class ProductCreationEnabledCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DISABLED
      * @uses self::VALUE_ENABLED
@@ -64,13 +56,5 @@ class ProductCreationEnabledCodeType
             self::VALUE_REQUIRED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for AccountDetailEntryCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the fee/charge and credit transactions that occur on an eBay user's account. These values are returned in the <b>AccountEntry.AccountDetailsEntryType</b> output field of the <b>GetAccount</b> call.
  * @subpackage Enumerations
  */
-class AccountDetailEntryCodeType
+class AccountDetailEntryCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Unknown'
@@ -2529,16 +2531,6 @@ class AccountDetailEntryCodeType
      */
     const VALUE_FINAL_VALUE_FEE_BELOW_STANDARD_CREDIT = 'FinalValueFeeBelowStandardCredit';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_UNKNOWN
      * @uses self::VALUE_FEE_INSERTION
@@ -3234,13 +3226,5 @@ class AccountDetailEntryCodeType
             self::VALUE_FINAL_VALUE_FEE_BELOW_STANDARD,
             self::VALUE_FINAL_VALUE_FEE_BELOW_STANDARD_CREDIT,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

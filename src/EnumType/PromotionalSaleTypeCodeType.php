@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PromotionalSaleTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * become available to sellers. </span> Values specify or indicate the type of promotional sale offered. Promotional sales give store owners the ability to apply discounts and/or free shipping across many listings for a specific duration.
  * @subpackage Enumerations
  */
-class PromotionalSaleTypeCodeType
+class PromotionalSaleTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PriceDiscountOnly'
@@ -42,16 +44,6 @@ class PromotionalSaleTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PRICE_DISCOUNT_ONLY
      * @uses self::VALUE_FREE_SHIPPING_ONLY
@@ -67,13 +59,5 @@ class PromotionalSaleTypeCodeType
             self::VALUE_PRICE_DISCOUNT_AND_FREE_SHIPPING,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

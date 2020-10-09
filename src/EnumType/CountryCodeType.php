@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CountryCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * supported country codes, and the English names associated with each code (e.g., KY="Cayman Islands"). Call <b>GeteBayDetails</b> with <b>DetailName</b> set to <b>Country</b>, and then look for <b>CountryDetails.Country</b> fields in the response.
  * @subpackage Enumerations
  */
-class CountryCodeType
+class CountryCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AF'
@@ -1760,16 +1762,6 @@ class CountryCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_AF
      * @uses self::VALUE_AL
@@ -2277,13 +2269,5 @@ class CountryCodeType
             self::VALUE_ME,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

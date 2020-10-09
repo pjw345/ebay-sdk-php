@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PaymentHoldStatusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that contains the list of possible values that can be returned in the PaymentHoldStatus container.
  * @subpackage Enumerations
  */
-class PaymentHoldStatusCodeType
+class PaymentHoldStatusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'PaymentReview'
@@ -84,16 +86,6 @@ class PaymentHoldStatusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_PAYMENT_REVIEW
      * @uses self::VALUE_MERCHANT_HOLD
@@ -121,13 +113,5 @@ class PaymentHoldStatusCodeType
             self::VALUE_RELEASE_FAILED,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

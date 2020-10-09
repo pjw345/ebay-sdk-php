@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for BestOfferActionCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that defines the possible values that can be passed in to the <b>Action</b> field in a <b>RespondToBestOffer</b> request.
  * @subpackage Enumerations
  */
-class BestOfferActionCodeType
+class BestOfferActionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Accept'
@@ -41,16 +43,6 @@ class BestOfferActionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ACCEPT
      * @uses self::VALUE_DECLINE
@@ -66,13 +58,5 @@ class BestOfferActionCodeType
             self::VALUE_COUNTER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

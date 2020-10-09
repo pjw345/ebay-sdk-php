@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for SellingManagerAutoRelistTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Specifies the type of auto relist that will be performed.
  * @subpackage Enumerations
  */
-class SellingManagerAutoRelistTypeCodeType
+class SellingManagerAutoRelistTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'RelistOnceIfNotSold'
@@ -39,16 +41,6 @@ class SellingManagerAutoRelistTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_RELIST_ONCE_IF_NOT_SOLD
      * @uses self::VALUE_RELIST_CONTINUOUSLY_UNTIL_SOLD
@@ -64,13 +56,5 @@ class SellingManagerAutoRelistTypeCodeType
             self::VALUE_RELIST_CONTINUOUSLY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

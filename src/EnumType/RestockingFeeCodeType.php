@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for RestockingFeeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This type is deprecated, as sellers are no longer allowed to set a restocking fee through a listings's return policy.
  * @subpackage Enumerations
  */
-class RestockingFeeCodeType
+class RestockingFeeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NoRestockingFee'
@@ -53,16 +55,6 @@ class RestockingFeeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NO_RESTOCKING_FEE
      * @uses self::VALUE_PERCENT_10
@@ -82,13 +74,5 @@ class RestockingFeeCodeType
             self::VALUE_PERCENT_25,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

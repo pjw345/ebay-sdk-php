@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for CombinedPaymentOptionCodeType EnumType
  * Meta information extracted from the WSDL
@@ -9,7 +11,7 @@ namespace EnumType;
  * a shipping discounts to the buyer.
  * @subpackage Enumerations
  */
-class CombinedPaymentOptionCodeType
+class CombinedPaymentOptionCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'NoCombinedPayment'
@@ -41,16 +43,6 @@ class CombinedPaymentOptionCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NO_COMBINED_PAYMENT
      * @uses self::VALUE_DISCOUNT_SPECIFIED
@@ -66,13 +58,5 @@ class CombinedPaymentOptionCodeType
             self::VALUE_SPECIFY_DISCOUNT_LATER,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

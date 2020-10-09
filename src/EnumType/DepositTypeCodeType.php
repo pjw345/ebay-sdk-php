@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DepositTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: For vehicles listed through the US eBay Motors site, DepositType indicates how the buyer should pay the deposit amount. It is used in conjunction with a buyer payment method (BuyerPaymentMethodCodeType).
  * @subpackage Enumerations
  */
-class DepositTypeCodeType
+class DepositTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'None'
@@ -39,16 +41,6 @@ class DepositTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_NONE
      * @uses self::VALUE_OTHER_METHOD
@@ -64,13 +56,5 @@ class DepositTypeCodeType
             self::VALUE_FAST_DEPOSIT,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

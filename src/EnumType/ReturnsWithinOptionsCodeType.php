@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for ReturnsWithinOptionsCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * <code>DomesticReturnsDurationValues</code> and/or <code>InternationalReturnsDurationValues</code> as <b>FeatureID</b> values to see the return durations available for domestic and international returns, respectively. </span>
  * @subpackage Enumerations
  */
-class ReturnsWithinOptionsCodeType
+class ReturnsWithinOptionsCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Days_3'
@@ -72,16 +74,6 @@ class ReturnsWithinOptionsCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DAYS_3
      * @uses self::VALUE_DAYS_7
@@ -105,13 +97,5 @@ class ReturnsWithinOptionsCodeType
             self::VALUE_MONTHS_1,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

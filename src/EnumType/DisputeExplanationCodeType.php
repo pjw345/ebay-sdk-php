@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DisputeExplanationCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * href="https://developer.ebay.com/Devzone/post-order/concepts/UsageGuide.html">Post-Order API</a> is used to retrieve and/or respond to eBay Money Back Guarantee cases programmatically. </span>
  * @subpackage Enumerations
  */
-class DisputeExplanationCodeType
+class DisputeExplanationCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'BuyerHasNotResponded'
@@ -160,16 +162,6 @@ class DisputeExplanationCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_BUYER_HAS_NOT_RESPONDED
      * @uses self::VALUE_BUYER_REFUSED_TO_PAY
@@ -217,13 +209,5 @@ class DisputeExplanationCodeType
             self::VALUE_SELLER_RAN_OUT_OF_STOCK,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

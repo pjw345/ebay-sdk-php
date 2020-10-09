@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for FeaturedPlusCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type that indicates if the Featured Plus listing upgrade is enabled for the specified site, and whether it is restricted to a specific seller level.
  * @subpackage Enumerations
  */
-class FeaturedPlusCodeType
+class FeaturedPlusCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Enabled'
@@ -46,16 +48,6 @@ class FeaturedPlusCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ENABLED
      * @uses self::VALUE_DISABLED
@@ -73,13 +65,5 @@ class FeaturedPlusCodeType
             self::VALUE_TOP_RATED_SELLER_ONLY,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

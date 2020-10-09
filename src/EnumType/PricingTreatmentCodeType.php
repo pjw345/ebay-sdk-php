@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for PricingTreatmentCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type defines the available discount price treatments that can be set up by eligible sellers.
  * @subpackage Enumerations
  */
-class PricingTreatmentCodeType
+class PricingTreatmentCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'STP'
@@ -46,16 +48,6 @@ class PricingTreatmentCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_STP
      * @uses self::VALUE_MAP
@@ -73,13 +65,5 @@ class PricingTreatmentCodeType
             self::VALUE_MFO,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

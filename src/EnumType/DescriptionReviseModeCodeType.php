@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DescriptionReviseModeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: Enumerated type containing the list of values that can be used when revising the item description of an active listing through the Revise API calls.
  * @subpackage Enumerations
  */
-class DescriptionReviseModeCodeType
+class DescriptionReviseModeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'Replace'
@@ -39,16 +41,6 @@ class DescriptionReviseModeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_REPLACE
      * @uses self::VALUE_PREPEND
@@ -64,13 +56,5 @@ class DescriptionReviseModeCodeType
             self::VALUE_APPEND,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

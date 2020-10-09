@@ -2,13 +2,15 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for MailOptionsTypeCodeType EnumType
  * Meta information extracted from the WSDL
  * - documentation: This enumerated type is deprecated.
  * @subpackage Enumerations
  */
-class MailOptionsTypeCodeType
+class MailOptionsTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'DoNotSendEmail'
@@ -39,16 +41,6 @@ class MailOptionsTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_DO_NOT_SEND_EMAIL
      * @uses self::VALUE_EMAIL_COPY_TO_SENDER
@@ -64,13 +56,5 @@ class MailOptionsTypeCodeType
             self::VALUE_HIDE_SENDER_EMAIL_ADDRESS,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }

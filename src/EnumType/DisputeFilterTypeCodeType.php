@@ -2,6 +2,8 @@
 
 namespace EnumType;
 
+use \WsdlToPhp\PackageBase\AbstractStructEnumBase;
+
 /**
  * This class stands for DisputeFilterTypeCodeType EnumType
  * Meta information extracted from the WSDL
@@ -11,7 +13,7 @@ namespace EnumType;
  * retrieve Money Back Guarantee cases programmatically. </span>
  * @subpackage Enumerations
  */
-class DisputeFilterTypeCodeType
+class DisputeFilterTypeCodeType extends AbstractStructEnumBase
 {
     /**
      * Constant for value 'AllInvolvedDisputes'
@@ -72,16 +74,6 @@ class DisputeFilterTypeCodeType
      */
     const VALUE_CUSTOM_CODE = 'CustomCode';
     /**
-     * Return true if value is allowed
-     * @uses self::getValidValues()
-     * @param mixed $value value
-     * @return bool true|false
-     */
-    public static function valueIsValid($value)
-    {
-        return ($value === null) || in_array($value, self::getValidValues(), true);
-    }
-    /**
      * Return allowed values
      * @uses self::VALUE_ALL_INVOLVED_DISPUTES
      * @uses self::VALUE_DISPUTES_AWAITING_MY_RESPONSE
@@ -105,13 +97,5 @@ class DisputeFilterTypeCodeType
             self::VALUE_ITEM_NOT_RECEIVED_DISPUTES,
             self::VALUE_CUSTOM_CODE,
         );
-    }
-    /**
-     * Method returning the class name
-     * @return string __CLASS__
-     */
-    public function __toString()
-    {
-        return __CLASS__;
     }
 }
